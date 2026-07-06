@@ -1,1 +1,79 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Fantasy World Cup Legends</title><link rel="stylesheet" href="css/style.css"></head><body><header><h1>Fantasy World Cup Legends</h1><p>Release 0.1 — LEGION modular</p></header><main><section class="panel"><h2>Teste do LEGION</h2><div class="grid"><div><label>Seu time</label><select id="teamA"></select></div><div><label>Adversário</label><select id="teamB"></select></div></div><button onclick="App.realtime()">Simular em tempo real</button><button class="secondary" onclick="App.instant()">Simulação instantânea</button></section><section class="panel"><div class="clock" id="clock">00'</div><div class="score" id="score"></div></section><section class="panel"><h2>Campo tático</h2><div class="field" id="field"></div></section><section class="panel"><h2>Narração</h2><div class="events" id="events"><div class="card">Aguardando simulação.</div></div></section><section class="panel"><h2>Relatório transparente</h2><div id="report"><div class="card">Simule uma partida para ver o relatório.</div></div></section></main><div class="goalFlash" id="goalFlash"></div><script src="data/formations.js"></script><script src="data/teams.js"></script><script src="data/players.js"></script><script src="js/skillsEngine.js"></script><script src="js/eventGraph.js"></script><script src="js/narration.js"></script><script src="js/ui.js"></script><script src="js/market.js"></script><script src="js/app.js"></script></body></html>
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Fantasy World Cup Legends — Release 0.2</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <h1>Fantasy World Cup Legends</h1>
+    <p>Release 0.2 — Mercado + WCHD + LEGION integrado</p>
+  </header>
+  <main>
+    <section class="card">
+      <h2>1. Configuração</h2>
+      <div class="grid three">
+        <div><label>Modo</label><select id="mode"><option value="dynasty">Dinastia Nacional</option><option value="world">Fantasy Mundial</option></select></div>
+        <div id="dynastyWrap"><label>Seleção da Dinastia</label><select id="dynastyCountry"></select></div>
+        <div><label>Formação</label><select id="formation"></select></div>
+      </div>
+      <div style="height:14px"></div>
+      <div class="grid two">
+        <div><label>Dificuldade</label><select id="difficulty"></select></div>
+        <div><label>Regra</label><div class="notice">Sorteio vinculante: escolha o jogador da posição antes de continuar. Sem resortear.</div></div>
+      </div>
+      <div style="height:14px"></div>
+      <div class="row"><button id="startBtn" class="primary">Iniciar montagem</button><button id="resetBtn" class="danger">Reiniciar</button></div>
+    </section>
+
+    <section class="card" style="margin-top:18px">
+      <h2>2. Montagem do XI</h2>
+      <div class="grid two">
+        <div><label>Orçamento restante</label><div id="budgetText" class="budget">US$100MM</div><div class="bar"><span id="budgetBar"></span></div></div>
+        <div><label>Status</label><div id="lineupStatus" class="notice">Monte o XI titular.</div></div>
+      </div>
+      <div style="height:18px"></div>
+      <div id="field" class="field"><div class="circle"></div></div>
+      <div style="height:18px"></div>
+      <button id="goMatchBtn" class="secondary" disabled>Ir para a partida</button>
+    </section>
+
+    <section id="matchSection" class="card hide" style="margin-top:18px">
+      <h2>3. Partida simulada pelo LEGION</h2>
+      <div class="clock" id="clock">0'</div>
+      <div class="scoreboard"><div id="homeName" class="teamName">Seu XI Legends</div><div id="score" class="score">0 x 0</div><div id="awayName" class="teamName">Adversário</div></div>
+      <div style="height:16px"></div>
+      <div class="row"><button id="realBtn" class="primary">Simular em tempo real</button><button id="instantBtn" class="secondary">Simulação instantânea</button></div>
+      <div style="height:20px"></div>
+      <h2>Narração</h2>
+      <div id="log" class="log"></div>
+      <div style="height:20px"></div>
+      <h2>Relatório transparente</h2>
+      <div id="report"><div class="reportBox">Aguardando partida.</div></div>
+      <div id="ratings" style="margin-top:16px"></div>
+    </section>
+  </main>
+
+  <div id="draftModal" class="modal">
+    <div class="dialog">
+      <h3 id="draftTitle">Sorteio</h3>
+      <p id="draftSubtitle" class="muted"></p>
+      <div id="candidateGrid" class="candidateGrid"></div>
+      <div style="height:16px"></div>
+      <button id="draftReset" class="danger">Reiniciar montagem</button>
+    </div>
+  </div>
+  <div id="goalAlert" class="goalAlert">⚽ GOL!</div>
+
+  <script src="data/wchd.js"></script>
+  <script src="data/formations.js"></script>
+  <script src="js/skillsEngine.js"></script>
+  <script src="js/narration.js"></script>
+  <script src="js/eventGraph.js"></script>
+  <script src="js/market.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

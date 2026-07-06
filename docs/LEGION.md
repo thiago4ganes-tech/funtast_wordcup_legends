@@ -1,28 +1,21 @@
-# LEGION — Especificação Técnica Inicial
+# LEGION — Legacy Engine for Game Intelligence, Outcomes and Narratives
 
-LEGION significa Legacy Engine for Game Intelligence, Outcomes and Narratives.
+## Fundamento
 
-## Princípios
-1. O motor simula eventos relevantes, não cada segundo da partida.
-2. Cada jogada nasce de um evento-mãe e segue consequências probabilísticas.
-3. Habilidades técnicas, competências psicológicas e contexto ajustam as probabilidades.
-4. O resultado deve ser explicável no relatório final.
-5. A narrativa não decide o jogo; apenas traduz eventos calculados.
+O LEGION usa grafo probabilístico de eventos:
 
-## Módulos
-- Event Graph
-- Skills & Traits Engine
-- Market Engine
-- Narration Engine
-- Statistics Engine
-- UI Layer
+Evento-mãe → consequências ponderadas → novo evento → encerramento.
 
-## Requisitos aprovados
-- Placar evolutivo.
-- Alerta visual de gol.
-- Notas parciais em campo.
-- Relatório pós-jogo.
-- Modo Dinastia.
-- Modo Mundial.
-- Sorteio vinculante por posição.
-- Proibição de versões repetidas do mesmo atleta no XI.
+As probabilidades são ajustadas por:
+
+- habilidades técnicas;
+- competências psicológicas;
+- classe do jogador;
+- resistência adversária;
+- contexto da partida;
+- fadiga simplificada;
+- qualidade da jogada anterior.
+
+## Princípio
+
+O motor não escolhe o resultado e depois inventa os lances. O resultado emerge das chances criadas e convertidas.

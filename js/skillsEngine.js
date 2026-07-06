@@ -1,27 +1,59 @@
-window.SkillsEngine = {
-  clamp(n, min=0, max=1){ return Math.max(min, Math.min(max, n)); },
-  classBonus(player, context){
-    if(!player) return 0;
-    let b = 0;
-    if(player.classIcon === '👑') b += 0.05;
-    if(player.classIcon === '⭐') b += 0.03;
-    if(context && context.minute >= 75 && player.traits?.includes('acredita até o final')) b += 0.06;
-    if(context && context.isKnockout && player.traits?.includes('cresce em jogo grande')) b += 0.05;
-    if(context && context.isPressure && player.traits?.includes('frio sob pressão')) b += 0.04;
-    if(context && context.teamLosing && player.traits?.includes('chama a responsabilidade')) b += 0.05;
-    return b;
-  },
-  skill(player, name){ return (player?.skills?.[name] ?? 50) / 100; },
-  duel(attacker, defender, skillNames, defenseNames, context={}){
-    const atk = skillNames.reduce((s,k)=>s+this.skill(attacker,k),0) / skillNames.length;
-    const def = defenseNames.reduce((s,k)=>s+this.skill(defender,k),0) / defenseNames.length;
-    const raw = 0.50 + (atk - def) * 0.35 + this.classBonus(attacker, context) - this.classBonus(defender, context) * 0.5;
-    return this.clamp(raw, 0.08, 0.92);
-  },
-  finishChance(shooter, keeper, xg, context={}){
-    const fin = (this.skill(shooter,'finishing')*0.55 + this.skill(shooter,'composure')*0.25 + this.skill(shooter,'positioning')*0.20);
-    const gk = (this.skill(keeper,'goalkeeping')*0.55 + this.skill(keeper,'reflex')*0.30 + this.skill(keeper,'positioning')*0.15);
-    let chance = xg + (fin - gk) * 0.18 + this.classBonus(shooter, context) - this.classBonus(keeper, context)*0.5;
-    return this.clamp(chance, 0.03, 0.72);
+(function(){
+  function clamp(v,min,max){ return Math.max(min, Math.min(max, v)); }
+  function skill(p,k, fallback=55){ return p && p.skills && Number.isFinite(p.skills[k]) ? p.skills[k] : fallback; }
+  function classBonus(p){
+    const c = (p.player_class||'').toLowerCase();
+    if(c.includes('lenda')) return 7;
+    if(c.includes('craque')) return 4;
+    if(c.includes('especialista')) return 3;
+    if(c.includes('líder') || c.includes('lider')) return 2;
+    return 0;
   }
-};
+  function traitBonus(player, context){
+    const traits = player.traits || [];
+    let b = 0;
+    if(context.minute >= 75 && (traits.includes('acredita_ate_o_fim') || traits.includes('motor_fisico'))) b += 5;
+    if(context.isKnockout && traits.includes('cresce_em_jogo_grande')) b += 4;
+    if(context.teamLosing && traits.includes('chama_responsabilidade')) b += 5;
+    if((context.type==='penalty' || context.bigChance) && traits.includes('frio_sob_pressao')) b += 5;
+    if(context.type==='header' && traits.includes('especialista_aereo')) b += 7;
+    if(context.type==='build' && traits.includes('organizador')) b += 5;
+    if(context.type==='duel' && traits.includes('competidor_extremo')) b += 4;
+    if(context.type==='safe' && traits.includes('confiavel')) b += 3;
+    if(context.type==='genius' && traits.includes('genialidade_intermitente')) b += 6;
+    if(context.tense && traits.includes('temperamental')) b -= 3;
+    return b;
+  }
+  function positionFit(player, slot){
+    const map = window.FWCL_COMPATIBILITY || {};
+    const positions = player.positions || [];
+    if(positions.includes(slot)) return 100;
+    const alt = map[slot] || [];
+    for(const p of positions){ if(alt.includes(p)) return 86; }
+    return 0;
+  }
+  function actionScore(player, action, context={}){
+    if(!player) return 45;
+    const s = player.skills || {};
+    const avg = (...keys)=> keys.reduce((a,k)=>a+skill(player,k),0)/keys.length;
+    let base = 55;
+    if(action==='build') base = avg('passing','vision','decision','composure');
+    if(action==='passVertical') base = avg('passing','vision','decision');
+    if(action==='dribble') base = avg('dribble','pace','decision','composure');
+    if(action==='cross') base = avg('crossing','passing','decision');
+    if(action==='header') base = avg('heading','aerial','power','decision');
+    if(action==='finish') base = avg('finishing','decision','composure','power');
+    if(action==='longShot') base = avg('finishing','power','decision') - 6;
+    if(action==='defend') base = avg('marking','tackle','interception','decision');
+    if(action==='goalkeeper') base = avg('reflexes','handling','onevone','decision');
+    if(action==='penalty') base = avg('finishing','composure','decision','clutch');
+    return clamp(base + classBonus(player) + traitBonus(player, context), 5, 110);
+  }
+  function duel(attacker, defender, action, context={}){
+    const atk = actionScore(attacker, action, context);
+    const defAction = action === 'header' ? 'defend' : (defender && defender.role === 'GK' ? 'goalkeeper' : 'defend');
+    const def = actionScore(defender, defAction, context);
+    return clamp(0.5 + (atk - def) / 90, 0.12, 0.88);
+  }
+  window.FWCL_SKILLS = { clamp, skill, classBonus, traitBonus, positionFit, actionScore, duel };
+})();

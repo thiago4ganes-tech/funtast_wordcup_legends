@@ -1,27 +1,27 @@
 # Fantasy World Cup Legends
 
-Simulador histórico de futebol baseado no motor LEGION.
+Release 0.2 — Mercado + WCHD + LEGION integrado.
 
-## LEGION
-Legacy Engine for Game Intelligence, Outcomes and Narratives.
+## Objetivo da release
 
-## Release 0.1
-Esta é a primeira estrutura modular do projeto, preparada para GitHub Pages.
+Restaurar o conceito original do produto dentro da arquitetura modular publicada no GitHub Pages:
 
-### Estrutura
-- `index.html`: entrada do jogo
-- `css/style.css`: estilos visuais
-- `js/app.js`: inicialização
-- `js/market.js`: mercado e montagem do XI
-- `js/eventGraph.js`: motor de eventos
-- `js/skillsEngine.js`: cálculo de habilidades e competências
-- `js/narration.js`: frases e narrativa
-- `js/ui.js`: atualização da interface
-- `data/teams.js`: seleções históricas
-- `data/players.js`: jogadores e atributos
-- `data/formations.js`: formações
-- `docs/LEGION.md`: documentação do motor
-- `docs/WCHD.md`: documentação do banco histórico
+- Modo Dinastia Nacional;
+- Modo Fantasy Mundial;
+- montagem por formação;
+- sorteio vinculante por posição;
+- bloqueio de jogador repetido e de versões alternativas do mesmo atleta;
+- budget base de US$100MM;
+- WCHD integrado;
+- partida simulada pelo LEGION Event Graph + Skills & Traits;
+- placar progressivo, alerta de gol, notas em tempo real e relatório final.
 
-## Como jogar
-Abra o `index.html` no navegador ou publique pelo GitHub Pages.
+## Aviso de qualidade dos dados
+
+O WCHD atual é uma base provisória para desenvolvimento. Elencos, atributos, preços e competências precisam de auditoria com fontes públicas antes de uso comercial.
+
+## Link público
+
+Quando publicado via GitHub Pages:
+
+https://thiago4ganes-tech.github.io/funtast_worldcup_legends/
