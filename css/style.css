@@ -18,3 +18,13 @@ h2{margin:0 0 16px;font-size:25px} label{display:block;color:var(--muted);margin
 .goalAlert{position:fixed;inset:auto 20px 20px 20px;background:linear-gradient(135deg,#ffe066,#69ff7b);color:#031108;border-radius:22px;padding:24px;z-index:60;text-align:center;font-size:34px;font-weight:1000;box-shadow:0 20px 60px rgba(0,0,0,.45);display:none}.goalAlert.show{display:block;animation:pop .9s ease}@keyframes pop{0%{transform:scale(.75);opacity:0}35%{transform:scale(1.05);opacity:1}100%{transform:scale(1);opacity:1}}
 .reportGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}.reportBox{border:1px solid var(--line);background:#082716;border-radius:14px;padding:14px}.muted{color:var(--muted)}.hide{display:none!important}
 @media(max-width:760px){main{padding:14px}.two,.three{grid-template-columns:1fr}.field{height:560px}.slot{width:96px;font-size:13px}.scoreboard{grid-template-columns:1fr}.score{font-size:42px}.teamName{font-size:16px}header h1{font-size:22px}}
+
+.dataQuality{font-size:13px}
+.qualityGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin-top:10px}
+.qualityBox{background:#10192f;border:1px solid #26365f;border-radius:12px;padding:12px}
+.qualityBox strong{display:block;font-size:18px;color:var(--accent)}
+.qualityWarn{color:#ffcf7a}
+.qualityBad{color:#ff6b6b}
+.qualityGood{color:#78e08f}
+.candidateDepth{margin:8px 0 12px 0;padding:10px;border-radius:10px;background:#0e172a;border:1px solid #334155;color:#cbd5e1}
+.narrationStyle{color:#a7f3d0}

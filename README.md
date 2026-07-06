@@ -1,27 +1,31 @@
 # Fantasy World Cup Legends
 
-Release 0.2 — Mercado + WCHD + LEGION integrado.
+Release 0.3.1 — Data Quality Gate + Narration Upgrade.
 
 ## Objetivo da release
 
-Restaurar o conceito original do produto dentro da arquitetura modular publicada no GitHub Pages:
+Esta versão não tenta vender o WCHD como base final. Ela cria uma camada de controle de qualidade para impedir que o projeto avance sem transparência sobre lacunas de dados.
 
-- Modo Dinastia Nacional;
-- Modo Fantasy Mundial;
-- montagem por formação;
-- sorteio vinculante por posição;
-- bloqueio de jogador repetido e de versões alternativas do mesmo atleta;
-- budget base de US$100MM;
-- WCHD integrado;
-- partida simulada pelo LEGION Event Graph + Skills & Traits;
-- placar progressivo, alerta de gol, notas em tempo real e relatório final.
+Inclui:
 
-## Aviso de qualidade dos dados
+- diagnóstico de cobertura da base WCHD;
+- alerta de seleções incompletas;
+- contagem de jogadores, seleções, países e profundidade posicional;
+- sorteios priorizando convocações com maior profundidade para a posição;
+- precificação com maior variabilidade;
+- narração com linguagem mais próxima de transmissão esportiva, sem copiar bordões reais;
+- relatório final mais tático-estatístico;
+- áudio de gol preservado;
+- Event Graph e Skills & Traits preservados.
 
-O WCHD atual é uma base provisória para desenvolvimento. Elencos, atributos, preços e competências precisam de auditoria com fontes públicas antes de uso comercial.
+## Estado da base
+
+O WCHD ainda é provisório. Os atributos e competências são calibração técnica inicial. Para uso comercial, cada jogador deve receber nível de confiança e fonte/metodologia.
 
 ## Link público
 
-Quando publicado via GitHub Pages:
-
 https://thiago4ganes-tech.github.io/funtast_worldcup_legends/
+
+## Documento novo
+
+- `docs/DATA_QUALITY.md`: critérios de qualidade, cobertura mínima e limites da base atual.

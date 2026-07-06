@@ -63,18 +63,18 @@
     attack.stats.shots++; attack.stats.xg += xg; finisher.match.shots++; finisher.match.xg += xg;
     addRating(finisher, .06 + xg*.2);
     const lines = [];
-    lines.push(N().line(minute, `${finisher.name} finaliza ${assistText}. ${gk.name} reage.`, 'shot', `<span class="tag">xG ${xg.toFixed(2)}</span>`));
+    lines.push(N().line(minute, N().shot(finisher, assistText) + ` ${gk.name} tenta fechar o ângulo.`, 'shot', `<span class="tag">xG ${xg.toFixed(2)}</span>`));
     const saveSkill = S().actionScore(gk,'goalkeeper',{minute,type:'save'});
-    const conversion = S().clamp(xg * (0.88 + (S().actionScore(finisher,'finish',{minute,type:kind})-70)/180) * (1 - (saveSkill-70)/320), 0.01, 0.52);
+    const conversion = S().clamp(xg * (0.68 + (S().actionScore(finisher,'finish',{minute,type:kind})-70)/260) * (1 - (saveSkill-70)/260), 0.005, kind==='penalty'?0.78:0.36);
     const r = Math.random();
     if(r < conversion){
       match.score[attack.key]++; attack.stats.goals++; attack.stats.onTarget++; finisher.match.goals++; finisher.match.onTarget++; addRating(finisher, 1.0); addRating(gk, -.35);
       if(carrier && carrier !== finisher){ carrier.match.assists++; addRating(carrier,.45); }
-      lines.push(N().line(minute, `GOOOL! ${finisher.name} decide a jogada com precisão. Placar atualizado.`, 'goal', `<span class="tag">xG ${xg.toFixed(2)}</span>`));
+      lines.push(N().line(minute, N().goal(finisher, attack.name, `${match.score.home} x ${match.score.away}`), 'goal', `<span class="tag">xG ${xg.toFixed(2)}</span>`));
       match.goalEvents.push({minute, team:attack.name, player:finisher.name, score:`${match.score.home} x ${match.score.away}`});
     } else if(r < conversion + xg*.65){
       attack.stats.onTarget++; defend.stats.saves++; finisher.match.onTarget++; gk.match.saves++; addRating(gk,.32); addRating(finisher,.08);
-      lines.push(N().line(minute, `${gk.name} faz boa defesa e evita o gol.`, 'save'));
+      lines.push(N().line(minute, N().save(gk), 'save'));
       if(Math.random()<0.18){
         const rebounder = pickFinisher(attack,'rebound');
         lines.push(N().line(minute, `A bola sobra na área. ${rebounder.name} tenta aproveitar o rebote.`, 'rebound'));
@@ -83,7 +83,7 @@
       }
     } else {
       addRating(finisher,-.08);
-      lines.push(N().line(minute, `${finisher.name} manda para fora. Chance desperdiçada.`, 'miss'));
+      lines.push(N().line(minute, `${finisher.name} pega mal na bola e desperdiça uma oportunidade que poderia mudar o jogo.`, 'miss'));
     }
     return lines;
   }
@@ -95,43 +95,79 @@
     const carrier = pickCarrier(attack);
     const marker = defenderFor(defend, zone);
     const mode = weighted([
-      {v:'passVertical', w:S().actionScore(carrier,'passVertical',{minute,type:'build'})},
-      {v:'dribble', w:S().actionScore(carrier,'dribble',{minute,type:'duel'})*.75},
-      {v:'cross', w:(zone==='center'?35:S().actionScore(carrier,'cross',{minute,type:'cross'}))},
-      {v:'longShot', w:S().actionScore(carrier,'longShot',{minute,type:'shot'})*.45},
-      {v:'turnover', w:28}
+      {v:'circulate', w:22 + S().actionScore(carrier,'build',{minute,type:'build'})*.25},
+      {v:'passVertical', w:S().actionScore(carrier,'passVertical',{minute,type:'build'})*.72},
+      {v:'dribble', w:S().actionScore(carrier,'dribble',{minute,type:'duel'})*.54},
+      {v:'cross', w:(zone==='center'?22:S().actionScore(carrier,'cross',{minute,type:'cross'})*.68)},
+      {v:'longShot', w:S().actionScore(carrier,'longShot',{minute,type:'shot'})*.22},
+      {v:'foulWon', w:7 + Math.max(0,(S().actionScore(carrier,'dribble',{minute,type:'duel'})-70))*0.10},
+      {v:'turnover', w:38}
     ]);
     attack.stats.attacks++;
     const zoneText = zone==='left'?'lado esquerdo':zone==='right'?'lado direito':'corredor central';
-    lines.push(N().line(minute, `${carrier.name} recebe pelo ${zoneText} e procura a melhor decisão.`, 'build'));
+    lines.push(N().line(minute, N().build(carrier, zone), 'build'));
     if(mode==='turnover'){
       attack.stats.turnovers++; carrier.match.losses++; addRating(carrier,-.08); addRating(marker,.09);
-      lines.push(N().line(minute, `${marker.name} fecha o espaço e força a perda da posse.`, 'defense'));
+      lines.push(N().line(minute, N().turnover(marker, carrier), 'defense'));
       return lines;
     }
     const duelOk = S().duel(carrier, marker, mode==='longShot'?'finish':mode, {minute,type:mode, tense:minute>70});
     if(Math.random() > duelOk){
       attack.stats.turnovers++; carrier.match.losses++; addRating(carrier,-.08); addRating(marker,.16);
-      lines.push(N().line(minute, `${marker.name} leva vantagem sobre ${carrier.name} e corta a progressão.`, 'defense'));
+      lines.push(N().line(minute, N().turnover(marker, carrier), 'defense'));
       return lines;
     }
-    carrier.match.keyActions++; addRating(carrier,.12); attack.stats.finalThird++;
+    carrier.match.keyActions++; addRating(carrier,.12);
+    if(mode==='circulate'){
+      attack.stats.passes++; carrier.match.passes++;
+      const next = pickCarrier(attack);
+      if(Math.random() < 0.42){
+        lines.push(N().line(minute, `${carrier.name} circula a bola, mas a defesa se reposiciona e reduz o espaço.`, 'pass'));
+        return lines;
+      }
+      attack.stats.finalThird++;
+      lines.push(N().line(minute, `${carrier.name} acelera a circulação e encontra ${next.name} entre setores.`, 'pass'));
+      if(Math.random()<0.55){
+        return lines.concat(shotOutcome(match, attack, defend, minute, 'through', carrier, pickFinisher(attack,'through'), defenderFor(defend,'center'), 'após construção paciente'));
+      }
+      lines.push(N().line(minute, `${defenderFor(defend,'center').name} acompanha a movimentação e força o ataque a reiniciar.`, 'defense'));
+      return lines;
+    }
+    if(mode==='foulWon'){
+      const fouler = marker;
+      attack.stats.foulsWon = (attack.stats.foulsWon||0)+1; defend.stats.fouls++; fouler.match.fouls++; addRating(fouler,-.12);
+      lines.push(N().line(minute, `${carrier.name} protege a bola e sofre falta de ${fouler.name}.`, 'foul'));
+      if(Math.random()<0.42){
+        const taker = carrier;
+        lines.push(N().line(minute, `${taker.name} levanta a bola parada na área.`, 'setpiece'));
+        const target = pickFinisher(attack,'header');
+        return lines.concat(shotOutcome(match, attack, defend, minute, 'header', taker, target, defenderFor(defend,'center'), 'após bola parada'));
+      }
+      return lines;
+    }
+    attack.stats.finalThird++;
     if(mode==='passVertical'){
       attack.stats.passes++; carrier.match.passes++;
       const finisher = pickFinisher(attack,'through');
-      lines.push(N().line(minute, `${carrier.name} acha passe vertical para ${finisher.name} entre as linhas.`, 'pass'));
-      return lines.concat(shotOutcome(match, attack, defend, minute, 'through', carrier, finisher, defenderFor(defend,'center'), 'após passe vertical'));
+      lines.push(N().line(minute, N().pass(carrier, finisher), 'pass'));
+      if(Math.random()<0.70) return lines.concat(shotOutcome(match, attack, defend, minute, 'through', carrier, finisher, defenderFor(defend,'center'), 'após passe vertical'));
+      attack.stats.turnovers++; finisher.match.losses++;
+      lines.push(N().line(minute, `${defenderFor(defend,'center').name} fecha o ângulo antes da finalização e corta a jogada.`, 'defense'));
+      return lines;
     }
     if(mode==='dribble'){
       attack.stats.dribbles++; carrier.match.dribbles++;
-      lines.push(N().line(minute, `${carrier.name} vence o duelo individual e cria superioridade.`, 'dribble'));
-      return lines.concat(shotOutcome(match, attack, defend, minute, 'dribble', carrier, carrier, marker, 'depois do drible'));
+      lines.push(N().line(minute, `${carrier.name} chama a marcação para o confronto direto, muda o ritmo e cria vantagem no mano a mano.`, 'dribble'));
+      if(Math.random()<0.62) return lines.concat(shotOutcome(match, attack, defend, minute, 'dribble', carrier, carrier, marker, 'depois do drible'));
+      const cover = defenderFor(defend,'center');
+      lines.push(N().line(minute, `${cover.name} chega na cobertura e obriga o ataque a perder velocidade.`, 'defense'));
+      return lines;
     }
     if(mode==='cross'){
       attack.stats.crosses++; carrier.match.crosses++;
       const target = pickFinisher(attack,'header');
       const d = defenderFor(defend,'center');
-      lines.push(N().line(minute, `${carrier.name} cruza na área procurando ${target.name}.`, 'cross'));
+      lines.push(N().line(minute, N().cross(carrier, target), 'cross'));
       const crossResult = weighted([
         {v:'keeperCatch', w:S().actionScore(goalie(defend),'goalkeeper',{minute,type:'cross'})*.24},
         {v:'defClear', w:S().actionScore(d,'defend',{minute,type:'header'})*.35},
@@ -139,8 +175,8 @@
         {v:'penalty', w:2.2 + Math.max(0,70-S().skill(d,'discipline'))/10},
         {v:'ownGoal', w:0.65}
       ]);
-      if(crossResult==='keeperCatch'){ addRating(goalie(defend),.16); lines.push(N().line(minute, `${goalie(defend).name} antecipa e fica com a bola pelo alto.`, 'save')); return lines; }
-      if(crossResult==='defClear'){ addRating(d,.17); lines.push(N().line(minute, `${d.name} sobe bem e afasta o perigo pelo alto.`, 'defense')); return lines; }
+      if(crossResult==='keeperCatch'){ addRating(goalie(defend),.16); lines.push(N().line(minute, `${goalie(defend).name} sai com autoridade e fica com a bola pelo alto.`, 'save')); return lines; }
+      if(crossResult==='defClear'){ addRating(d,.17); lines.push(N().line(minute, `${d.name} ganha a disputa aérea e tira a bola da região mais perigosa.`, 'defense')); return lines; }
       if(crossResult==='penalty'){
         attack.stats.pens++; defend.stats.fouls++; d.match.fouls++; addRating(d,-.5);
         lines.push(N().line(minute, `${d.name} se atrasa no contato. Pênalti marcado.`, 'foul'));
@@ -156,7 +192,7 @@
       return lines.concat(shotOutcome(match, attack, defend, minute, 'header', carrier, target, d, 'de cabeça após cruzamento'));
     }
     if(mode==='longShot'){
-      lines.push(N().line(minute, `${carrier.name} encontra espaço e arrisca de fora da área.`, 'shot'));
+      lines.push(N().line(minute, `${carrier.name} percebe o goleiro ajustando a posição e arrisca de média distância.`, 'shot'));
       return lines.concat(shotOutcome(match, attack, defend, minute, 'long', carrier, carrier, marker, 'de média distância'));
     }
     return lines;
@@ -180,7 +216,7 @@
       const defend = isHome ? away : home;
       const generated = possession(match, attack, defend, minute);
       match.events.push(...generated);
-      minute += Math.floor(1 + Math.random()*4);
+      minute += Math.floor(2 + Math.random()*5);
     }
     match.events.push(N().line(90, `Fim de jogo. Resultado: ${match.score.home} x ${match.score.away}.`, 'build'));
     return match;

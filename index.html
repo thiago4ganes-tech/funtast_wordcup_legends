@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Fantasy World Cup Legends — Release 0.2</title>
+  <title>Fantasy World Cup Legends — Release 0.3.1</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
   <header>
     <h1>Fantasy World Cup Legends</h1>
-    <p>Release 0.2 — Mercado + WCHD + LEGION integrado</p>
+    <p>Release 0.3.1 — Data Quality + narração transmissão + mercado calibrado</p>
   </header>
   <main>
     <section class="card">
@@ -29,7 +29,12 @@
     </section>
 
     <section class="card" style="margin-top:18px">
-      <h2>2. Montagem do XI</h2>
+      <h2>2. Qualidade da base WCHD</h2>
+      <div id="dataQualityPanel" class="dataQuality"><div class="reportBox">Carregando diagnóstico da base...</div></div>
+    </section>
+
+    <section class="card" style="margin-top:18px">
+      <h2>3. Montagem do XI</h2>
       <div class="grid two">
         <div><label>Orçamento restante</label><div id="budgetText" class="budget">US$100MM</div><div class="bar"><span id="budgetBar"></span></div></div>
         <div><label>Status</label><div id="lineupStatus" class="notice">Monte o XI titular.</div></div>
@@ -41,7 +46,7 @@
     </section>
 
     <section id="matchSection" class="card hide" style="margin-top:18px">
-      <h2>3. Partida simulada pelo LEGION</h2>
+      <h2>4. Partida simulada pelo LEGION</h2>
       <div class="clock" id="clock">0'</div>
       <div class="scoreboard"><div id="homeName" class="teamName">Seu XI Legends</div><div id="score" class="score">0 x 0</div><div id="awayName" class="teamName">Adversário</div></div>
       <div style="height:16px"></div>
@@ -69,6 +74,7 @@
 
   <script src="data/wchd.js"></script>
   <script src="data/formations.js"></script>
+  <script src="js/dataQuality.js"></script>
   <script src="js/skillsEngine.js"></script>
   <script src="js/narration.js"></script>
   <script src="js/eventGraph.js"></script>
