@@ -39,13 +39,18 @@
     chosen.slot=slot.label;chosen.slotId=slot.id;chosen.match=freshMatchStats();
     state.lineup[slot.id]=chosen;state.chosenAthletes.add(chosen.athlete_id);state.budgetLeft-=Number(chosen.price_mm||0);state.activeDraft=null;
     window.FWCL_UI.renderAll(state);
+    if(lineupArray().length===slots().length&&!state.tournament){
+      setTimeout(()=>startCup(true),140);
+    }
   }
   function lineupArray(){return slots().map(s=>state.lineup[s.id]).filter(Boolean);}
-  function startCup(){
+  function startCup(auto=false){
     if(lineupArray().length!==slots().length){window.alert('Complete o XI titular.');return;}
+    if(state.tournament)return;
     state.tournament=window.FWCL_TOURNAMENT.create(window.FWCL_MARKET.teams());
     document.getElementById('tournamentSection').classList.remove('hide');
     prepareNextMatch();
+    document.getElementById('tournamentSection').scrollIntoView({behavior:'smooth'});
   }
   function prepareNextMatch(){
     if(!state.tournament)return;
@@ -164,7 +169,12 @@
     }
     renderPlaybackEvent(ev);
   }
-  function startPlaybackTimer(){clearInterval(state.timer);state.timer=setInterval(processPlaybackStep,680);}
+  function startPlaybackTimer(){
+    clearInterval(state.timer);
+    const totalSteps=Math.max(1,state.match?.events?.length||1);
+    const interval=Math.max(220,Math.round(60000/totalSteps));
+    state.timer=setInterval(processPlaybackStep,interval);
+  }
   function simulateRealTime(){
     window.FWCL_AUDIO?.unlock();
     if(!state.opponent)return;
@@ -194,7 +204,7 @@
     document.getElementById('soundToggle').onclick=async e=>{
       await window.FWCL_AUDIO?.unlock();
       const active=window.FWCL_AUDIO?.toggle();
-      e.currentTarget.textContent=active?'🔊 Gol narrado: ligado':'🔇 Gol narrado: desligado';
+      e.currentTarget.textContent=active?'🔊 Som de gol: ligado':'🔇 Som de gol: desligado';
     };
     document.getElementById('testSoundBtn').onclick=async()=>{
       await window.FWCL_AUDIO?.unlock();

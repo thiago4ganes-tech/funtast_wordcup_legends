@@ -1,0 +1,15 @@
+{
+  "version": "0.4.7",
+  "name": "Final Polish",
+  "generated_at": "2026-07-07",
+  "base_release": "0.4.6",
+  "cache_key": "fwcl-0-4-7-20260707",
+  "changes": [
+    "Portrait 3x4 area on player cards with fallback avatar",
+    "Goal narration removed and replaced by crowd cheer sound",
+    "Fixed live pitch player rendering",
+    "Real-time simulation duration adjusted to approximately 1 minute",
+    "World Cup starts automatically after the last player is selected",
+    "Tournament groups are shown immediately with player team highlighted"
+  ]
+}

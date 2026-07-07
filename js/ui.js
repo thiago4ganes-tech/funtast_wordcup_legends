@@ -9,6 +9,15 @@
   function fmtMoney(v){ return `US$${Math.max(0,Math.round(v*10)/10)}MM`; }
   function classIcon(p){ return (p?.player_class||'⚙️').split(' ')[0]; }
   function shortTeam(t){ return `${t.flag||''} ${t.country} ${t.year}`; }
+  function initials(name){
+    const parts=displayName(name).split(/\s+/).filter(Boolean);
+    return (parts[0]?.[0]||'J') + (parts.length>1?(parts[parts.length-1]?.[0]||''):'');
+  }
+  function portraitHtml(player){
+    const src=player.photo_url||player.photoUrl||player.photo||'';
+    if(src)return `<div class="playerPortrait"><img src="${src}" alt="Foto de ${displayName(player.name)}" loading="lazy" referrerpolicy="no-referrer"></div>`;
+    return `<div class="playerPortrait placeholder"><span class="portraitFlag">${player.flag||'⚽'}</span><span class="portraitSilhouette"></span><span class="portraitInitials">${initials(player.name)}</span></div>`;
+  }
 
   const traitLabels={
     frio_sob_pressao:'Frio sob pressão',confiavel:'Confiável',motor_fisico:'Motor físico',
@@ -77,6 +86,7 @@
     const styles=playingStyles(player);
     const cleanClass=String(player.player_class||'⚙️ Operário').replace(/not[\s_-]*applicable/ig,' ').replace(/\s+/g,' ').trim();
     return `<div class="playerProfileTop">
+        ${portraitHtml(player)}
         <div><div class="name">${classIcon(player)} ${displayName(player.name)}</div>
         <div class="small">${player.flag||''} ${player.country||''} ${player.year||''} • ${(player.positions||[]).join(' / ')}</div>
         <div class="profileClass">${cleanClass}</div>
@@ -231,7 +241,7 @@
     ];
     const pointById=new Map();
 
-    positions.forEach(({player,x,y,side},index)=>{
+    positions.forEach(({player,x,y,side,role},index)=>{
       const id=player.id||player.player_wc_id;
       pointById.set(id,{x,y});
       const marker=document.createElement('div');

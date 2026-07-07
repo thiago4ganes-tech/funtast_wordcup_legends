@@ -185,3 +185,22 @@ h2{margin:0 0 16px;font-size:25px} label{display:block;color:var(--muted);margin
 .historicalIconBadge.tier-icon{
   border-color:#b594ff;background:linear-gradient(135deg,rgba(55,30,91,.88),rgba(24,54,38,.86));color:#ddcdff
 }
+
+
+/* Release 0.4.7 — polimento final */
+.playerProfileTop{display:grid;grid-template-columns:84px 1fr 156px;gap:14px;align-items:start}
+.playerPortrait{width:84px;height:108px;border-radius:14px;border:2px solid rgba(255,255,255,.16);background:linear-gradient(180deg,#133826,#0b1b14);display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;box-shadow:inset 0 0 30px rgba(0,0,0,.35)}
+.playerPortrait img{width:100%;height:100%;object-fit:cover;display:block}
+.playerPortrait.placeholder{position:relative}
+.playerPortrait.placeholder:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 26%,rgba(255,255,255,.18),transparent 28%),linear-gradient(180deg,rgba(105,255,123,.12),rgba(0,0,0,.05))}
+.playerPortrait .portraitFlag{position:absolute;top:8px;right:8px;font-size:18px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.5))}
+.playerPortrait .portraitSilhouette{width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.88);position:relative;z-index:1;margin-top:10px}
+.playerPortrait .portraitSilhouette:after{content:"";position:absolute;left:50%;top:34px;transform:translateX(-50%);width:62px;height:42px;border-radius:24px 24px 8px 8px;background:rgba(255,255,255,.88)}
+.playerPortrait .portraitInitials{position:absolute;bottom:10px;left:8px;right:8px;text-align:center;font-weight:1000;font-size:15px;letter-spacing:.8px;color:#dfffea;text-shadow:0 1px 2px rgba(0,0,0,.6);z-index:2}
+.livePlayer .playerRole{position:absolute;top:-8px;left:50%;transform:translateX(-50%);font-size:9px;font-weight:1000;color:#fff8a8;background:rgba(0,25,11,.88);padding:1px 5px;border-radius:5px}
+.livePlayer .playerDisc{display:flex;align-items:center;justify-content:center;min-width:34px;height:34px;padding:0 8px;border-radius:18px;border:2px solid rgba(255,255,255,.45);background:rgba(255,255,255,.9);color:#062010;font-weight:1000;box-shadow:0 4px 12px rgba(0,0,0,.28)}
+.livePlayer.home .playerDisc{background:#dff9db}
+.livePlayer.away .playerDisc{background:#d7ebff}
+.livePlayer .playerTag{margin-top:3px;padding:2px 6px;border-radius:10px;background:rgba(2,18,7,.64);font-size:11px;font-weight:800;white-space:nowrap;max-width:88px;overflow:hidden;text-overflow:ellipsis}
+.userRow{background:rgba(105,255,123,.16)!important;box-shadow:inset 0 0 0 1px rgba(105,255,123,.4)}
+@media(max-width:760px){.playerProfileTop{grid-template-columns:72px 1fr}.playerPortrait{width:72px;height:96px}.attributeRadar{grid-column:1/-1;justify-self:center}}

@@ -1,9 +1,9 @@
 (function(){
   const release={
-    version:'0.4.6',
-    name:'Expanded Special Player Categories',
-    label:'Release 0.4.6 — Categorias especiais ampliadas',
-    cacheKey:'fwcl-0-4-6-20260707',
+    version:'0.4.7',
+    name:'Final Polish',
+    label:'Release 0.4.7 — Polimento final da Copa',
+    cacheKey:'fwcl-0-4-7-20260707',
     generatedAt:'2026-07-07'
   };
   window.FWCL_RELEASE=release;
