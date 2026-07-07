@@ -165,3 +165,23 @@ h2{margin:0 0 16px;font-size:25px} label{display:block;color:var(--muted);margin
 @keyframes goalBoxPulse{from{transform:scale(.94) rotate(-.4deg)}to{transform:scale(1.04) rotate(.4deg)}}body.goalFlashActive header,body.goalFlashActive main{animation:pageGoalFlash .25s linear 8}
 @keyframes pageGoalFlash{0%,100%{filter:none}50%{filter:brightness(1.65) saturate(1.45)}}
 @media(max-width:760px){.candidateGrid{grid-template-columns:1fr}.playerProfileTop{grid-template-columns:1fr 130px}.attributeRadar{width:125px;height:125px}.goalAlertInner{padding:28px 16px}}
+
+/* Release 0.4.5 — ícones históricos */
+.historicalIconBadge{
+  margin-top:7px;padding:5px 7px;border-radius:8px;
+  border:1px solid rgba(255,220,83,.75);
+  background:linear-gradient(135deg,rgba(81,60,5,.82),rgba(20,62,27,.82));
+  color:#ffe877;font-size:10px;font-weight:1000;letter-spacing:.35px
+}
+.candidate.legend .historicalIconBadge{box-shadow:0 0 18px rgba(255,220,83,.16)}
+
+/* Release 0.4.6 — categorias especiais ampliadas */
+.historicalIconBadge.tier-hero{
+  border-color:#ff9d62;background:linear-gradient(135deg,rgba(95,44,12,.88),rgba(28,55,22,.86));color:#ffc79f
+}
+.historicalIconBadge.tier-national{
+  border-color:#77c8ff;background:linear-gradient(135deg,rgba(10,48,82,.88),rgba(24,54,38,.86));color:#bde7ff
+}
+.historicalIconBadge.tier-icon{
+  border-color:#b594ff;background:linear-gradient(135deg,rgba(55,30,91,.88),rgba(24,54,38,.86));color:#ddcdff
+}

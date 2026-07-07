@@ -1,0 +1,326 @@
+{
+  "release": "0.4.5",
+  "generated_at": "2026-07-07",
+  "runtime_result": {
+    "release": {
+      "version": "0.4.5",
+      "name": "Historical Icons Calibration",
+      "label": "Release 0.4.5 — Ícones históricos e jogadores decisivos",
+      "cacheKey": "fwcl-0-4-5-20260707",
+      "generatedAt": "2026-07-07"
+    },
+    "production": {
+      "teams": 298,
+      "players": 6855,
+      "icon_versions": 599,
+      "mythic_versions": 67,
+      "legend_versions": 218,
+      "unique_icon_names": 242
+    },
+    "samples": [
+      {
+        "name": "Diego Maradona",
+        "year": 1986,
+        "found": true,
+        "class": "👑 Lenda",
+        "tier": "mythic",
+        "relevance": 98,
+        "factor": 1,
+        "decisiveWeight": 1.32,
+        "skills": {
+          "finishing": 95,
+          "passing": 96,
+          "vision": 99,
+          "dribble": 99,
+          "marking": 46,
+          "reflexes": 20,
+          "clutch": 99
+        }
+      },
+      {
+        "name": "Lionel Messi",
+        "year": 2022,
+        "found": true,
+        "class": "👑 Lenda",
+        "tier": "mythic",
+        "relevance": 98,
+        "factor": 1,
+        "decisiveWeight": 1.32,
+        "skills": {
+          "finishing": 97,
+          "passing": 97,
+          "vision": 99,
+          "dribble": 99,
+          "marking": 46,
+          "reflexes": 20,
+          "clutch": 99
+        }
+      },
+      {
+        "name": "Ronaldo",
+        "year": 2002,
+        "found": true,
+        "class": "👑 Lenda",
+        "tier": "mythic",
+        "relevance": 98,
+        "factor": 1,
+        "decisiveWeight": 1.32,
+        "skills": {
+          "finishing": 99,
+          "passing": 80,
+          "vision": 82,
+          "dribble": 96,
+          "marking": 43,
+          "reflexes": 20,
+          "clutch": 97
+        }
+      },
+      {
+        "name": "Cristiano Ronaldo",
+        "year": 2018,
+        "found": true,
+        "class": "👑 Lenda",
+        "tier": "mythic",
+        "relevance": 98,
+        "factor": 1,
+        "decisiveWeight": 1.32,
+        "skills": {
+          "finishing": 99,
+          "passing": 84,
+          "vision": 83,
+          "dribble": 92,
+          "marking": 47,
+          "reflexes": 20,
+          "clutch": 99
+        }
+      },
+      {
+        "name": "Zinedine Zidane",
+        "year": 1998,
+        "found": true,
+        "class": "👑 Lenda",
+        "tier": "mythic",
+        "relevance": 97,
+        "factor": 0.952,
+        "decisiveWeight": 1.3136640000000002,
+        "skills": {
+          "finishing": 83,
+          "passing": 96,
+          "vision": 98,
+          "dribble": 94,
+          "marking": 53,
+          "reflexes": 20,
+          "clutch": 95
+        }
+      },
+      {
+        "name": "Ronaldinho",
+        "year": 2002,
+        "found": true,
+        "class": "👑 Lenda",
+        "tier": "mythic",
+        "relevance": 98,
+        "factor": 1,
+        "decisiveWeight": 1.32,
+        "skills": {
+          "finishing": 84,
+          "passing": 95,
+          "vision": 97,
+          "dribble": 99,
+          "marking": 49,
+          "reflexes": 20,
+          "clutch": 94
+        }
+      },
+      {
+        "name": "Paolo Maldini",
+        "year": 1994,
+        "found": true,
+        "class": "👑 Lenda",
+        "tier": "mythic",
+        "relevance": 98,
+        "factor": 1,
+        "decisiveWeight": 1.32,
+        "skills": {
+          "finishing": 54,
+          "passing": 82,
+          "vision": 78,
+          "dribble": 46,
+          "marking": 99,
+          "reflexes": 28,
+          "clutch": 92
+        }
+      },
+      {
+        "name": "Xavi",
+        "year": 2010,
+        "found": true,
+        "class": "👑 Lenda",
+        "tier": "mythic",
+        "relevance": 98,
+        "factor": 1,
+        "decisiveWeight": 1.32,
+        "skills": {
+          "finishing": 70,
+          "passing": 99,
+          "vision": 98,
+          "dribble": 88,
+          "marking": 78,
+          "reflexes": 20,
+          "clutch": 91
+        }
+      },
+      {
+        "name": "Gianluigi Buffon",
+        "year": 2006,
+        "found": true,
+        "class": "👑 Lenda",
+        "tier": "mythic",
+        "relevance": 98,
+        "factor": 1,
+        "decisiveWeight": 1.32,
+        "skills": {
+          "finishing": 28,
+          "passing": 63,
+          "vision": 53,
+          "dribble": 33,
+          "marking": 28,
+          "reflexes": 98,
+          "clutch": 95
+        }
+      },
+      {
+        "name": "Kylian Mbappé",
+        "year": 2022,
+        "found": true,
+        "class": "👑 Lenda",
+        "tier": "mythic",
+        "relevance": 98,
+        "factor": 1,
+        "decisiveWeight": 1.32,
+        "skills": {
+          "finishing": 96,
+          "passing": 82,
+          "vision": 82,
+          "dribble": 95,
+          "marking": 47,
+          "reflexes": 20,
+          "clutch": 97
+        }
+      },
+      {
+        "name": "Neymar",
+        "year": 2014,
+        "found": true,
+        "class": "👑 Lenda",
+        "tier": "mythic",
+        "relevance": 98,
+        "factor": 0.973,
+        "decisiveWeight": 1.3164360000000002,
+        "skills": {
+          "finishing": 93,
+          "passing": 93,
+          "vision": 95,
+          "dribble": 97,
+          "marking": 47,
+          "reflexes": 20,
+          "clutch": 92
+        }
+      }
+    ],
+    "version_control": {
+      "ronaldo_1994": {
+        "class": "⭐ Craque",
+        "factor": 0.7,
+        "finishing": 86,
+        "pace": 84
+      },
+      "ronaldo_2002": {
+        "class": "👑 Lenda",
+        "factor": 1,
+        "finishing": 99,
+        "pace": 97
+      }
+    },
+    "separation": {
+      "mythic_finish": 115.66,
+      "legend_finish": 105.74,
+      "regular_finish": 67.83,
+      "mythic_build": 116.55,
+      "regular_build": 69.11
+    },
+    "simulation": {
+      "matches": 240,
+      "avg_goals": 3.067,
+      "avg_shots": 18.779,
+      "avg_corners": 4.804,
+      "icon_share_of_actor_actions": 0.338,
+      "goalkeeper_goals": 0,
+      "top_goal_scorers": [
+        [
+          "Thierry Henry",
+          13
+        ],
+        [
+          "Cristiano Ronaldo",
+          13
+        ],
+        [
+          "Luis Suárez",
+          10
+        ],
+        [
+          "Lionel Messi",
+          10
+        ],
+        [
+          "Ángel Di María",
+          9
+        ],
+        [
+          "Arjen Robben",
+          8
+        ],
+        [
+          "Romário",
+          8
+        ],
+        [
+          "Luís Figo",
+          7
+        ],
+        [
+          "Thomas Müller",
+          7
+        ],
+        [
+          "Neymar",
+          7
+        ],
+        [
+          "Careca",
+          7
+        ],
+        [
+          "Gary Lineker",
+          7
+        ]
+      ]
+    }
+  },
+  "quality_gate": {
+    "version_correct": true,
+    "registry_has_at_least_200_names": true,
+    "all_samples_found": true,
+    "all_samples_classified": true,
+    "mythic_outperforms_regular_finish": true,
+    "mythic_outperforms_regular_build": true,
+    "ronaldo_versions_differ": true,
+    "goalkeepers_not_regular_scorers": true,
+    "goal_average_stable": true,
+    "shot_average_stable": true,
+    "icons_receive_meaningful_action_share": true
+  },
+  "overall_passed": true,
+  "manual_browser_test_required": true
+}

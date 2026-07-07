@@ -205,7 +205,54 @@
       production_record:true
     };
   }
-  function mergeProduction(prod,countries,positionOverrides={}){
+
+  function applyIconicProfile(player,profile){
+    if(!profile)return player;
+    const factor=Number(profile.version_factors?.[String(player.year)]||0.82);
+    const tier=profile.tier||'icon';
+    const tierBase=tier==='mythic'?1:tier==='legend'?.94:tier==='icon'?.88:tier==='hero'?.83:.79;
+    const floorPenalty=(1-factor)*(tier==='mythic'?42:tier==='legend'?36:tier==='icon'?30:tier==='hero'?27:24);
+    const floors={...(profile.archetype_skill_floors||{}),...(profile.manual_skill_profile||{})};
+    player.skills=player.skills||{};
+    Object.entries(floors).forEach(([key,value])=>{
+      const adjusted=Math.max(60,Math.round(Number(value)*tierBase-floorPenalty));
+      player.skills[key]=Math.max(Number(player.skills[key]||0),adjusted);
+    });
+
+    const relevance=Math.round(Number(profile.historical_relevance||85)*(.88+.12*factor));
+    player.iconic_profile={
+      tier,
+      archetype:profile.archetype,
+      historical_relevance:relevance,
+      decisive_weight:Number(profile.decisive_weight||1.1),
+      version_factor:factor,
+      method:profile.method,
+      special_category:profile.special_category||null,
+      performance_evidence:profile.performance_evidence||null
+    };
+    player.historical_relevance=relevance;
+    player.decisive_weight=Number(profile.decisive_weight||1.1)*(.90+.10*factor);
+
+    if(tier==='mythic'){
+      player.player_class=factor>=.82?'👑 Lenda':'⭐ Craque';
+      player.traits=Array.from(new Set([...(player.traits||[]),'chama_responsabilidade','cresce_em_jogo_grande','frio_sob_pressao']));
+    }else if(tier==='legend'){
+      player.player_class=factor>=.87?'👑 Lenda':'⭐ Craque';
+      player.traits=Array.from(new Set([...(player.traits||[]),'cresce_em_jogo_grande','confiavel']));
+    }else if(tier==='icon'){
+      player.player_class=factor>=.82?'⭐ Craque':'🎯 Especialista';
+      player.traits=Array.from(new Set([...(player.traits||[]),'chama_responsabilidade','confiavel']));
+    }else if(tier==='hero'){
+      player.player_class=factor>=.86?'⭐ Craque':'🎯 Especialista';
+      player.traits=Array.from(new Set([...(player.traits||[]),'cresce_em_jogo_grande']));
+    }else{
+      player.player_class=(player.positions||[]).some(x=>['ZAG','VOL','GK'].includes(x))?'🛡️ Líder':'🎯 Especialista';
+      player.traits=Array.from(new Set([...(player.traits||[]),'confiavel']));
+    }
+    return player;
+  }
+
+  function mergeProduction(prod,countries,positionOverrides={},iconicRegistry={}){
     if(!prod || !Array.isArray(prod.teams) || !Array.isArray(prod.players)) return {ok:false};
     const curated=(window.WCHD_PART4&&window.WCHD_PART4.teams)||[];
     const curatedTeamMap=new Map(curated.map(t=>[norm(t.country)+'_'+t.year,t]));
@@ -275,6 +322,7 @@
         player.positions=Array.from(new Set((player.positions||[]).filter(Boolean)));
         if(!player.positions.length)player.positions=['MC'];
         player.role=player.positions[0];
+        applyIconicProfile(player,iconicRegistry[norm(player.name)]);
       });
       merged.push({
         id:rawTeam.team_wc_id,
@@ -306,16 +354,18 @@
   async function load(){
     const status=document.getElementById('productionLoadStatus');
     try{
-      const [prodRes,countryRes,positionRes]=await Promise.all([
+      const [prodRes,countryRes,positionRes,iconicRes]=await Promise.all([
         fetch(`data/production/wchd_legion_inputs.json?v=${encodeURIComponent(window.FWCL_RELEASE?.cacheKey||window.FWCL_VERSION||'current')}`,{cache:'no-store'}),
         fetch(`data/production/wchd_countries_production.json?v=${encodeURIComponent(window.FWCL_RELEASE?.cacheKey||window.FWCL_VERSION||'current')}`,{cache:'no-store'}),
-        fetch(`data/production/wchd_player_position_overrides.json?v=${encodeURIComponent(window.FWCL_RELEASE?.cacheKey||window.FWCL_VERSION||'current')}`,{cache:'no-store'})
+        fetch(`data/production/wchd_player_position_overrides.json?v=${encodeURIComponent(window.FWCL_RELEASE?.cacheKey||window.FWCL_VERSION||'current')}`,{cache:'no-store'}),
+        fetch(`data/production/wchd_iconic_player_registry.json?v=${encodeURIComponent(window.FWCL_RELEASE?.cacheKey||window.FWCL_VERSION||'current')}`,{cache:'no-store'})
       ]);
       if(!prodRes.ok) throw new Error(`Production data HTTP ${prodRes.status}`);
       const prod=await prodRes.json();
       const countries=countryRes.ok?await countryRes.json():[];
       const positionOverrides=positionRes.ok?await positionRes.json():{};
-      const result=mergeProduction(prod,countries,positionOverrides);
+      const iconicRegistry=iconicRes.ok?await iconicRes.json():{};
+      const result=mergeProduction(prod,countries,positionOverrides,iconicRegistry);
       if(status){
         status.className='notice ok';
         status.textContent=`${window.FWCL_RELEASE?.label||'Release atual'}: Production Data Pack carregado com ${result.teams} seleções-Copa e ${result.players} jogadores-Copa.`;
@@ -331,6 +381,6 @@
     }
   }
 
-  window.FWCL_PRODUCTION_DATA={load,mergeProduction,cleanPlayerName};
+  window.FWCL_PRODUCTION_DATA={load,mergeProduction,cleanPlayerName,applyIconicProfile};
   window.FWCL_DATA_READY=load();
 })();

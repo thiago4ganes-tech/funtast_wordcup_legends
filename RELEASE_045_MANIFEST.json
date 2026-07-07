@@ -1,0 +1,19 @@
+{
+  "version": "0.4.5",
+  "name": "Historical Icons Calibration",
+  "generated_at": "2026-07-07",
+  "base_release": "0.4.4",
+  "cache_key": "fwcl-0-4-5-20260707",
+  "iconic_registry_players": 242,
+  "method": "curated recognition plus edition-specific World Cup impact",
+  "features": [
+    "historical_icon_registry",
+    "edition_specific_version_factors",
+    "role_based_skill_floors",
+    "manual_profiles_for_top_mythic_players",
+    "historical_relevance_score",
+    "decisive_weight_in_match_engine",
+    "stronger_late_and_knockout_impact",
+    "visible_icon_badges_in_player_selection"
+  ]
+}

@@ -79,7 +79,14 @@
     return `<div class="playerProfileTop">
         <div><div class="name">${classIcon(player)} ${displayName(player.name)}</div>
         <div class="small">${player.flag||''} ${player.country||''} ${player.year||''} • ${(player.positions||[]).join(' / ')}</div>
-        <div class="profileClass">${cleanClass}</div></div>${radarSvg(player)}
+        <div class="profileClass">${cleanClass}</div>
+        ${player.iconic_profile?`<div class="historicalIconBadge tier-${player.iconic_profile.tier}">${
+          player.iconic_profile.tier==='mythic'?'ÍCONE MÁXIMO':
+          player.iconic_profile.tier==='legend'?'LENDA HISTÓRICA':
+          player.iconic_profile.tier==='icon'?'ÍCONE HISTÓRICO':
+          player.iconic_profile.tier==='hero'?'HERÓI DE COPA':'ÍDOLO NACIONAL'
+        } • relevância ${player.historical_relevance}/100</div>`:''}
+        </div>${radarSvg(player)}
       </div>
       <div class="profileSection"><b>Temperamento</b><span>${temperament(player)}</span></div>
       <div class="profileSection"><b>Estilo de jogo</b><div class="profileTags">${styles.length?styles.map(s=>`<span>${s}</span>`).join(''):'<span>Versátil</span>'}</div></div>
@@ -236,7 +243,7 @@
       marker.style.top=y+'%';
       const number=player.shirt||((index%11)+1);
       marker.innerHTML=`<span class="playerRole">${role}</span><span class="playerDisc"><b>${number}</b></span><span class="playerTag">${shortLabel(player.name)}</span>`;
-      marker.title=`${displayName(player.name)} • ${(player.positions||[]).join('/')}`;
+      marker.title=`${displayName(player.name)} • ${(player.positions||[]).join('/')}${player.historical_relevance?` • relevância ${player.historical_relevance}`:''}`;
       pitch.appendChild(marker);
     });
 

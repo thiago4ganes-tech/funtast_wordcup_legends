@@ -1,0 +1,31 @@
+{
+  "version": "0.4.6",
+  "name": "Expanded Special Player Categories",
+  "generated_at": "2026-07-07",
+  "base_release": "0.4.5",
+  "cache_key": "fwcl-0-4-6-20260707",
+  "previous_registry_names": 242,
+  "new_special_players": 179,
+  "total_registry_names": 421,
+  "added_tiers": {
+    "hero": 23,
+    "legend": 7,
+    "national": 75,
+    "icon": 74
+  },
+  "criteria": {
+    "fame": [
+      "major curated recognition",
+      "recognized national/international fame"
+    ],
+    "performance": [
+      "career World Cup score",
+      "matches and starts",
+      "minutes",
+      "goals",
+      "knockout goals",
+      "semifinal and final goals",
+      "number of editions"
+    ]
+  }
+}

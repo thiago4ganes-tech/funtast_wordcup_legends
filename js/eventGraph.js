@@ -309,26 +309,36 @@
     return weighted(allPlayers(team).map(p=>{
       const sk=p.skills||{};
       let w=(sk.vision||55)*.25+(sk.passing||55)*.22+(sk.dribble||55)*.22+(sk.decision||55)*.16+(sk.pace||55)*.08;
-      if((p.positions||[]).some(x=>['MEI','MC','PD','PE','SA','LE','LD'].includes(x))) w*=1.35;
-      if(tactical?.defenderJoin>0&&(p.positions||[]).some(x=>['ZAG','LE','LD'].includes(x))) w*=1+tactical.defenderJoin*1.35;
-      if(tactical?.timeManagement>0&&(p.positions||[]).some(x=>['MEI','MC','PE','PD','LE','LD'].includes(x))) w*=1+tactical.timeManagement*.45;
-      w*=S().classMultiplier(p);
+      const positions=p.positions||[];
+      if(positions.includes('GK')||p.role==='GK')w=0;
+      if(positions.some(x=>['MEI','MC','PD','PE','SA','LE','LD'].includes(x))) w*=1.35;
+      if(tactical?.defenderJoin>0&&positions.some(x=>['ZAG','LE','LD'].includes(x))) w*=1+tactical.defenderJoin*1.35;
+      if(tactical?.timeManagement>0&&positions.some(x=>['MEI','MC','PE','PD','LE','LD'].includes(x))) w*=1+tactical.timeManagement*.45;
+      w*=S().classMultiplier(p)*Number(p.decisive_weight||1);
       return {v:p,w};
     }));
   }
   function pickFinisher(team,kind){
     return weighted(allPlayers(team).map(p=>{
-      const sk=p.skills||{};
+      const sk=p.skills||{},positions=p.positions||[];
+      const isGK=positions.includes('GK')||p.role==='GK';
+      const isDefender=positions.some(x=>['ZAG','LE','LD','ALA_E','ALA_D'].includes(x));
+      const isMidfielder=positions.some(x=>['VOL','MC','MEI'].includes(x));
+      const isAttacker=positions.some(x=>['CA','F9','SA','PD','PE'].includes(x));
       let w=(sk.finishing||45)*.45+(sk.decision||55)*.18+(sk.composure||55)*.22;
       if(kind==='header') w+=(sk.heading||45)*.42+(sk.aerial||45)*.22;
-      if((p.positions||[]).some(x=>['CA','F9','SA','PD','PE'].includes(x))) w*=1.55;
-      w*=S().classMultiplier(p);
+      if(isAttacker)w*=1.65;
+      else if(isMidfielder)w*=.76;
+      else if(isDefender)w*=kind==='header'?.72:.13;
+      if(isGK)w*=kind==='penalty'?.005:0;
+      w*=S().classMultiplier(p)*Number(p.decisive_weight||1);
       return {v:p,w};
     }));
   }
   function pickSupport(team,exclude){
-    const pool=allPlayers(team).filter(p=>p!==exclude);
-    return weighted(pool.map(p=>({v:p,w:S().actionScore(p,'oneTwo',{})*S().classMultiplier(p)})));
+    const outfield=allPlayers(team).filter(p=>p!==exclude&&!((p.positions||[]).includes('GK')||p.role==='GK'));
+    const pool=outfield.length?outfield:allPlayers(team).filter(p=>p!==exclude);
+    return weighted(pool.map(p=>({v:p,w:S().actionScore(p,'oneTwo',{})*S().classMultiplier(p)*Number(p.decisive_weight||1)})));
   }
   function shotTechnique(finisher,kind){
     if(kind==='header') return 'cabeceio';

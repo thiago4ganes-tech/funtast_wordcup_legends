@@ -4,15 +4,35 @@
   function classBonus(p,context={}){
     const c=(p?.player_class||'').toLowerCase();
     let bonus=0;
-    if(c.includes('lenda')) bonus=12;
-    else if(c.includes('craque')) bonus=6;
+    if(c.includes('lenda')) bonus=13;
+    else if(c.includes('craque')) bonus=7;
     else if(c.includes('especialista')) bonus=3.5;
     else if(c.includes('líder')||c.includes('lider')) bonus=3;
     else if(c.includes('promessa')) bonus=1;
-    if(c.includes('lenda')&&(context.bigChance||context.minute>=75||context.isKnockout)) bonus+=2.5;
+
+    const iconic=p?.iconic_profile;
+    if(iconic){
+      const relevance=Number(iconic.historical_relevance||85);
+      const decisive=Number(p.decisive_weight||iconic.decisive_weight||1.1);
+      bonus+=(relevance-80)*.20;
+      if(context.bigChance||context.minute>=70||context.isKnockout||context.teamLosing){
+        bonus+=(decisive-1)*22;
+      }
+      if(context.minute>=80&&(context.teamLosing||context.bigChance))bonus+=2.5;
+    }else if(c.includes('lenda')&&(context.bigChance||context.minute>=75||context.isKnockout)){
+      bonus+=2.5;
+    }
     return bonus;
   }
   function classMultiplier(p){
+    const iconic=p?.iconic_profile;
+    if(iconic){
+      const base=iconic.tier==='mythic'?1.46:
+        iconic.tier==='legend'?1.32:
+        iconic.tier==='icon'?1.18:
+        iconic.tier==='hero'?1.11:1.06;
+      return base*Number(.94+.06*Number(iconic.version_factor||.85));
+    }
     const c=(p?.player_class||'').toLowerCase();
     if(c.includes('lenda')) return 1.34;
     if(c.includes('craque')) return 1.16;

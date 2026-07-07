@@ -1,0 +1,376 @@
+{
+  "release": "0.4.6",
+  "generated_at": "2026-07-07",
+  "runtime_result": {
+    "release": {
+      "version": "0.4.6",
+      "name": "Expanded Special Player Categories",
+      "label": "Release 0.4.6 — Categorias especiais ampliadas",
+      "cacheKey": "fwcl-0-4-6-20260707",
+      "generatedAt": "2026-07-07"
+    },
+    "production": {
+      "teams": 298,
+      "players": 6855,
+      "special_unique_names": 421,
+      "special_versions": 990,
+      "versions_by_tier": {
+        "icon": 475,
+        "hero": 32,
+        "legend": 237,
+        "mythic": 67,
+        "national": 179
+      }
+    },
+    "samples": [
+      {
+        "name": "Olivier Giroud",
+        "year": 2018,
+        "found": true,
+        "tier": "legend",
+        "category": "lenda_historica",
+        "relevance": 90,
+        "class": "⭐ Craque",
+        "factor": 0.82,
+        "evidence": {
+          "career_score": 108.11,
+          "matches": 18,
+          "starts": 14,
+          "minutes": 1136,
+          "goals": 5,
+          "knockout_goals": 2,
+          "semifinal_goals": 0,
+          "final_goals": 1,
+          "editions": 3,
+          "fame_layer": "major"
+        }
+      },
+      {
+        "name": "Ivan Perišić",
+        "year": 2018,
+        "found": true,
+        "tier": "legend",
+        "category": "lenda_historica",
+        "relevance": 92,
+        "class": "👑 Lenda",
+        "factor": 1,
+        "evidence": {
+          "career_score": 134.78,
+          "matches": 17,
+          "starts": 17,
+          "minutes": 1562,
+          "goals": 6,
+          "knockout_goals": 3,
+          "semifinal_goals": 1,
+          "final_goals": 1,
+          "editions": 3,
+          "fame_layer": "major"
+        }
+      },
+      {
+        "name": "Mario Mandžukić",
+        "year": 2018,
+        "found": true,
+        "tier": "legend",
+        "category": "lenda_historica",
+        "relevance": 92,
+        "class": "👑 Lenda",
+        "factor": 1,
+        "evidence": {
+          "career_score": 101.78,
+          "matches": 8,
+          "starts": 8,
+          "minutes": 789,
+          "goals": 5,
+          "knockout_goals": 3,
+          "semifinal_goals": 1,
+          "final_goals": 1,
+          "editions": 2,
+          "fame_layer": "major"
+        }
+      },
+      {
+        "name": "Lilian Thuram",
+        "year": 1998,
+        "found": true,
+        "tier": "legend",
+        "category": "lenda_historica",
+        "relevance": 92,
+        "class": "👑 Lenda",
+        "factor": 1,
+        "evidence": {
+          "career_score": 97.3,
+          "matches": 16,
+          "starts": 16,
+          "minutes": 1530,
+          "goals": 2,
+          "knockout_goals": 2,
+          "semifinal_goals": 2,
+          "final_goals": 0,
+          "editions": 3,
+          "fame_layer": "major"
+        }
+      },
+      {
+        "name": "Jorge Burruchaga",
+        "year": 1986,
+        "found": true,
+        "tier": "legend",
+        "category": "lenda_historica",
+        "relevance": 92,
+        "class": "👑 Lenda",
+        "factor": 1,
+        "evidence": {
+          "career_score": 85.05,
+          "matches": 14,
+          "starts": 14,
+          "minutes": 1233,
+          "goals": 3,
+          "knockout_goals": 1,
+          "semifinal_goals": 0,
+          "final_goals": 1,
+          "editions": 2,
+          "fame_layer": "major"
+        }
+      },
+      {
+        "name": "Hugo Lloris",
+        "year": 2018,
+        "found": true,
+        "tier": "icon",
+        "category": "icone_historico",
+        "relevance": 87,
+        "class": "⭐ Craque",
+        "factor": 0.99,
+        "evidence": {
+          "career_score": 64.17,
+          "matches": 20,
+          "starts": 20,
+          "minutes": 1830,
+          "goals": 0,
+          "knockout_goals": 0,
+          "semifinal_goals": 0,
+          "final_goals": 0,
+          "editions": 4,
+          "fame_layer": "major"
+        }
+      },
+      {
+        "name": "Mario Götze",
+        "year": 2014,
+        "found": true,
+        "tier": "icon",
+        "category": "icone_historico",
+        "relevance": 87,
+        "class": "⭐ Craque",
+        "factor": 1,
+        "evidence": {
+          "career_score": 52.53,
+          "matches": 8,
+          "starts": 3,
+          "minutes": 293,
+          "goals": 2,
+          "knockout_goals": 1,
+          "semifinal_goals": 0,
+          "final_goals": 1,
+          "editions": 2,
+          "fame_layer": "major"
+        }
+      },
+      {
+        "name": "Heung-min Son",
+        "year": 2022,
+        "found": true,
+        "tier": "icon",
+        "category": "icone_historico",
+        "relevance": 86,
+        "class": "⭐ Craque",
+        "factor": 0.928,
+        "evidence": {
+          "career_score": 51.87,
+          "matches": 10,
+          "starts": 10,
+          "minutes": 877,
+          "goals": 3,
+          "knockout_goals": 0,
+          "semifinal_goals": 0,
+          "final_goals": 0,
+          "editions": 3,
+          "fame_layer": "major"
+        }
+      },
+      {
+        "name": "Ji-sung Park",
+        "year": 2002,
+        "found": true,
+        "tier": "icon",
+        "category": "icone_historico",
+        "relevance": 87,
+        "class": "⭐ Craque",
+        "factor": 1,
+        "evidence": {
+          "career_score": 64.74,
+          "matches": 14,
+          "starts": 14,
+          "minutes": 1268,
+          "goals": 3,
+          "knockout_goals": 0,
+          "semifinal_goals": 0,
+          "final_goals": 0,
+          "editions": 3,
+          "fame_layer": "major"
+        }
+      },
+      {
+        "name": "Cláudio Taffarel",
+        "year": 1994,
+        "found": true,
+        "tier": "icon",
+        "category": "icone_historico",
+        "relevance": 87,
+        "class": "⭐ Craque",
+        "factor": 1,
+        "evidence": {
+          "career_score": 56.73,
+          "matches": 18,
+          "starts": 18,
+          "minutes": 1680,
+          "goals": 0,
+          "knockout_goals": 0,
+          "semifinal_goals": 0,
+          "final_goals": 0,
+          "editions": 3,
+          "fame_layer": "major"
+        }
+      },
+      {
+        "name": "Xabi Alonso",
+        "year": 2010,
+        "found": true,
+        "tier": "icon",
+        "category": "icone_historico",
+        "relevance": 87,
+        "class": "⭐ Craque",
+        "factor": 1,
+        "evidence": {
+          "career_score": 53.57,
+          "matches": 13,
+          "starts": 13,
+          "minutes": 1021,
+          "goals": 2,
+          "knockout_goals": 0,
+          "semifinal_goals": 0,
+          "final_goals": 0,
+          "editions": 3,
+          "fame_layer": "major"
+        }
+      },
+      {
+        "name": "Achraf Hakimi",
+        "year": 2022,
+        "found": true,
+        "tier": "national",
+        "category": "idolo_nacional",
+        "relevance": 78,
+        "class": "🎯 Especialista",
+        "factor": 1,
+        "evidence": {
+          "career_score": 33.52,
+          "matches": 10,
+          "starts": 10,
+          "minutes": 903,
+          "goals": 0,
+          "knockout_goals": 0,
+          "semifinal_goals": 0,
+          "final_goals": 0,
+          "editions": 2,
+          "fame_layer": "recognized"
+        }
+      }
+    ],
+    "separation": {
+      "icon_finish": 94.99,
+      "hero_finish": 94.73,
+      "national_finish": 82.2,
+      "regular_finish": 67.57
+    },
+    "simulation": {
+      "matches": 260,
+      "avg_goals": 2.958,
+      "avg_shots": 18.673,
+      "avg_corners": 4.662,
+      "special_action_share": 0.421,
+      "top_goal_scorers": [
+        [
+          "Cristiano Ronaldo",
+          18
+        ],
+        [
+          "David Beckham",
+          8
+        ],
+        [
+          "Andrés Iniesta",
+          8
+        ],
+        [
+          "Lionel Messi",
+          8
+        ],
+        [
+          "Clarence Seedorf",
+          6
+        ],
+        [
+          "Jürgen Klinsmann",
+          6
+        ],
+        [
+          "Didier Drogba",
+          6
+        ],
+        [
+          "Mario Mandžukić",
+          6
+        ],
+        [
+          "Neymar",
+          6
+        ],
+        [
+          "Enzo Scifo",
+          5
+        ],
+        [
+          "Ángel Di María",
+          5
+        ],
+        [
+          "Thomas Müller",
+          5
+        ]
+      ]
+    }
+  },
+  "quality_gate": {
+    "version_correct": true,
+    "at_least_400_special_names": true,
+    "new_tiers_loaded": true,
+    "all_samples_found": true,
+    "all_samples_classified": true,
+    "icon_above_regular": true,
+    "hero_above_regular": true,
+    "national_above_regular": true,
+    "goal_average_stable": true,
+    "shot_average_stable": true,
+    "special_players_visible_in_actions": true
+  },
+  "overall_passed": true,
+  "manual_browser_test_required": true,
+  "manual_focus": [
+    "Verificar os selos Herói de Copa e Ídolo Nacional.",
+    "Comparar jogadores de fama semelhante com desempenhos diferentes em Copas.",
+    "Observar se as novas categorias aparecem mais sem superar os Ícones Máximos.",
+    "Revisar preços após a mudança de classe e atributos."
+  ]
+}
