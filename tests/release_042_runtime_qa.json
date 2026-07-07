@@ -1,0 +1,118 @@
+{
+  "release": "0.4.2",
+  "generated_at": "2026-07-07",
+  "version_checks": {
+    "title_contains_version": true,
+    "visible_badge_present": true,
+    "css_cache_busted": true,
+    "all_primary_scripts_cache_busted": true,
+    "production_json_cache_busted": true
+  },
+  "runtime_result": {
+    "release": {
+      "version": "0.4.2",
+      "name": "LEGION Dynamic Match Management",
+      "label": "Release 0.4.2 — Gestão tática dinâmica",
+      "cacheKey": "fwcl-0-4-2-20260707",
+      "generatedAt": "2026-07-07"
+    },
+    "production": {
+      "teams": 298,
+      "players": 6899
+    },
+    "batch": {
+      "totals": {
+        "matches": 400,
+        "goals": 944,
+        "shots": 6837,
+        "corners": 1707,
+        "penalties": 34,
+        "subs": 2402,
+        "injuries": 2,
+        "formationChanges": 1993,
+        "advantages": 249,
+        "events": 86992,
+        "benchMatches": 400
+      },
+      "average": {
+        "goals": 2.36,
+        "shots": 17.093,
+        "corners": 4.268,
+        "penalties": 0.085,
+        "subs": 6.005,
+        "injuries": 0.005,
+        "formationChanges": 4.982,
+        "advantages": 0.623,
+        "events": 217.48
+      },
+      "referee_profiles": {
+        "balanced": 107,
+        "lenient": 110,
+        "strict": 100,
+        "technical": 83
+      },
+      "event_types": [
+        "build",
+        "corner",
+        "cross",
+        "crowd",
+        "danger",
+        "defense",
+        "discipline",
+        "dribble",
+        "foul",
+        "goal",
+        "goalkick",
+        "header",
+        "injury",
+        "miss",
+        "offside",
+        "pass",
+        "penalty",
+        "rebound",
+        "referee",
+        "save",
+        "setpiece",
+        "shot",
+        "substitution",
+        "tackle",
+        "tactical",
+        "throwin"
+      ],
+      "tactical_shapes": [
+        "3-3-4",
+        "3-4-3",
+        "4-2-3-1",
+        "4-2-4",
+        "4-3-3",
+        "4-5-1",
+        "5-4-1"
+      ]
+    },
+    "bench_test": {
+      "historical_bench": 7,
+      "fantasy_bench": 7
+    },
+    "tournament": {
+      "status": "finished",
+      "phase": "final",
+      "user_matches": 6,
+      "champion": "Seu XI Legends"
+    }
+  },
+  "quality_gate": {
+    "runtime_completed": true,
+    "version_identity_complete": true,
+    "average_substitutions_between_2_and_9": true,
+    "formation_changes_present": true,
+    "referee_profiles_all_present": true,
+    "substitution_event_present": true,
+    "tactical_event_present": true,
+    "referee_event_present": true,
+    "at_least_four_shapes": true,
+    "historical_bench_complete": true,
+    "tournament_still_completes": true
+  },
+  "overall_passed": true,
+  "manual_browser_test_required": true
+}

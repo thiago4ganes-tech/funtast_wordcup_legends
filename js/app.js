@@ -6,7 +6,7 @@
   };
   function slots(){return window.FWCL_FORMATIONS[state.formation]||[];}
   function slotById(id){return slots().find(s=>s.id===id);}
-  function freshMatchStats(){return {rating:5.5,goals:0,assists:0,shots:0,onTarget:0,xg:0,saves:0,passes:0,dribbles:0,crosses:0,tackles:0,headers:0,fouls:0,cards:0,losses:0,keyActions:0};}
+  function freshMatchStats(){return {rating:5.5,goals:0,assists:0,shots:0,onTarget:0,xg:0,saves:0,passes:0,dribbles:0,crosses:0,tackles:0,headers:0,fouls:0,cards:0,losses:0,keyActions:0,fitness:100,minutesPlayed:0,subbedIn:false,subbedOut:false,injured:false};}
   function resetAssembly(){
     clearInterval(state.timer);
     const diff=window.FWCL_DIFFICULTIES[state.difficulty];
@@ -59,6 +59,7 @@
     const opponentEntry=state.currentFixture.home.user?state.currentFixture.away:state.currentFixture.home;
     const oppTeam=opponentEntry.team;
     state.opponent={...oppTeam,lineup:window.FWCL_MARKET.buildAutoLineup(oppTeam,'4-3-3')};
+    state.opponent.bench=window.FWCL_MARKET.buildAutoBench(oppTeam,state.opponent.lineup,7);
     state.match=null;state.matchFinalized=false;
     document.getElementById('matchSection').classList.remove('hide');
     document.getElementById('matchSection').scrollIntoView({behavior:'smooth'});
@@ -67,11 +68,13 @@
     window.FWCL_UI.clearEvents();window.FWCL_UI.report(null);
   }
   function resetPlayersMatch(){
-    [...lineupArray(),...(state.opponent?.lineup||[])].forEach(p=>p.match=freshMatchStats());
+    [...lineupArray(),...(state.userBench||[]),...(state.opponent?.lineup||[]),...(state.opponent?.bench||[])].forEach(p=>p.match=freshMatchStats());
   }
   function buildMatch(){
-    const user={name:'Seu XI Legends',flag:'🏆',lineup:lineupArray()};
-    const opp={name:state.opponent.name,flag:state.opponent.flag,lineup:state.opponent.lineup};
+    state.userBench=window.FWCL_MARKET.buildFantasyBench(lineupArray(),7);
+    state.userBench.forEach(p=>p.match=freshMatchStats());
+    const user={name:'Seu XI Legends',flag:'🏆',lineup:lineupArray(),bench:state.userBench};
+    const opp={name:state.opponent.name,flag:state.opponent.flag,lineup:state.opponent.lineup,bench:state.opponent.bench||[]};
     const home=state.currentFixture.home.user?user:opp;
     const away=state.currentFixture.away.user?user:opp;
     const knockout=state.currentFixture.phase!=='group';
@@ -99,7 +102,7 @@
   function simulateRealTime(){
     if(!state.opponent)return;
     clearInterval(state.timer);resetPlayersMatch();state.match=buildMatch();state.matchFinalized=false;
-    window.FWCL_UI.clearEvents();window.FWCL_UI.report(null);window.FWCL_UI.renderScore(state.match);window.FWCL_UI.renderLivePitch(state.match,null);
+    window.FWCL_UI.clearEvents();window.FWCL_UI.report(null);window.FWCL_UI.renderScore(state.match);window.FWCL_UI.renderLivePitch(state.match,null);window.FWCL_UI.renderManagement(state.match,null);
     let i=0;
     state.timer=setInterval(()=>{
       if(i>=state.match.events.length){
@@ -107,7 +110,7 @@
       }
       const ev=state.match.events[i++];state.match.currentMinute=ev.minute;state.match.lastEvent=ev;
       if(ev.scoreAfter)state.match.liveScore={...ev.scoreAfter};
-      window.FWCL_UI.addEvent(ev);window.FWCL_UI.renderScore(state.match);window.FWCL_UI.renderLivePitch(state.match,ev);
+      window.FWCL_UI.addEvent(ev);window.FWCL_UI.renderScore(state.match);window.FWCL_UI.renderLivePitch(state.match,ev);window.FWCL_UI.renderManagement(state.match,ev);
       if(ev.type==='goal'){
         const goal=state.match.goalEvents.find(g=>g.minute===ev.minute&&g.teamKey===ev.possessionTeam);
         if(goal)window.FWCL_UI.goalAlert(goal);
@@ -119,7 +122,7 @@
     clearInterval(state.timer);resetPlayersMatch();state.match=buildMatch();state.matchFinalized=false;
     state.match.currentMinute=90;state.match.liveScore={...state.match.score};
     window.FWCL_UI.clearEvents();state.match.events.forEach(ev=>window.FWCL_UI.addEvent(ev));
-    window.FWCL_UI.renderScore(state.match);window.FWCL_UI.renderLivePitch(state.match,state.match.events[state.match.events.length-1]);
+    window.FWCL_UI.renderScore(state.match);window.FWCL_UI.renderLivePitch(state.match,state.match.events[state.match.events.length-1]);window.FWCL_UI.renderManagement(state.match,state.match.events[state.match.events.length-1]);
     window.FWCL_UI.report(state.match);finalizeMatch();
   }
   function bind(){

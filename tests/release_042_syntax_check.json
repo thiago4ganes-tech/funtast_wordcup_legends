@@ -1,0 +1,42 @@
+{
+  "app.js": {
+    "ok": true,
+    "error": ""
+  },
+  "dataQuality.js": {
+    "ok": true,
+    "error": ""
+  },
+  "eventGraph.js": {
+    "ok": true,
+    "error": ""
+  },
+  "market.js": {
+    "ok": true,
+    "error": ""
+  },
+  "narration.js": {
+    "ok": true,
+    "error": ""
+  },
+  "productionData.js": {
+    "ok": true,
+    "error": ""
+  },
+  "skillsEngine.js": {
+    "ok": true,
+    "error": ""
+  },
+  "tournament.js": {
+    "ok": true,
+    "error": ""
+  },
+  "ui.js": {
+    "ok": true,
+    "error": ""
+  },
+  "version.js": {
+    "ok": true,
+    "error": ""
+  }
+}

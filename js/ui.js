@@ -93,7 +93,11 @@
   ];
   function renderLivePitch(match,ev){
     const pitch=$('livePitch');pitch.querySelectorAll('.livePlayer').forEach(n=>n.remove());
-    const home=match?.home?.lineup||[],away=match?.away?.lineup||[];
+    const homeSquad=match?.home?.squad||match?.home?.lineup||[],awaySquad=match?.away?.squad||match?.away?.lineup||[];
+    const homeIds=new Set(ev?.activeLineups?.home?.activeIds||match?.home?.lineup?.map(p=>p.id||p.player_wc_id)||[]);
+    const awayIds=new Set(ev?.activeLineups?.away?.activeIds||match?.away?.lineup?.map(p=>p.id||p.player_wc_id)||[]);
+    const home=homeSquad.filter(p=>homeIds.has(p.id||p.player_wc_id));
+    const away=awaySquad.filter(p=>awayIds.has(p.id||p.player_wc_id));
     function marker(p,teamKey,i){
       const c=coords[i]||[10+(i%6)*15,20+Math.floor(i/6)*20];
       const x=teamKey==='home'?c[0]:100-c[0],y=teamKey==='home'?c[1]:100-c[1];
@@ -118,6 +122,30 @@
     if(ev?.defender?.name)pieces.push(`<b>Disputa:</b> ${ev.defender.name}`);
     $('duelPanel').innerHTML=pieces.length?pieces.join(' <span class="duelSep">×</span> '):'<span>Jogada sem disputa individual destacada.</span>';
   }
+  function renderManagement(match,ev){
+    if(!match){
+      $('refereeProfile').textContent='Aguardando partida';
+      $('homeShape').textContent='—';$('awayShape').textContent='—';
+      return;
+    }
+    const hs=ev?.activeLineups?.home||{
+      shape:match.home.currentShape,stance:match.home.currentStance,
+      averageFitness:window.FWCL_EVENT_GRAPH.averageFitness(match.home),
+      substitutions:match.home.stats?.substitutions||0,injuries:match.home.stats?.injuries||0
+    };
+    const as=ev?.activeLineups?.away||{
+      shape:match.away.currentShape,stance:match.away.currentStance,
+      averageFitness:window.FWCL_EVENT_GRAPH.averageFitness(match.away),
+      substitutions:match.away.stats?.substitutions||0,injuries:match.away.stats?.injuries||0
+    };
+    $('refereeProfile').textContent=match.referee?.name||'Perfil não informado';
+    $('homeTacticalLabel').textContent=match.home.name;
+    $('awayTacticalLabel').textContent=match.away.name;
+    $('homeShape').textContent=`${hs.shape} — ${hs.stance}`;
+    $('awayShape').textContent=`${as.shape} — ${as.stance}`;
+    $('homeManagement').textContent=`Físico ${Number(hs.averageFitness||100).toFixed(0)}% • Subs ${hs.substitutions||0} • Atend. ${hs.injuries||0}`;
+    $('awayManagement').textContent=`Físico ${Number(as.averageFitness||100).toFixed(0)}% • Subs ${as.substitutions||0} • Atend. ${as.injuries||0}`;
+  }
   function renderTournament(cup,currentFixture){
     const section=$('tournamentSection');section.classList.remove('hide');
     if(!cup){$('tournamentPanel').innerHTML='<div class="reportBox">Aguardando sorteio.</div>';return;}
@@ -137,7 +165,7 @@
   }
   function report(match){
     if(!match){$('report').innerHTML='<div class="reportBox">Aguardando partida.</div>';return;}
-    const h=match.home.stats,a=match.away.stats,all=[...match.home.lineup,...match.away.lineup].sort((x,y)=>y.match.rating-x.match.rating),best=all[0];
+    const h=match.home.stats,a=match.away.stats,all=[...(match.home.squad||match.home.lineup),...(match.away.squad||match.away.lineup)].filter(p=>(p.match?.minutesPlayed||0)>0||p.match?.subbedIn).sort((x,y)=>y.match.rating-x.match.rating),best=all[0];
     const winner=match.score.home===match.score.away?null:(match.score.home>match.score.away?match.home:match.away);
     const narrative=winner?`${winner.name} teve maior eficiência nos momentos decisivos. O relatório abaixo deriva dos eventos efetivamente simulados.`:'O empate refletiu equilíbrio entre produção ofensiva, resistência defensiva e conversão.';
     $('report').innerHTML=`<div class="analysisBox"><h3>Análise tática e estatística</h3><p>${narrative}</p></div>
@@ -158,14 +186,19 @@
         <div class="reportBox"><b>Ligações diretas</b><br>${h.longBalls} x ${a.longBalls}</div>
         <div class="reportBox"><b>Defensores no ataque</b><br>${h.defendersInAttack} x ${a.defendersInAttack}</div>
         <div class="reportBox"><b>Gestão de vantagem</b><br>${h.timeManagement} x ${a.timeManagement}</div>
+        <div class="reportBox"><b>Substituições</b><br>${h.substitutions} x ${a.substitutions}</div>
+        <div class="reportBox"><b>Mudanças de desenho</b><br>${h.formationChanges} x ${a.formationChanges}</div>
+        <div class="reportBox"><b>Atendimentos físicos</b><br>${h.injuries} x ${a.injuries}</div>
+        <div class="reportBox"><b>Vantagens aplicadas</b><br>${h.advantagesPlayed} x ${a.advantagesPlayed}</div>
+        <div class="reportBox"><b>Árbitro</b><br>${match.referee?.name||'—'}</div>
         <div class="reportBox"><b>Melhor nota</b><br>${best.name}: ${best.match.rating.toFixed(1)}</div>
       </div>`;
-    $('ratings').innerHTML=`<h3>Notas individuais</h3><div class="reportGrid">${all.map(p=>`<div class="reportBox"><b>${p.flag||''} ${p.name}</b><br>Nota ${p.match.rating.toFixed(1)}<br><span class="muted">Gols ${p.match.goals||0} • Chutes ${p.match.shots||0} • Desarmes ${p.match.tackles||0} • Ações-chave ${p.match.keyActions||0}</span></div>`).join('')}</div>`;
+    $('ratings').innerHTML=`<h3>Notas individuais</h3><div class="reportGrid">${all.map(p=>`<div class="reportBox"><b>${p.flag||''} ${p.name}</b><br>Nota ${p.match.rating.toFixed(1)} • Físico ${Number(p.match.fitness||100).toFixed(0)}%<br><span class="muted">Gols ${p.match.goals||0} • Chutes ${p.match.shots||0} • Desarmes ${p.match.tackles||0} • Ações-chave ${p.match.keyActions||0}</span></div>`).join('')}</div>`;
   }
   function renderAll(state){
     if(window.FWCL_DATA_QUALITY)window.FWCL_DATA_QUALITY.render();
     renderConfig(state);renderCountries(state);renderBudget(state);renderField(state);renderLineupStatus(state);showDraft(state);
     renderTournament(state.tournament,state.currentFixture);
   }
-  window.FWCL_UI={renderAll,renderScore,addEvent,clearEvents,goalAlert,report,renderField,renderLivePitch,renderTournament};
+  window.FWCL_UI={renderAll,renderScore,addEvent,clearEvents,goalAlert,report,renderField,renderLivePitch,renderTournament,renderManagement};
 })();

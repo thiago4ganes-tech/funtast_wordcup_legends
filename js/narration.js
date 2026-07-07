@@ -3,14 +3,14 @@
     build:'🧠',pass:'🎯',dribble:'✨',cross:'📐',shot:'🥅',goal:'⚽',save:'🧤',foul:'🟨',
     defense:'🛡️',setpiece:'🎲',rebound:'🔁',miss:'↗️',corner:'🚩',offside:'🚫',
     throwin:'↔️',goalkick:'🥾',tackle:'💥',header:'⬆️',crowd:'📣',danger:'🔥',
-    discipline:'🟥',penalty:'⚪',duel:'⚔️'
+    discipline:'🟥',penalty:'⚪',duel:'⚔️',substitution:'🔄',tactical:'📋',injury:'🩺',referee:'👨‍⚖️'
   };
   const labels={
     build:'construção',pass:'passe',dribble:'drible',cross:'cruzamento',shot:'finalização',
     goal:'gol',save:'defesa',foul:'falta',defense:'defesa',setpiece:'bola parada',
     rebound:'rebote',miss:'para fora',corner:'escanteio',offside:'impedimento',
     throwin:'lateral',goalkick:'tiro de meta',tackle:'dividida',header:'cabeceio',
-    crowd:'torcida',danger:'perigo',discipline:'disciplina',penalty:'pênalti',duel:'disputa'
+    crowd:'torcida',danger:'perigo',discipline:'disciplina',penalty:'pênalti',duel:'disputa',substitution:'substituição',tactical:'ajuste tático',injury:'atendimento',referee:'arbitragem'
   };
   const pick=a=>a[Math.floor(Math.random()*a.length)];
   function tag(type){ return `<span class="tag">${icons[type]||'•'} ${labels[type]||type}</span>`; }

@@ -3,14 +3,22 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Fantasy World Cup Legends — Release 0.4</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <title>Fantasy World Cup Legends — Release 0.4.2</title>
+  <link rel="stylesheet" href="css/style.css?v=0.4.2" />
 </head>
 <body>
   <header>
-    <h1>Fantasy World Cup Legends</h1>
-    <p>Release 0.4 — Copa do Mundo, LEGION ampliado, base A–G e partida visual</p>
-  </header>
+  <div class="headerIdentity">
+    <div>
+      <h1>Fantasy World Cup Legends</h1>
+      <p>LEGION, Copa do Mundo e Production Data Pack A–G</p>
+    </div>
+    <div class="versionIdentity">
+      <strong id="versionBadge">Release 0.4.2 — Gestão tática dinâmica</strong>
+      <span id="buildIdentity">Build fwcl-0-4-2-20260707</span>
+    </div>
+  </div>
+</header>
 
   <main>
     <section class="card">
@@ -101,6 +109,24 @@
 
       <div id="possessionBanner" class="possessionBanner">⚪ Bola ainda não está em jogo</div>
 
+
+      <div id="matchManagementPanel" class="matchManagementPanel">
+        <div class="managementBox">
+          <span>Árbitro</span>
+          <strong id="refereeProfile">Aguardando partida</strong>
+        </div>
+        <div class="managementBox home">
+          <span id="homeTacticalLabel">Seu XI</span>
+          <strong id="homeShape">—</strong>
+          <small id="homeManagement">Postura — • Físico —</small>
+        </div>
+        <div class="managementBox away">
+          <span id="awayTacticalLabel">Adversário</span>
+          <strong id="awayShape">—</strong>
+          <small id="awayManagement">Postura — • Físico —</small>
+        </div>
+      </div>
+
       <div id="livePitch" class="livePitch">
         <div class="pitchMidline"></div>
         <div class="pitchCircle"></div>
@@ -140,16 +166,17 @@
 
   <div id="goalAlert" class="goalAlert">⚽ GOL!</div>
 
-  <script src="data/wchd.js"></script>
-  <script src="data/formations.js"></script>
-  <script src="js/productionData.js"></script>
-  <script src="js/dataQuality.js"></script>
-  <script src="js/skillsEngine.js"></script>
-  <script src="js/narration.js"></script>
-  <script src="js/eventGraph.js"></script>
-  <script src="js/market.js"></script>
-  <script src="js/tournament.js"></script>
-  <script src="js/ui.js"></script>
-  <script src="js/app.js"></script>
+  <script src="js/version.js?v=0.4.2"></script>
+  <script src="data/wchd.js?v=0.4.2"></script>
+  <script src="data/formations.js?v=0.4.2"></script>
+  <script src="js/productionData.js?v=0.4.2"></script>
+  <script src="js/dataQuality.js?v=0.4.2"></script>
+  <script src="js/skillsEngine.js?v=0.4.2"></script>
+  <script src="js/narration.js?v=0.4.2"></script>
+  <script src="js/eventGraph.js?v=0.4.2"></script>
+  <script src="js/market.js?v=0.4.2"></script>
+  <script src="js/tournament.js?v=0.4.2"></script>
+  <script src="js/ui.js?v=0.4.2"></script>
+  <script src="js/app.js?v=0.4.2"></script>
 </body>
 </html>

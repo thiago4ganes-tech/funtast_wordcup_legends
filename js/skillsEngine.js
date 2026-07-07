@@ -62,7 +62,11 @@
     if(action==='defend'||action==='tackle') base=avg('marking','tackle','interception','decision');
     if(action==='goalkeeper') base=avg('reflexes','handling','onevone','decision');
     if(action==='penalty') base=avg('finishing','composure','decision','clutch');
-    return clamp(base+classBonus(player,context)+traitBonus(player,context),5,118);
+const fitness=Number(player?.match?.fitness??100);
+const fatiguePenalty=Math.max(0,84-fitness)*0.24;
+const injuryPenalty=player?.match?.injured?8:0;
+const bookingCaution=player?.match?.cards>0&&['defend','tackle'].includes(action)?2.5:0;
+return clamp(base+classBonus(player,context)+traitBonus(player,context)-fatiguePenalty-injuryPenalty-bookingCaution,5,118);
   }
   function duel(attacker,defender,action,context={}){
     const atk=actionScore(attacker,action,context);

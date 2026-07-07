@@ -262,8 +262,8 @@
     const status=document.getElementById('productionLoadStatus');
     try{
       const [prodRes,countryRes]=await Promise.all([
-        fetch('data/production/wchd_legion_inputs.json'),
-        fetch('data/production/wchd_countries_production.json')
+        fetch(`data/production/wchd_legion_inputs.json?v=${encodeURIComponent(window.FWCL_RELEASE?.cacheKey||window.FWCL_VERSION||'current')}`,{cache:'no-store'}),
+        fetch(`data/production/wchd_countries_production.json?v=${encodeURIComponent(window.FWCL_RELEASE?.cacheKey||window.FWCL_VERSION||'current')}`,{cache:'no-store'})
       ]);
       if(!prodRes.ok) throw new Error(`Production data HTTP ${prodRes.status}`);
       const prod=await prodRes.json();
@@ -271,7 +271,7 @@
       const result=mergeProduction(prod,countries);
       if(status){
         status.className='notice ok';
-        status.textContent=`Production Data Pack carregado: ${result.teams} seleções-Copa e ${result.players} jogadores-Copa.`;
+        status.textContent=`${window.FWCL_RELEASE?.label||'Release atual'}: Production Data Pack carregado com ${result.teams} seleções-Copa e ${result.players} jogadores-Copa.`;
       }
       return result;
     }catch(error){

@@ -9,6 +9,7 @@
     return items[items.length-1].v;
   }
   function allPlayers(team){ return team.lineup||team.players||[]; }
+  function squadPlayers(team){ return team.squad||[...(team.lineup||[]),...(team.bench||[])]; }
   function byRole(team,labels){
     const all=allPlayers(team);
     const pool=all.filter(p=>(p.positions||[]).some(x=>labels.includes(x))||labels.includes(p.role));
@@ -26,17 +27,30 @@
       dribbles:0,passes:0,fouls:0,foulsWon:0,cards:0,redCards:0,saves:0,corners:0,
       penalties:0,offsides:0,turnovers:0,throwIns:0,goalKicks:0,freeKicks:0,tackles:0,
       headers:0,oneTwos:0,overlaps:0,duels:0,dangerousAttacks:0,counters:0,
-      longBalls:0,defendersInAttack:0,timeManagement:0,deepBlocks:0,boxEntries:0
+      longBalls:0,defendersInAttack:0,timeManagement:0,deepBlocks:0,boxEntries:0,
+      substitutions:0,injuries:0,formationChanges:0,advantagesPlayed:0
     };
-    allPlayers(team).forEach(p=>{
+    squadPlayers(team).forEach(p=>{
       p.match=p.match||{
         rating:5.5,goals:0,assists:0,shots:0,onTarget:0,xg:0,saves:0,passes:0,
-        dribbles:0,crosses:0,tackles:0,headers:0,fouls:0,cards:0,losses:0,keyActions:0
+        dribbles:0,crosses:0,tackles:0,headers:0,fouls:0,cards:0,losses:0,keyActions:0,
+        fitness:100,minutesPlayed:0,subbedIn:false,subbedOut:false,injured:false
       };
+      if(!Number.isFinite(p.match.fitness))p.match.fitness=100;
     });
   }
   function addRating(p,d){ if(p?.match) p.match.rating=S().clamp(p.match.rating+d,2,9); }
   function playerMeta(p){ return p?{id:p.id||p.player_wc_id,name:p.name}:null; }
+  function snapshotTeam(team){
+    return {
+      activeIds:(team.lineup||[]).map(p=>p.id||p.player_wc_id),
+      shape:team.currentShape||'4-3-3',
+      stance:team.currentStance||'equilibrada',
+      averageFitness:averageFitness(team),
+      substitutions:team.stats?.substitutions||0,
+      injuries:team.stats?.injuries||0
+    };
+  }
   function event(match,minute,text,type,attack,actor,support,defender,extra='',more={}){
     return N().line(minute,text,type,extra,{
       possessionTeam:attack?.key||null,
@@ -44,8 +58,134 @@
       actor:playerMeta(actor),
       support:playerMeta(support),
       defender:playerMeta(defender),
+      activeLineups:match?{home:snapshotTeam(match.home),away:snapshotTeam(match.away)}:null,
+      referee:match?.referee||null,
       ...more
     });
+  }
+
+
+  const REFEREES=[
+    {id:'balanced',name:'Árbitro equilibrado',foul:1.00,card:1.00,penalty:1.00,advantage:.42},
+    {id:'strict',name:'Árbitro rigoroso',foul:1.13,card:1.32,penalty:1.12,advantage:.24},
+    {id:'lenient',name:'Árbitro permissivo',foul:.88,card:.70,penalty:.86,advantage:.62},
+    {id:'technical',name:'Árbitro técnico',foul:1.05,card:.92,penalty:1.06,advantage:.50}
+  ];
+  function averageFitness(team){
+    const active=allPlayers(team);
+    if(!active.length)return 100;
+    return active.reduce((sum,p)=>sum+Number(p.match?.fitness??100),0)/active.length;
+  }
+  function tacticalShape(t){
+    if(t.final8&&t.trailing)return {shape:'3-3-4',stance:'pressão total'};
+    if(t.final15&&t.trailing)return {shape:'3-4-3',stance:'ofensiva'};
+    if(t.losingByTwo&&t.after60)return {shape:'3-4-3',stance:'ofensiva'};
+    if(t.leadingByTwo&&t.final15)return {shape:'5-4-1',stance:'controle defensivo'};
+    if(t.leading&&t.final15)return {shape:'4-5-1',stance:'gestão da vantagem'};
+    if(t.muchWeaker&&!t.trailing)return {shape:'5-4-1',stance:'bloco baixo'};
+    if(t.weaker&&!t.trailing)return {shape:'4-5-1',stance:'reativa'};
+    if(t.muchStronger)return {shape:'4-2-4',stance:'pressão ofensiva'};
+    if(t.stronger)return {shape:'4-3-3',stance:'propositiva'};
+    return {shape:'4-2-3-1',stance:'equilibrada'};
+  }
+  function compatibleSub(outPlayer,inPlayer){
+    const outPos=outPlayer?.positions||[];
+    const inPos=inPlayer?.positions||[];
+    if(outPos.includes('GK'))return inPos.includes('GK');
+    if(outPos.some(x=>['ZAG','LE','LD','ALA_E','ALA_D'].includes(x)))return inPos.some(x=>['ZAG','LE','LD','ALA_E','ALA_D','VOL'].includes(x));
+    if(outPos.some(x=>['VOL','MC','MEI'].includes(x)))return inPos.some(x=>['VOL','MC','MEI','PE','PD','SA'].includes(x));
+    return inPos.some(x=>['CA','F9','SA','PE','PD','MEI'].includes(x));
+  }
+  function fatiguePlayer(player,delta,tactical){
+    if(!player?.match)return;
+    const stamina=S().skill(player,'stamina',65);
+    const roleIntensity=(player.positions||[]).some(x=>['PE','PD','LE','LD','ALA_E','ALA_D','MC'].includes(x))?1.12:1;
+    const riskIntensity=1+Math.max(0,tactical?.risk||0)*.42+Math.max(0,tactical?.press||0)*.30;
+    const loss=delta*(.085+(82-stamina)*.0023)*roleIntensity*riskIntensity;
+    player.match.fitness=S().clamp(player.match.fitness-loss,35,100);
+    player.match.minutesPlayed+=delta;
+  }
+  function applyFatigue(match,delta,minute){
+    for(const [team,opponent] of [[match.home,match.away],[match.away,match.home]]){
+      const t=tacticalState(match,team,opponent,minute);
+      allPlayers(team).forEach(p=>fatiguePlayer(p,delta,t));
+    }
+  }
+  function maybeInjury(match,team,player,minute,source='fadiga'){
+    if(!player||player.match?.injured)return [];
+    const fitness=Number(player.match?.fitness??100);
+    const base=source==='contato'?.018:.0025;
+    const chance=base+Math.max(0,62-fitness)*.0009;
+    if(Math.random()>=chance)return [];
+    player.match.injured=true;
+    player.match.fitness=Math.min(player.match.fitness,52);
+    team.stats.injuries++;
+    return [event(match,minute,`${player.name} sente o desgaste e recebe atendimento. A comissão técnica avalia a substituição.`,'injury',team,player,null,null,'',{injurySource:source})];
+  }
+  function substitutionPriority(player,tactical){
+    const fitness=Number(player.match?.fitness??100);
+    let score=(100-fitness)*1.2+(player.match?.injured?75:0)+(player.match?.cards?10:0);
+    if(tactical.trailing&&(player.positions||[]).some(x=>['ZAG','VOL'].includes(x)))score+=9;
+    if(tactical.leading&&(player.positions||[]).some(x=>['CA','PE','PD'].includes(x)))score+=5;
+    score-=Number(player.match?.rating||5.5)*2;
+    return score;
+  }
+  function reserveValue(player,tactical){
+    let value=S().actionScore(player,tactical.trailing?'finish':'build',{minute:70,bigChance:tactical.trailing});
+    if(tactical.trailing&&(player.positions||[]).some(x=>['CA','F9','SA','PE','PD','MEI'].includes(x)))value+=13;
+    if(tactical.leading&&(player.positions||[]).some(x=>['VOL','ZAG','LE','LD'].includes(x)))value+=10;
+    value+=Number(player.match?.fitness??100)*.13;
+    return value;
+  }
+  function makeSubstitution(match,team,opponent,minute,forced=false){
+    if(team.stats.substitutions>=5||!(team.bench||[]).length)return [];
+    const t=tacticalState(match,team,opponent,minute);
+    const outs=[...allPlayers(team)].sort((a,b)=>substitutionPriority(b,t)-substitutionPriority(a,t));
+    const outPlayer=outs.find(p=>p.match?.injured)||outs[0];
+    if(!outPlayer)return [];
+    const candidates=(team.bench||[]).filter(p=>compatibleSub(outPlayer,p)).sort((a,b)=>reserveValue(b,t)-reserveValue(a,t));
+    const inPlayer=candidates[0]||(team.bench||[]).sort((a,b)=>reserveValue(b,t)-reserveValue(a,t))[0];
+    if(!inPlayer)return [];
+    if(!forced&&Number(outPlayer.match?.fitness??100)>77&&minute<68)return [];
+
+    const index=team.lineup.indexOf(outPlayer);
+    if(index<0)return [];
+    team.lineup[index]=inPlayer;
+    team.bench=team.bench.filter(p=>p!==inPlayer);
+    team.bench.push(outPlayer);
+    outPlayer.match.subbedOut=true;
+    inPlayer.match.subbedIn=true;
+    inPlayer.match.fitness=Math.max(Number(inPlayer.match.fitness||100),92);
+    team.stats.substitutions++;
+
+    const reason=outPlayer.match.injured?'por condição física':t.trailing?'para aumentar a presença ofensiva':t.leading?'para proteger a vantagem':'para renovar a intensidade';
+    return [event(match,minute,`${team.name} muda: sai ${outPlayer.name}, entra ${inPlayer.name} ${reason}.`,'substitution',team,inPlayer,outPlayer,null,'',{
+      substitution:{out:playerMeta(outPlayer),in:playerMeta(inPlayer),reason}
+    })];
+  }
+  function manageTeam(match,team,opponent,minute){
+    const lines=[];
+    const t=tacticalState(match,team,opponent,minute);
+    const shape=tacticalShape(t);
+    if(team.currentShape!==shape.shape||team.currentStance!==shape.stance){
+      team.currentShape=shape.shape;team.currentStance=shape.stance;team.stats.formationChanges++;
+      lines.push(event(match,minute,`${team.name} reorganiza o desenho para ${shape.shape}, com postura ${shape.stance}.`,'tactical',team,null,null,null,'',{
+        tacticalChange:shape
+      }));
+    }
+    const injured=allPlayers(team).some(p=>p.match?.injured);
+    const windows=[55,64,72,79,85];
+    const due=windows.some(w=>minute>=w&&!team.managementWindows.has(w));
+    if(due){
+      const w=windows.find(x=>minute>=x&&!team.managementWindows.has(x));
+      team.managementWindows.add(w);
+    }
+    if(injured||due){
+      const average=averageFitness(team);
+      const should=injured||average<82||t.trailing||minute>=72||allPlayers(team).some(p=>p.match?.cards&&p.match?.fitness<78);
+      if(should)lines.push(...makeSubstitution(match,team,opponent,minute,injured));
+    }
+    return lines;
   }
 
   function tacticalState(match,team,opponent,minute){
@@ -317,11 +457,11 @@
     const lines=[];
     attack.stats.foulsWon++; defend.stats.fouls++; fouler.match.fouls++;
     const discipline=S().skill(fouler,'discipline');
-    const severe=hard||Math.random()<Math.max(.08,(72-discipline)/75);
+    const severe=hard||Math.random()<Math.max(.06,(72-discipline)/75)*(match.referee?.card||1);
     lines.push(event(match,minute,`${fouler.name} derruba ${carrier.name}${severe?' com uma entrada forte':''}. Falta marcada.`,'foul',attack,carrier,null,fouler));
     if(severe){
       lines.push(event(match,minute,N().emotional(discipline<55?'unfair':'hardFoul'),'discipline',defend,fouler,null,carrier));
-      const red=Math.random()<Math.max(.015,(50-discipline)/100);
+      const red=Math.random()<Math.max(.012,(50-discipline)/100)*(match.referee?.card||1);
       if(red){
         defend.stats.redCards++; defend.stats.cards++; fouler.match.cards++; addRating(fouler,-1);
         lines.push(event(match,minute,`Cartão vermelho para ${fouler.name}. O árbitro entende que a entrada colocou o adversário em risco.`,'discipline',defend,fouler,null,carrier));
@@ -330,6 +470,7 @@
         lines.push(event(match,minute,`Cartão amarelo para ${fouler.name}.`,'foul',defend,fouler,null,carrier));
       }
       if(Math.random()<.22) lines.push(event(match,minute,N().emotional('altercation'),'discipline',attack,carrier,null,fouler));
+      lines.push(...maybeInjury(match,attack,carrier,minute,'contato'));
     }
     return lines;
   }
@@ -395,7 +536,7 @@
       {v:'cross',w:(zone==='center'?14:S().actionScore(carrier,'cross',{minute})*.49)+atkT.aerial*102+atkT.defenderJoin*42},
       {v:'longShot',w:S().actionScore(carrier,'longShot',{minute})*.17+atkT.risk*22},
       {v:'longBall',w:10+atkT.directness*80+(atkT.leading&&atkT.final15?20:0)},
-      {v:'foul',w:9+atkT.risk*18+atkT.after60*3},
+      {v:'foul',w:(9+atkT.risk*18+atkT.after60*3)*(match.referee?.foul||1)},
       {v:'offside',w:6+atkT.directness*13},
       {v:'throwIn',w:8},
       {v:'tackle',w:16+defT.defensiveBlock*29},
@@ -430,6 +571,13 @@
       return lines;
     }
     if(mode==='foul'){
+      const advantageChance=(match.referee?.advantage||.4)*(.55+atkT.risk*.35);
+      if(Math.random()<advantageChance){
+        attack.stats.foulsWon++;defend.stats.fouls++;attack.stats.advantagesPlayed++;
+        const runner=pickFinisher(attack,'through');
+        lines.push(event(match,minute,`${marker.name} atinge ${carrier.name}, mas o árbitro aplica a vantagem. ${runner.name} continua a jogada.`,'referee',attack,runner,carrier,marker,'',{advantage:true,danger:.60}));
+        return lines.concat(shotOutcome(match,attack,defend,minute,'through',carrier,runner,defenderFor(defend,'center'),'após vantagem bem aplicada'));
+      }
       lines.push(...disciplinaryEvent(match,attack,defend,minute,carrier,marker,Math.random()<.25));
       if(Math.random()<S().clamp(.50+atkT.risk*.32+atkT.after60*.06,.46,.76)) lines.push(...directFreeKick(match,attack,defend,minute,carrier,marker));
       return lines;
@@ -518,7 +666,7 @@
         {v:'clear',w:S().actionScore(d,'defend',{minute,type:'header'})*(.24+defT.defensiveBlock*.16)},
         {v:'header',w:S().actionScore(target,'header',{minute,type:'header'})*(.30+atkT.aerial*.20+atkT.defenderJoin*.08)},
         {v:'corner',w:38+atkT.aerial*50+atkT.risk*27},
-        {v:'penalty',w:2.2+Math.max(0,70-S().skill(d,'discipline'))/9+atkT.penaltyPressure*28},
+        {v:'penalty',w:(2.2+Math.max(0,70-S().skill(d,'discipline'))/9+atkT.penaltyPressure*28)*(match.referee?.penalty||1)},
         {v:'ownGoal',w:.45+atkT.aerial*.55}
       ]);
       if(result==='keeper'){ lines.push(event(match,minute,`${goalie(defend).name} sai do gol e segura a bola pelo alto.`,'save',defend,goalie(defend),null,target)); return lines; }
@@ -578,17 +726,35 @@
     return events;
   }
   function simulate(homeInput,awayInput,options={}){
-    const home={key:'home',name:homeInput.name,flag:homeInput.flag,lineup:homeInput.lineup||homeInput.players||[],stats:null};
-    const away={key:'away',name:awayInput.name,flag:awayInput.flag,lineup:awayInput.lineup||awayInput.players||[],stats:null};
-    ensureStats(home); ensureStats(away);
+    const home={
+      key:'home',name:homeInput.name,flag:homeInput.flag,
+      lineup:[...(homeInput.lineup||homeInput.players||[])],bench:[...(homeInput.bench||[])],
+      stats:null,currentShape:'4-3-3',currentStance:'equilibrada',managementWindows:new Set()
+    };
+    const away={
+      key:'away',name:awayInput.name,flag:awayInput.flag,
+      lineup:[...(awayInput.lineup||awayInput.players||[])],bench:[...(awayInput.bench||[])],
+      stats:null,currentShape:'4-3-3',currentStance:'equilibrada',managementWindows:new Set()
+    };
+    home.squad=[...home.lineup,...home.bench];away.squad=[...away.lineup,...away.bench];
+    ensureStats(home);ensureStats(away);
     const hStr=teamStrength(home),aStr=teamStrength(away);
+    const referee=REFEREES[Math.floor(Math.random()*REFEREES.length)];
     const match={
       home,away,score:{home:0,away:0},events:[],goalEvents:[],trailed:{home:false,away:false},
-      strengths:{home:hStr,away:aStr},
+      strengths:{home:hStr,away:aStr},referee,
       options:{knockout:!!options.knockout,stage:options.stage||'group'}
     };
-    let minute=1;
+    match.events.push(event(match,1,`${referee.name} conduz a partida. Perfil: ${referee.id==='strict'?'rigoroso nos contatos':referee.id==='lenient'?'deixa o jogo seguir':'equilibrado entre fluidez e controle'}.`,'referee',home,null,null,null));
+    let minute=1,lastMinute=0;
     while(minute<=90){
+      const delta=Math.max(1,minute-lastMinute);applyFatigue(match,delta,minute);lastMinute=minute;
+      match.events.push(...manageTeam(match,home,away,minute));
+      match.events.push(...manageTeam(match,away,home,minute));
+      for(const team of [home,away]){
+        const tired=allPlayers(team).filter(p=>Number(p.match?.fitness??100)<58);
+        if(tired.length&&Math.random()<.025)match.events.push(...maybeInjury(match,team,tired[Math.floor(Math.random()*tired.length)],minute,'fadiga'));
+      }
       const hT=tacticalState(match,home,away,minute);
       const aT=tacticalState(match,away,home,minute);
       let homeWeight=50+(hStr-aStr)*.62;
@@ -610,10 +776,10 @@
     if(match.options.stage==='final'&&match.winnerKey&&Math.random()<.12){
       match.events.push(event(match,90,N().crowd(match[match.winnerKey],'invasion'),'crowd',match[match.winnerKey],null,null,null));
     }
-    match.events.push(N().line(90,`Fim de jogo. Resultado: ${match.score.home} x ${match.score.away}${match.shootout?` — pênaltis ${match.shootout.home} x ${match.shootout.away}`:''}.`,'build','',{
+    match.events.push(event(match,90,`Fim de jogo. Resultado: ${match.score.home} x ${match.score.away}${match.shootout?` — pênaltis ${match.shootout.home} x ${match.shootout.away}`:''}.`,'build',null,null,null,null,'',{
       possessionTeam:null,scoreAfter:{...match.score}
     }));
     return match;
   }
-  window.FWCL_EVENT_GRAPH={simulate,teamStrength,tacticalState};
+  window.FWCL_EVENT_GRAPH={simulate,teamStrength,tacticalState,tacticalShape,averageFitness};
 })();

@@ -1,0 +1,21 @@
+{
+  "version": "0.4.2",
+  "name": "LEGION Dynamic Match Management",
+  "generated_at": "2026-07-07",
+  "base_release": "0.4.1",
+  "cache_key": "fwcl-0-4-2-20260707",
+  "features": [
+    "visible_release_identity_in_html",
+    "asset_and_json_cache_busting",
+    "automatic_seven_player_benches",
+    "individual_fatigue",
+    "automatic_tactical_substitutions",
+    "dynamic_formation_and_stance_changes",
+    "referee_profiles",
+    "advantage_rule",
+    "minor_injury_and_medical_attention_events",
+    "booking_aware_management",
+    "active_lineup_snapshots_for_live_pitch",
+    "post_match_management_report"
+  ]
+}

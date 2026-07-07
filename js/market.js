@@ -84,5 +84,56 @@
     }
     return lineup;
   }
-  window.FWCL_MARKET={countries,teams,drawTeamForSlot,availablePlayers,buildAutoLineup,marketPrice,depthScore,teamStrength};
+function cloneReserve(player){
+  const copy=JSON.parse(JSON.stringify(player));
+  copy.match=null;
+  copy.reserve=true;
+  return copy;
+}
+function roleGroup(player){
+  const pos=player.positions||[];
+  if(pos.includes('GK'))return 'GK';
+  if(pos.some(x=>['ZAG','LE','LD','ALA_E','ALA_D'].includes(x)))return 'DEF';
+  if(pos.some(x=>['VOL','MC','MEI'].includes(x)))return 'MID';
+  return 'ATT';
+}
+function diverseBench(pool,used,size=7){
+  const chosen=[];
+  const groups=['GK','DEF','MID','ATT','DEF','MID','ATT'];
+  const scored=[...pool].filter(p=>!used.has(p.athlete_id)).sort((a,b)=>{
+    const sa=window.FWCL_SKILLS.actionScore(a,'build',{})+window.FWCL_SKILLS.actionScore(a,'finish',{})*.25;
+    const sb=window.FWCL_SKILLS.actionScore(b,'build',{})+window.FWCL_SKILLS.actionScore(b,'finish',{})*.25;
+    return sb-sa;
+  });
+  for(const group of groups){
+    const candidate=scored.find(p=>!used.has(p.athlete_id)&&roleGroup(p)===group);
+    if(candidate){chosen.push(cloneReserve(candidate));used.add(candidate.athlete_id);}
+    if(chosen.length>=size)break;
+  }
+  for(const candidate of scored){
+    if(chosen.length>=size)break;
+    if(!used.has(candidate.athlete_id)){chosen.push(cloneReserve(candidate));used.add(candidate.athlete_id);}
+  }
+  return chosen;
+}
+function buildAutoBench(team,lineup,size=7){
+  const used=new Set((lineup||[]).map(p=>p.athlete_id));
+  return diverseBench(team?.players||[],used,size);
+}
+function buildFantasyBench(lineup,size=7){
+  const used=new Set((lineup||[]).map(p=>p.athlete_id));
+  const pool=[];
+  const seenTeams=new Set();
+  (lineup||[]).forEach(selected=>{
+    const team=teams().find(t=>t.country===selected.country&&Number(t.year)===Number(selected.year));
+    if(!team||seenTeams.has(team.id))return;
+    seenTeams.add(team.id);
+    (team.players||[]).forEach(p=>{if(!used.has(p.athlete_id))pool.push(p);});
+  });
+  return diverseBench(pool,used,size);
+}
+window.FWCL_MARKET={
+  countries,teams,drawTeamForSlot,availablePlayers,buildAutoLineup,buildAutoBench,
+  buildFantasyBench,marketPrice,depthScore,teamStrength,roleGroup
+};
 })();
