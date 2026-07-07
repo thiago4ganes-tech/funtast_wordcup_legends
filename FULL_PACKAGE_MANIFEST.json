@@ -1,0 +1,130 @@
+{
+  "generated_at": "2026-07-07",
+  "package_name": "fwcl_full_project_with_wchd_a_g_v1",
+  "purpose": "Full GitHub replacement package containing latest playable project structure plus WCHD/LEGION stages A-G.",
+  "base_project_source": "/mnt/data/fwcl_release_031.zip",
+  "source_zips": {
+    "base_project_release_031": "/mnt/data/fwcl_release_031.zip",
+    "base_project_release_03_fallback": "/mnt/data/fwcl_release_03.zip",
+    "wchd_a_f_consolidated": "/mnt/data/fwcl_wchd_a_f_consolidated.zip",
+    "wchd_g1": "/mnt/data/fwcl_wchd_stage_g1_real_data_backbone_v1.zip",
+    "wchd_g2": "/mnt/data/fwcl_wchd_stage_g2_coverage_and_gaps_v1.zip",
+    "wchd_g3": "/mnt/data/fwcl_wchd_stage_g3_estimates_and_synthetic_v1.zip",
+    "wchd_g4": "/mnt/data/fwcl_wchd_stage_g4_production_data_pack_v1.zip"
+  },
+  "missing_sources": [],
+  "merged_files_count": 279,
+  "conflicts_count": 17,
+  "conflicts": [
+    {
+      "source_label": "wchd_g1",
+      "source_file": "data/normalized/world_cups.json",
+      "existing_target": "data/normalized/world_cups.json",
+      "resolution": "preserved_with_suffix"
+    },
+    {
+      "source_label": "wchd_g1",
+      "source_file": "data/normalized/countries.json",
+      "existing_target": "data/normalized/countries.json",
+      "resolution": "preserved_with_suffix"
+    },
+    {
+      "source_label": "wchd_g1",
+      "source_file": "data/normalized/team_world_cup.json",
+      "existing_target": "data/normalized/team_world_cup.json",
+      "resolution": "preserved_with_suffix"
+    },
+    {
+      "source_label": "wchd_g1",
+      "source_file": "data/normalized/matches.json",
+      "existing_target": "data/normalized/matches.json",
+      "resolution": "preserved_with_suffix"
+    },
+    {
+      "source_label": "wchd_g1",
+      "source_file": "data/normalized/player_base.json",
+      "existing_target": "data/normalized/player_base.json",
+      "resolution": "preserved_with_suffix"
+    },
+    {
+      "source_label": "wchd_g1",
+      "source_file": "data/normalized/player_world_cup.json",
+      "existing_target": "data/normalized/player_world_cup.json",
+      "resolution": "preserved_with_suffix"
+    },
+    {
+      "source_label": "wchd_g1",
+      "source_file": "data/normalized/squad_membership.json",
+      "existing_target": "data/normalized/squad_membership.json",
+      "resolution": "preserved_with_suffix"
+    },
+    {
+      "source_label": "wchd_g1",
+      "source_file": "data/normalized/player_match_appearance.json",
+      "existing_target": "data/normalized/player_match_appearance.json",
+      "resolution": "preserved_with_suffix"
+    },
+    {
+      "source_label": "wchd_g1",
+      "source_file": "data/normalized/goals.json",
+      "existing_target": "data/normalized/goals.json",
+      "resolution": "preserved_with_suffix"
+    },
+    {
+      "source_label": "wchd_g1",
+      "source_file": "data/normalized/bookings.json",
+      "existing_target": "data/normalized/bookings.json",
+      "resolution": "preserved_with_suffix"
+    },
+    {
+      "source_label": "wchd_g1",
+      "source_file": "data/normalized/substitutions.json",
+      "existing_target": "data/normalized/substitutions.json",
+      "resolution": "preserved_with_suffix"
+    },
+    {
+      "source_label": "wchd_g1",
+      "source_file": "data/normalized/penalty_kicks.json",
+      "existing_target": "data/normalized/penalty_kicks.json",
+      "resolution": "preserved_with_suffix"
+    },
+    {
+      "source_label": "wchd_g1",
+      "source_file": "data/derived/team_wc_metrics.json",
+      "existing_target": "data/derived/team_wc_metrics.json",
+      "resolution": "preserved_with_suffix"
+    },
+    {
+      "source_label": "wchd_g1",
+      "source_file": "data/derived/player_wc_metrics.json",
+      "existing_target": "data/derived/player_wc_metrics.json",
+      "resolution": "preserved_with_suffix"
+    },
+    {
+      "source_label": "wchd_g1",
+      "source_file": "data/derived/head_to_head_metrics.json",
+      "existing_target": "data/derived/head_to_head_metrics.json",
+      "resolution": "preserved_with_suffix"
+    },
+    {
+      "source_label": "wchd_g1",
+      "source_file": "data/derived/player_pair_minutes.json",
+      "existing_target": "data/derived/player_pair_minutes.json",
+      "resolution": "preserved_with_suffix"
+    },
+    {
+      "source_label": "wchd_g1",
+      "source_file": "data/source_registry/sources.json",
+      "existing_target": "data/source_registry/sources.json",
+      "resolution": "preserved_with_suffix"
+    }
+  ],
+  "g4_data_composition": {
+    "real_plus_derived_from_real": 79.02,
+    "estimated_proxy": 16.48,
+    "synthetic_comparable": 4.5,
+    "missing": 0.0
+  },
+  "important_note": "This package aggregates the playable project files and the A-G data/methodology files. It is not yet a fully integrated Release 0.4 gameplay rebuild unless the app code is later modified to consume data/production/wchd_legion_inputs.json.",
+  "recommended_commit": "Full project - base estrutural e WCHD A-G production data pack"
+}

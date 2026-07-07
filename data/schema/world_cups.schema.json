@@ -1,0 +1,60 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "world_cup_id",
+      "year",
+      "host_country",
+      "source_primary",
+      "source_confidence"
+    ],
+    "properties": {
+      "world_cup_id": {
+        "type": [
+          "string",
+          "integer",
+          "boolean",
+          "array",
+          "null"
+        ]
+      },
+      "year": {
+        "type": [
+          "string",
+          "integer",
+          "boolean",
+          "array",
+          "null"
+        ]
+      },
+      "host_country": {
+        "type": [
+          "string",
+          "integer",
+          "boolean",
+          "array",
+          "null"
+        ]
+      },
+      "source_primary": {
+        "type": [
+          "string",
+          "integer",
+          "boolean",
+          "array",
+          "null"
+        ]
+      },
+      "source_confidence": {
+        "type": [
+          "string",
+          "integer",
+          "boolean",
+          "array",
+          "null"
+        ]
+      }
+    }
+  }
+}

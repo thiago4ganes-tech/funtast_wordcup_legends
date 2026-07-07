@@ -1,0 +1,82 @@
+{
+  "generated_at": "2026-07-06",
+  "gaps": [
+    {
+      "gap_id": "GAP_ASSISTS_STANDARDIZED",
+      "data_class": "player_event_assists",
+      "current_status": "missing_or_sparse_in_g1",
+      "affected_records": 1524,
+      "filled_count": 0,
+      "missing_count": 1524,
+      "missing_percent": 100.0,
+      "recommended_g3_method": "real_complementary_when_available_else_estimated_proxy_by_goal_context_and_tactical_role",
+      "engine_weight": "medium"
+    },
+    {
+      "gap_id": "GAP_DIRECT_GOAL_COMBINATIONS",
+      "data_class": "player_synergy_direct_events",
+      "current_status": "missing_in_pair_metrics",
+      "affected_records": 44378,
+      "filled_count": 0,
+      "missing_count": 44378,
+      "missing_percent": 100.0,
+      "recommended_g3_method": "derive_from_assist_goal_links_when_available_else_synthetic_comparable_limited_weight",
+      "engine_weight": "medium"
+    },
+    {
+      "gap_id": "GAP_PLAYER_PASSING",
+      "data_class": "player_technical_actions",
+      "current_status": "not_available_in_g1",
+      "affected_records": 6800,
+      "filled_count": 0,
+      "missing_count": 6800,
+      "missing_percent": 100.0,
+      "recommended_g3_method": "era_position_team_style_comparable_players",
+      "engine_weight": "high"
+    },
+    {
+      "gap_id": "GAP_PLAYER_SHOOTING",
+      "data_class": "player_shots_and_shots_on_target",
+      "current_status": "not_available_in_g1",
+      "affected_records": 6800,
+      "filled_count": 0,
+      "missing_count": 6800,
+      "missing_percent": 100.0,
+      "recommended_g3_method": "recent_real_complementary_for_modern_cups_else_proxy_from_goals_position_minutes_team_attack",
+      "engine_weight": "high"
+    },
+    {
+      "gap_id": "GAP_PLAYER_DRIBBLING_DEFENSIVE_ACTIONS",
+      "data_class": "dribbles_tackles_interceptions_pressures",
+      "current_status": "not_available_in_g1",
+      "affected_records": 6800,
+      "filled_count": 0,
+      "missing_count": 6800,
+      "missing_percent": 100.0,
+      "recommended_g3_method": "position_role_era_comparable_players_with_confidence_cap",
+      "engine_weight": "high"
+    },
+    {
+      "gap_id": "GAP_TEAM_STYLE_METRICS",
+      "data_class": "team_tactical_style",
+      "current_status": "not_available_in_g1",
+      "affected_records": 296,
+      "filled_count": 0,
+      "missing_count": 296,
+      "missing_percent": 100.0,
+      "recommended_g3_method": "derive_from_goals_minutes_positions_and_manual_style_priors_with_review",
+      "engine_weight": "high"
+    },
+    {
+      "gap_id": "GAP_TRUE_TRACKING_SYNERGY",
+      "data_class": "player_synergy_tracking",
+      "current_status": "proxy_available_not_true_tracking",
+      "affected_records": 44378,
+      "filled_count": 44378,
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "recommended_g3_method": "keep_proxy_but_label_estimated_proxy; add direct event combinations where available",
+      "engine_weight": "medium"
+    }
+  ]
+}

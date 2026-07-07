@@ -1,0 +1,31 @@
+{
+  "type": "object",
+  "required": [
+    "release_candidate",
+    "engine_modes",
+    "go_no_go"
+  ],
+  "properties": {
+    "release_candidate": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "engine_modes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "requires": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "go_no_go": {
+      "type": "object"
+    }
+  }
+}

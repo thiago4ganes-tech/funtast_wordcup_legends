@@ -1,0 +1,45 @@
+{
+  "stage": "WCHD_STAGE_C",
+  "critical_checks": [
+    {
+      "id": "C-001",
+      "name": "player_derived_attributes generated",
+      "status": "pending"
+    },
+    {
+      "id": "C-002",
+      "name": "team_derived_profiles generated",
+      "status": "pending"
+    },
+    {
+      "id": "C-003",
+      "name": "player_legion_modifiers generated",
+      "status": "pending"
+    },
+    {
+      "id": "C-004",
+      "name": "team_legion_modifiers generated",
+      "status": "pending"
+    },
+    {
+      "id": "C-005",
+      "name": "confidence caps applied",
+      "status": "pending"
+    },
+    {
+      "id": "C-006",
+      "name": "all attributes have formula or fallback",
+      "status": "pending"
+    },
+    {
+      "id": "C-007",
+      "name": "modifiers within allowed range",
+      "status": "pending"
+    },
+    {
+      "id": "C-008",
+      "name": "competencies remain candidates until review",
+      "status": "pending"
+    }
+  ]
+}

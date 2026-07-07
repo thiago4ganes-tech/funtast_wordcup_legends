@@ -1,0 +1,78 @@
+{
+  "generated_at": "2026-07-06",
+  "stage": "C",
+  "normalization": {
+    "scale": "1-99",
+    "default_method": "clamp(50 + z_score * 12, 1, 99)",
+    "confidence_caps": {
+      "A": 99,
+      "B": 94,
+      "C": 88,
+      "D": 82
+    }
+  },
+  "formulas": [
+    {
+      "formula_id": "C_PLAYER_FINISHING_V1",
+      "target": "player.finishing",
+      "formula": "goals_per_90_norm*0.35 + team_goal_share_norm*0.25 + knockout_goals_norm*0.20 + final_or_semifinal_goals_norm*0.10 + position_role_prior*0.10",
+      "requires": [
+        "goals_per_90",
+        "team_goal_share",
+        "knockout_goals"
+      ],
+      "fallback_allowed": true
+    },
+    {
+      "formula_id": "C_PLAYER_CLUTCH_V1",
+      "target": "player.clutch",
+      "formula": "knockout_goal_participation_norm*0.40 + final_semifinal_component*0.25 + knockout_minutes_norm*0.15 + team_goal_share_norm*0.10 + penalty_pressure_component*0.10",
+      "requires": [
+        "knockout_goals",
+        "knockout_minutes"
+      ],
+      "fallback_allowed": true
+    },
+    {
+      "formula_id": "C_PLAYER_DISCIPLINE_V1",
+      "target": "player.discipline",
+      "formula": "99 - normalize(cards_per_90 + red_card_weight)",
+      "requires": [
+        "yellow_cards",
+        "red_cards",
+        "minutes"
+      ],
+      "fallback_allowed": true
+    },
+    {
+      "formula_id": "C_PLAYER_RELIABILITY_V1",
+      "target": "player.reliability",
+      "formula": "minutes_share_norm*0.45 + starts_share_norm*0.30 + discipline_component*0.15 + injury_absence_inverse_component*0.10",
+      "requires": [
+        "minutes_share",
+        "starts"
+      ],
+      "fallback_allowed": true
+    },
+    {
+      "formula_id": "C_TEAM_ATTACK_PROFILE_V1",
+      "target": "team.attack_profile",
+      "formula": "attack_observed_index*0.45 + goals_for_per_game_component*0.25 + knockout_goals_for_component*0.15 + opponent_strength_adjusted_attack*0.15",
+      "requires": [
+        "attack_observed_index",
+        "goals_for_per_game"
+      ],
+      "fallback_allowed": true
+    },
+    {
+      "formula_id": "C_TEAM_DEFENSE_PROFILE_V1",
+      "target": "team.defense_profile",
+      "formula": "defense_observed_index*0.45 + inverse_goals_against_per_game*0.25 + clean_sheet_component*0.15 + opponent_strength_adjusted_defense*0.15",
+      "requires": [
+        "defense_observed_index",
+        "goals_against_per_game"
+      ],
+      "fallback_allowed": true
+    }
+  ]
+}

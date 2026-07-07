@@ -1,0 +1,298 @@
+{
+  "generated_at": "2026-07-06",
+  "global": {
+    "total_records": 102406,
+    "origin_counts": {
+      "real_structured": 30522,
+      "derived_from_real_structured": 27506,
+      "estimated_proxy": 44378
+    },
+    "origin_percentages": {
+      "real_structured": 29.8,
+      "derived_from_real_structured": 26.86,
+      "estimated_proxy": 43.34
+    },
+    "confidence_counts": {
+      "A": 31288,
+      "B": 71118
+    },
+    "confidence_percentages": {
+      "A": 30.55,
+      "B": 69.45
+    }
+  },
+  "by_table": [
+    {
+      "table": "world_cups",
+      "records": 10,
+      "origin_counts": {
+        "real_structured": 10
+      },
+      "origin_percentages": {
+        "real_structured": 100.0
+      },
+      "confidence_counts": {
+        "A": 10
+      },
+      "confidence_percentages": {
+        "A": 100.0
+      }
+    },
+    {
+      "table": "countries",
+      "records": 77,
+      "origin_counts": {
+        "real_structured": 77
+      },
+      "origin_percentages": {
+        "real_structured": 100.0
+      },
+      "confidence_counts": {
+        "A": 77
+      },
+      "confidence_percentages": {
+        "A": 100.0
+      }
+    },
+    {
+      "table": "team_world_cup",
+      "records": 296,
+      "origin_counts": {
+        "real_structured": 296
+      },
+      "origin_percentages": {
+        "real_structured": 100.0
+      },
+      "confidence_counts": {
+        "A": 296
+      },
+      "confidence_percentages": {
+        "A": 100.0
+      }
+    },
+    {
+      "table": "matches",
+      "records": 604,
+      "origin_counts": {
+        "real_structured": 604
+      },
+      "origin_percentages": {
+        "real_structured": 100.0
+      },
+      "confidence_counts": {
+        "A": 604
+      },
+      "confidence_percentages": {
+        "A": 100.0
+      }
+    },
+    {
+      "table": "player_base",
+      "records": 5120,
+      "origin_counts": {
+        "real_structured": 5120
+      },
+      "origin_percentages": {
+        "real_structured": 100.0
+      },
+      "confidence_counts": {
+        "A": 5120
+      },
+      "confidence_percentages": {
+        "A": 100.0
+      }
+    },
+    {
+      "table": "player_world_cup",
+      "records": 6800,
+      "origin_counts": {
+        "real_structured": 6800
+      },
+      "origin_percentages": {
+        "real_structured": 100.0
+      },
+      "confidence_counts": {
+        "A": 6800
+      },
+      "confidence_percentages": {
+        "A": 100.0
+      }
+    },
+    {
+      "table": "squad_membership",
+      "records": 6800,
+      "origin_counts": {
+        "real_structured": 6800
+      },
+      "origin_percentages": {
+        "real_structured": 100.0
+      },
+      "confidence_counts": {
+        "A": 6800
+      },
+      "confidence_percentages": {
+        "A": 100.0
+      }
+    },
+    {
+      "table": "player_match_appearance",
+      "records": 16614,
+      "origin_counts": {
+        "derived_from_real_structured": 16614
+      },
+      "origin_percentages": {
+        "derived_from_real_structured": 100.0
+      },
+      "confidence_counts": {
+        "B": 16614
+      },
+      "confidence_percentages": {
+        "B": 100.0
+      }
+    },
+    {
+      "table": "goals",
+      "records": 1524,
+      "origin_counts": {
+        "real_structured": 1524
+      },
+      "origin_percentages": {
+        "real_structured": 100.0
+      },
+      "confidence_counts": {
+        "A": 1524
+      },
+      "confidence_percentages": {
+        "A": 100.0
+      }
+    },
+    {
+      "table": "bookings",
+      "records": 2331,
+      "origin_counts": {
+        "real_structured": 2331
+      },
+      "origin_percentages": {
+        "real_structured": 100.0
+      },
+      "confidence_counts": {
+        "A": 2331
+      },
+      "confidence_percentages": {
+        "A": 100.0
+      }
+    },
+    {
+      "table": "substitutions",
+      "records": 3326,
+      "origin_counts": {
+        "derived_from_real_structured": 3326
+      },
+      "origin_percentages": {
+        "derived_from_real_structured": 100.0
+      },
+      "confidence_counts": {
+        "B": 3326
+      },
+      "confidence_percentages": {
+        "B": 100.0
+      }
+    },
+    {
+      "table": "penalty_kicks",
+      "records": 308,
+      "origin_counts": {
+        "real_structured": 308
+      },
+      "origin_percentages": {
+        "real_structured": 100.0
+      },
+      "confidence_counts": {
+        "A": 308
+      },
+      "confidence_percentages": {
+        "A": 100.0
+      }
+    },
+    {
+      "table": "substitution_actions",
+      "records": 6652,
+      "origin_counts": {
+        "real_structured": 6652
+      },
+      "origin_percentages": {
+        "real_structured": 100.0
+      },
+      "confidence_counts": {
+        "A": 6652
+      },
+      "confidence_percentages": {
+        "A": 100.0
+      }
+    },
+    {
+      "table": "team_wc_metrics",
+      "records": 296,
+      "origin_counts": {
+        "derived_from_real_structured": 296
+      },
+      "origin_percentages": {
+        "derived_from_real_structured": 100.0
+      },
+      "confidence_counts": {
+        "A": 296
+      },
+      "confidence_percentages": {
+        "A": 100.0
+      }
+    },
+    {
+      "table": "player_wc_metrics",
+      "records": 6800,
+      "origin_counts": {
+        "derived_from_real_structured": 6800
+      },
+      "origin_percentages": {
+        "derived_from_real_structured": 100.0
+      },
+      "confidence_counts": {
+        "B": 6800
+      },
+      "confidence_percentages": {
+        "B": 100.0
+      }
+    },
+    {
+      "table": "head_to_head_metrics",
+      "records": 470,
+      "origin_counts": {
+        "derived_from_real_structured": 470
+      },
+      "origin_percentages": {
+        "derived_from_real_structured": 100.0
+      },
+      "confidence_counts": {
+        "A": 470
+      },
+      "confidence_percentages": {
+        "A": 100.0
+      }
+    },
+    {
+      "table": "player_pair_minutes",
+      "records": 44378,
+      "origin_counts": {
+        "estimated_proxy": 44378
+      },
+      "origin_percentages": {
+        "estimated_proxy": 100.0
+      },
+      "confidence_counts": {
+        "B": 44378
+      },
+      "confidence_percentages": {
+        "B": 100.0
+      }
+    }
+  ]
+}

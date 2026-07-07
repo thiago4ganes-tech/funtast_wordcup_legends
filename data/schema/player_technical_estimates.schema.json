@@ -1,0 +1,43 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "player_wc_id",
+      "estimates",
+      "field_origins",
+      "data_origin",
+      "estimation_method",
+      "confidence_level",
+      "engine_weight_limit"
+    ],
+    "properties": {
+      "player_wc_id": {
+        "type": "string"
+      },
+      "estimates": {
+        "type": "object"
+      },
+      "field_origins": {
+        "type": "object"
+      },
+      "data_origin": {
+        "type": "string"
+      },
+      "estimation_method": {
+        "type": "string"
+      },
+      "confidence_level": {
+        "enum": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "engine_weight_limit": {
+        "type": "number"
+      }
+    }
+  }
+}

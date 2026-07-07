@@ -1,0 +1,151 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "team_wc_id",
+      "country_id",
+      "year",
+      "games",
+      "goals_for",
+      "goals_against",
+      "confidence_level"
+    ],
+    "properties": {
+      "team_wc_id": {
+        "type": "string"
+      },
+      "country_id": {
+        "type": "string"
+      },
+      "year": {
+        "type": "integer"
+      },
+      "games": {
+        "type": "integer"
+      },
+      "wins": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "draws": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "losses": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "goals_for": {
+        "type": "integer"
+      },
+      "goals_against": {
+        "type": "integer"
+      },
+      "goal_difference": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "goals_for_per_game": {
+        "type": [
+          "number",
+          "null"
+        ]
+      },
+      "goals_against_per_game": {
+        "type": [
+          "number",
+          "null"
+        ]
+      },
+      "points_equivalent": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "points_per_game": {
+        "type": [
+          "number",
+          "null"
+        ]
+      },
+      "win_rate": {
+        "type": [
+          "number",
+          "null"
+        ]
+      },
+      "clean_sheets": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "failed_to_score": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "knockout_games": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "knockout_goals_for": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "knockout_goals_against": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "opponent_strength_avg": {
+        "type": [
+          "number",
+          "null"
+        ]
+      },
+      "campaign_index": {
+        "type": [
+          "number",
+          "null"
+        ]
+      },
+      "attack_observed_index": {
+        "type": [
+          "number",
+          "null"
+        ]
+      },
+      "defense_observed_index": {
+        "type": [
+          "number",
+          "null"
+        ]
+      },
+      "confidence_level": {
+        "enum": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      }
+    }
+  }
+}

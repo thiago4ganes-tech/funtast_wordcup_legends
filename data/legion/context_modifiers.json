@@ -1,0 +1,70 @@
+{
+  "score_state": {
+    "drawing": {
+      "risk": 0.0,
+      "attack_volume": 0.0,
+      "defensive_protection": 0.0
+    },
+    "losing_by_1": {
+      "risk": 0.04,
+      "attack_volume": 0.05,
+      "defensive_protection": -0.03
+    },
+    "losing_by_2_plus": {
+      "risk": 0.08,
+      "attack_volume": 0.08,
+      "defensive_protection": -0.06
+    },
+    "winning_by_1": {
+      "risk": -0.03,
+      "attack_volume": -0.02,
+      "defensive_protection": 0.04
+    },
+    "winning_by_2_plus": {
+      "risk": -0.06,
+      "attack_volume": -0.04,
+      "defensive_protection": 0.06
+    }
+  },
+  "minute_band": {
+    "0_15": {
+      "tempo": -0.02,
+      "error": -0.01,
+      "clutch": 0.0
+    },
+    "16_60": {
+      "tempo": 0.0,
+      "error": 0.0,
+      "clutch": 0.0
+    },
+    "61_75": {
+      "tempo": 0.01,
+      "error": 0.02,
+      "clutch": 0.01
+    },
+    "76_90": {
+      "tempo": 0.03,
+      "error": 0.04,
+      "clutch": 0.04
+    },
+    "90_plus": {
+      "tempo": 0.04,
+      "error": 0.05,
+      "clutch": 0.06
+    }
+  },
+  "stage": {
+    "group": {
+      "pressure": 0.0
+    },
+    "knockout": {
+      "pressure": 0.03
+    },
+    "semifinal": {
+      "pressure": 0.05
+    },
+    "final": {
+      "pressure": 0.06
+    }
+  }
+}

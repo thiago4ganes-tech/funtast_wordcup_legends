@@ -1,0 +1,19 @@
+[
+  {
+    "team_wc_id": "team_brazil_2002",
+    "country_id": "country_brazil",
+    "year": 2002,
+    "team_display_name": "Brazil 2002",
+    "manager_name": "Luiz Felipe Scolari",
+    "final_position": 1,
+    "stage_reached": "Champion",
+    "games": 7,
+    "wins": 7,
+    "draws": 0,
+    "losses": 0,
+    "goals_for": 18,
+    "goals_against": 4,
+    "source_primary": "src_fifa_data_centre",
+    "source_confidence": "A"
+  }
+]

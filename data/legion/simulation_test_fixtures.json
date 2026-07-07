@@ -1,0 +1,32 @@
+[
+  {
+    "fixture_id": "test_brazil_2002_germany_2014",
+    "team_a": "team_brazil_2002",
+    "team_b": "team_germany_2014",
+    "runs": 100
+  },
+  {
+    "fixture_id": "test_argentina_1986_france_1998",
+    "team_a": "team_argentina_1986",
+    "team_b": "team_france_1998",
+    "runs": 100
+  },
+  {
+    "fixture_id": "test_spain_2010_italy_2006",
+    "team_a": "team_spain_2010",
+    "team_b": "team_italy_2006",
+    "runs": 100
+  },
+  {
+    "fixture_id": "test_brazil_1994_argentina_2022",
+    "team_a": "team_brazil_1994",
+    "team_b": "team_argentina_2022",
+    "runs": 100
+  },
+  {
+    "fixture_id": "test_france_2018_brazil_2002",
+    "team_a": "team_france_2018",
+    "team_b": "team_brazil_2002",
+    "runs": 100
+  }
+]

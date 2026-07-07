@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-07-06",
+  "player_estimate_field_origin_counts": {
+    "estimated_proxy": 27200,
+    "synthetic_comparable": 74800
+  },
+  "team_estimate_field_origin_counts": {
+    "synthetic_comparable": 1776,
+    "estimated_proxy": 888
+  },
+  "synergy_records": {
+    "records": 44378,
+    "data_origin": "estimated_proxy"
+  },
+  "player_estimate_confidence_counts": {
+    "C": 82065,
+    "D": 19935
+  },
+  "coverage_after_g3": {
+    "real_plus_derived": 79.02,
+    "estimated_proxy": 16.48,
+    "synthetic_comparable": 4.5,
+    "missing": 0.0
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "stage": "WCHD_STAGE_F",
+  "critical_checks": [
+    {
+      "id": "F-001",
+      "name": "calibration targets defined",
+      "status": "done"
+    },
+    {
+      "id": "F-002",
+      "name": "statistical quality gate defined",
+      "status": "done"
+    },
+    {
+      "id": "F-003",
+      "name": "regression fixture matrix defined",
+      "status": "done"
+    },
+    {
+      "id": "F-004",
+      "name": "release candidate manifest defined",
+      "status": "done"
+    },
+    {
+      "id": "F-005",
+      "name": "calibration tuner skeleton created",
+      "status": "done"
+    },
+    {
+      "id": "F-006",
+      "name": "manual playtest still required",
+      "status": "pending"
+    },
+    {
+      "id": "F-007",
+      "name": "integration with real game still required",
+      "status": "pending"
+    },
+    {
+      "id": "F-008",
+      "name": "GitHub Pages validation still required",
+      "status": "pending"
+    }
+  ]
+}

@@ -1,0 +1,156 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "player_wc_id",
+      "player_base_id",
+      "team_wc_id",
+      "country_id",
+      "year",
+      "confidence_level"
+    ],
+    "properties": {
+      "player_wc_id": {
+        "type": "string"
+      },
+      "player_base_id": {
+        "type": "string"
+      },
+      "team_wc_id": {
+        "type": "string"
+      },
+      "country_id": {
+        "type": "string"
+      },
+      "year": {
+        "type": "integer"
+      },
+      "matches_played": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "starts": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "minutes": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "minutes_share": {
+        "type": [
+          "number",
+          "null"
+        ]
+      },
+      "goals": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "assists": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "assist_data_available": {
+        "type": "boolean"
+      },
+      "goal_participations": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "goals_per_90": {
+        "type": [
+          "number",
+          "null"
+        ]
+      },
+      "goal_participations_per_90": {
+        "type": [
+          "number",
+          "null"
+        ]
+      },
+      "team_goal_share": {
+        "type": [
+          "number",
+          "null"
+        ]
+      },
+      "knockout_minutes": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "knockout_goals": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "semifinal_goals": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "final_goals": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "yellow_cards": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "red_cards": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "penalties_taken": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "penalties_scored": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "structural_importance_index": {
+        "type": [
+          "number",
+          "null"
+        ]
+      },
+      "confidence_level": {
+        "enum": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      }
+    }
+  }
+}

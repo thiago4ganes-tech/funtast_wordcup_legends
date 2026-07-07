@@ -1,0 +1,18 @@
+confidence_counts,confidence_percentages,origin_counts,origin_percentages,records,table
+"{""A"": 10}","{""A"": 100.0}","{""real_structured"": 10}","{""real_structured"": 100.0}",10,world_cups
+"{""A"": 77}","{""A"": 100.0}","{""real_structured"": 77}","{""real_structured"": 100.0}",77,countries
+"{""A"": 296}","{""A"": 100.0}","{""real_structured"": 296}","{""real_structured"": 100.0}",296,team_world_cup
+"{""A"": 604}","{""A"": 100.0}","{""real_structured"": 604}","{""real_structured"": 100.0}",604,matches
+"{""A"": 5120}","{""A"": 100.0}","{""real_structured"": 5120}","{""real_structured"": 100.0}",5120,player_base
+"{""A"": 6800}","{""A"": 100.0}","{""real_structured"": 6800}","{""real_structured"": 100.0}",6800,player_world_cup
+"{""A"": 6800}","{""A"": 100.0}","{""real_structured"": 6800}","{""real_structured"": 100.0}",6800,squad_membership
+"{""B"": 16614}","{""B"": 100.0}","{""derived_from_real_structured"": 16614}","{""derived_from_real_structured"": 100.0}",16614,player_match_appearance
+"{""A"": 1524}","{""A"": 100.0}","{""real_structured"": 1524}","{""real_structured"": 100.0}",1524,goals
+"{""A"": 2331}","{""A"": 100.0}","{""real_structured"": 2331}","{""real_structured"": 100.0}",2331,bookings
+"{""B"": 3326}","{""B"": 100.0}","{""derived_from_real_structured"": 3326}","{""derived_from_real_structured"": 100.0}",3326,substitutions
+"{""A"": 308}","{""A"": 100.0}","{""real_structured"": 308}","{""real_structured"": 100.0}",308,penalty_kicks
+"{""A"": 6652}","{""A"": 100.0}","{""real_structured"": 6652}","{""real_structured"": 100.0}",6652,substitution_actions
+"{""A"": 296}","{""A"": 100.0}","{""derived_from_real_structured"": 296}","{""derived_from_real_structured"": 100.0}",296,team_wc_metrics
+"{""B"": 6800}","{""B"": 100.0}","{""derived_from_real_structured"": 6800}","{""derived_from_real_structured"": 100.0}",6800,player_wc_metrics
+"{""A"": 470}","{""A"": 100.0}","{""derived_from_real_structured"": 470}","{""derived_from_real_structured"": 100.0}",470,head_to_head_metrics
+"{""B"": 44378}","{""B"": 100.0}","{""estimated_proxy"": 44378}","{""estimated_proxy"": 100.0}",44378,player_pair_minutes

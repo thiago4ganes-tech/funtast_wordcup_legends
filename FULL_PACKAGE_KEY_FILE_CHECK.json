@@ -1,0 +1,6 @@
+{
+  "index.html": true,
+  "data/production/wchd_legion_inputs.json": true,
+  "data/quality/g4_final_data_composition_report.json": true,
+  "FULL_PACKAGE_MANIFEST.json": true
+}

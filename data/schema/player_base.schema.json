@@ -1,0 +1,50 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "player_base_id",
+      "player_name",
+      "source_primary",
+      "source_confidence"
+    ],
+    "properties": {
+      "player_base_id": {
+        "type": [
+          "string",
+          "integer",
+          "boolean",
+          "array",
+          "null"
+        ]
+      },
+      "player_name": {
+        "type": [
+          "string",
+          "integer",
+          "boolean",
+          "array",
+          "null"
+        ]
+      },
+      "source_primary": {
+        "type": [
+          "string",
+          "integer",
+          "boolean",
+          "array",
+          "null"
+        ]
+      },
+      "source_confidence": {
+        "type": [
+          "string",
+          "integer",
+          "boolean",
+          "array",
+          "null"
+        ]
+      }
+    }
+  }
+}

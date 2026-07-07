@@ -1,0 +1,50 @@
+{
+  "stage": "WCHD_STAGE_D",
+  "critical_checks": [
+    {
+      "id": "D-001",
+      "name": "event mother catalog defined",
+      "status": "done"
+    },
+    {
+      "id": "D-002",
+      "name": "base probabilities defined",
+      "status": "done"
+    },
+    {
+      "id": "D-003",
+      "name": "outcome matrix defined",
+      "status": "done"
+    },
+    {
+      "id": "D-004",
+      "name": "context modifiers defined",
+      "status": "done"
+    },
+    {
+      "id": "D-005",
+      "name": "anti-repeat rule designed",
+      "status": "done"
+    },
+    {
+      "id": "D-006",
+      "name": "simulation fixtures defined",
+      "status": "done"
+    },
+    {
+      "id": "D-007",
+      "name": "integration with current UI",
+      "status": "pending"
+    },
+    {
+      "id": "D-008",
+      "name": "100-run batch tests",
+      "status": "pending"
+    },
+    {
+      "id": "D-009",
+      "name": "calibration against plausible ranges",
+      "status": "pending"
+    }
+  ]
+}

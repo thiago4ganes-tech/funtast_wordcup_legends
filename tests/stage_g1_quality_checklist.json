@@ -1,0 +1,45 @@
+{
+  "stage": "WCHD_STAGE_G1",
+  "checks": [
+    {
+      "id": "G1-001",
+      "name": "Raw CSV files included",
+      "status": "done"
+    },
+    {
+      "id": "G1-002",
+      "name": "Normalized world_cups generated",
+      "status": "done"
+    },
+    {
+      "id": "G1-003",
+      "name": "Normalized matches generated",
+      "status": "done"
+    },
+    {
+      "id": "G1-004",
+      "name": "Normalized player_world_cup generated",
+      "status": "done"
+    },
+    {
+      "id": "G1-005",
+      "name": "Goals/bookings/substitutions/penalties generated",
+      "status": "done"
+    },
+    {
+      "id": "G1-006",
+      "name": "Derived team/player metrics generated",
+      "status": "done"
+    },
+    {
+      "id": "G1-007",
+      "name": "Origin coverage report generated",
+      "status": "done"
+    },
+    {
+      "id": "G1-008",
+      "name": "Assists/passes handled as gaps, not invented",
+      "status": "done"
+    }
+  ]
+}

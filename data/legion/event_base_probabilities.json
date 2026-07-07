@@ -1,0 +1,74 @@
+{
+  "build_up": {
+    "central_progression": 0.28,
+    "wide_progression": 0.24,
+    "long_ball": 0.1,
+    "recycle_possession": 0.2,
+    "turnover": 0.12,
+    "foul_won": 0.06
+  },
+  "wide_progression": {
+    "cross": 0.28,
+    "cutback": 0.14,
+    "dribble_take_on": 0.18,
+    "back_pass": 0.16,
+    "blocked_lane": 0.12,
+    "turnover": 0.12
+  },
+  "central_progression": {
+    "through_ball": 0.2,
+    "box_combination": 0.18,
+    "long_shot": 0.12,
+    "foul_won": 0.1,
+    "intercepted": 0.18,
+    "recycle_possession": 0.22
+  },
+  "transition_attack": {
+    "through_ball": 0.26,
+    "dribble_carry": 0.2,
+    "early_cross": 0.14,
+    "box_shot": 0.13,
+    "tactical_foul": 0.09,
+    "turnover": 0.18
+  },
+  "cross": {
+    "header_attempt": 0.22,
+    "volley_attempt": 0.05,
+    "clearance": 0.24,
+    "goalkeeper_claim": 0.15,
+    "cross_blocked": 0.13,
+    "overhit": 0.1,
+    "corner_won": 0.09,
+    "penalty_incident": 0.02
+  },
+  "box_shot": {
+    "goal": 0.13,
+    "save": 0.25,
+    "miss": 0.25,
+    "blocked": 0.22,
+    "rebound": 0.08,
+    "corner_won": 0.07
+  },
+  "long_shot": {
+    "goal": 0.04,
+    "save": 0.2,
+    "miss": 0.4,
+    "blocked": 0.24,
+    "rebound": 0.05,
+    "corner_won": 0.07
+  },
+  "header_attempt": {
+    "goal": 0.1,
+    "save": 0.19,
+    "miss": 0.34,
+    "blocked": 0.13,
+    "rebound": 0.08,
+    "clearance": 0.16
+  },
+  "penalty": {
+    "goal": 0.76,
+    "saved": 0.13,
+    "missed": 0.08,
+    "post": 0.03
+  }
+}

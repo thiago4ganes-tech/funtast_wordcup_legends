@@ -1,0 +1,61 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "h2h_id",
+      "country_a_id",
+      "country_b_id",
+      "world_cup_matches",
+      "sample_size",
+      "weight_cap"
+    ],
+    "properties": {
+      "h2h_id": {
+        "type": "string"
+      },
+      "country_a_id": {
+        "type": "string"
+      },
+      "country_b_id": {
+        "type": "string"
+      },
+      "world_cup_matches": {
+        "type": "integer"
+      },
+      "country_a_wins": {
+        "type": "integer"
+      },
+      "country_b_wins": {
+        "type": "integer"
+      },
+      "draws": {
+        "type": "integer"
+      },
+      "goals_a": {
+        "type": "integer"
+      },
+      "goals_b": {
+        "type": "integer"
+      },
+      "knockout_matches": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "finals": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "sample_size": {
+        "type": "integer"
+      },
+      "weight_cap": {
+        "type": "number"
+      }
+    }
+  }
+}

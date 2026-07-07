@@ -1,0 +1,11 @@
+{
+  "src_datahub_fjelstul_worldcup": {
+    "name": "DataHub Football World Cup dataset sourced from Fjelstul World Cup Database",
+    "url": "https://datahub.io/football/worldcup",
+    "upstream": "Fjelstul World Cup Database",
+    "upstream_url": "https://github.com/jfjelstul/worldcup",
+    "license": "CC-BY-SA-4.0",
+    "data_origin_default": "real_structured",
+    "confidence_default": "A"
+  }
+}

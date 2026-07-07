@@ -1,0 +1,84 @@
+{
+  "generated_at": "2026-07-06",
+  "sources": [
+    {
+      "source_id": "src_fifa_data_centre",
+      "name": "FIFA Data Centre - International Match Archive",
+      "url": "https://inside.fifa.com/data-centre/matches",
+      "priority": 1,
+      "use_for": [
+        "matches",
+        "scores",
+        "teams",
+        "competition validation"
+      ],
+      "default_confidence": "A"
+    },
+    {
+      "source_id": "src_fjelstul_worldcup",
+      "name": "Fjelstul World Cup Database",
+      "url": "https://github.com/jfjelstul/worldcup",
+      "priority": 2,
+      "use_for": [
+        "matches",
+        "teams",
+        "players",
+        "squads",
+        "goals",
+        "penalty kicks",
+        "bookings",
+        "substitutions",
+        "standings"
+      ],
+      "default_confidence": "A"
+    },
+    {
+      "source_id": "src_datahub_worldcup",
+      "name": "DataHub FIFA World Cup",
+      "url": "https://datahub.io/football/worldcup",
+      "priority": 3,
+      "use_for": [
+        "csv/json access",
+        "fallback",
+        "cross-check"
+      ],
+      "default_confidence": "B"
+    },
+    {
+      "source_id": "src_openfootball_worldcup",
+      "name": "OpenFootball World Cup",
+      "url": "https://github.com/openfootball/worldcup",
+      "priority": 4,
+      "use_for": [
+        "fallback",
+        "cross-check",
+        "fixtures"
+      ],
+      "default_confidence": "B"
+    },
+    {
+      "source_id": "src_fbref_worldcup",
+      "name": "FBref World Cup Stats",
+      "url": "https://fbref.com/en/comps/1/",
+      "priority": 5,
+      "use_for": [
+        "advanced stats for recent World Cups"
+      ],
+      "default_confidence": "B"
+    },
+    {
+      "source_id": "src_statbunker_worldcup",
+      "name": "StatBunker World Cup",
+      "url": "https://www.statbunker.com/",
+      "priority": 6,
+      "use_for": [
+        "aggregated player/team rankings",
+        "goals",
+        "assists",
+        "cards",
+        "minutes"
+      ],
+      "default_confidence": "B"
+    }
+  ]
+}

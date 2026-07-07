@@ -1,0 +1,22 @@
+{
+  "type": "object",
+  "required": [
+    "match_single",
+    "batch_average",
+    "modifiers"
+  ],
+  "properties": {
+    "version": {
+      "type": "string"
+    },
+    "match_single": {
+      "type": "object"
+    },
+    "batch_average": {
+      "type": "object"
+    },
+    "modifiers": {
+      "type": "object"
+    }
+  }
+}

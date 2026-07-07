@@ -1,0 +1,12 @@
+{
+  "version": "stage_f_v1",
+  "weights": {
+    "scoreline_plausibility": 0.22,
+    "xg_plausibility": 0.2,
+    "shot_volume": 0.16,
+    "event_distribution": 0.14,
+    "player_role_sanity": 0.12,
+    "team_style_distinction": 0.1,
+    "narration_report_consistency": 0.06
+  }
+}

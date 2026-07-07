@@ -1,0 +1,59 @@
+{
+  "version": "stage_f_v1",
+  "targets": {
+    "avg_total_goals": {
+      "min": 1.6,
+      "max": 3.4,
+      "critical_min": 1.0,
+      "critical_max": 4.0
+    },
+    "avg_total_xg": {
+      "min": 1.6,
+      "max": 3.8,
+      "critical_min": 1.0,
+      "critical_max": 4.5
+    },
+    "avg_total_shots": {
+      "min": 16,
+      "max": 32,
+      "critical_min": 10,
+      "critical_max": 38
+    },
+    "avg_shots_on_target": {
+      "min": 5,
+      "max": 13,
+      "critical_min": 3,
+      "critical_max": 18
+    },
+    "avg_corners": {
+      "min": 4,
+      "max": 12,
+      "critical_min": 1,
+      "critical_max": 16
+    },
+    "avg_cards": {
+      "min": 1,
+      "max": 6,
+      "critical_min": 0,
+      "critical_max": 9
+    },
+    "penalty_goal_rate": {
+      "min": 0.68,
+      "max": 0.82,
+      "critical_min": 0.55,
+      "critical_max": 0.9
+    },
+    "own_goal_frequency": {
+      "min": 0.0,
+      "max": 0.04,
+      "critical_min": 0.0,
+      "critical_max": 0.08
+    },
+    "blowout_rate": {
+      "min": 0.0,
+      "max": 0.12,
+      "critical_min": 0.0,
+      "critical_max": 0.2
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "type": "object",
+  "required": [
+    "match_id",
+    "events",
+    "team_stats",
+    "player_stats",
+    "quality_flags"
+  ],
+  "properties": {
+    "match_id": {
+      "type": "string"
+    },
+    "events": {
+      "type": "array"
+    },
+    "team_stats": {
+      "type": "object"
+    },
+    "player_stats": {
+      "type": "object"
+    },
+    "quality_flags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "pair_id",
+      "team_wc_id",
+      "player_a_wc_id",
+      "player_b_wc_id",
+      "synergy_score_estimated",
+      "data_origin",
+      "confidence_level"
+    ],
+    "properties": {
+      "pair_id": {
+        "type": "string"
+      },
+      "team_wc_id": {
+        "type": "string"
+      },
+      "player_a_wc_id": {
+        "type": "string"
+      },
+      "player_b_wc_id": {
+        "type": "string"
+      },
+      "synergy_score_estimated": {
+        "type": "number"
+      },
+      "data_origin": {
+        "type": "string"
+      },
+      "confidence_level": {
+        "enum": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      }
+    }
+  }
+}

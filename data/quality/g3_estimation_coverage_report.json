@@ -1,0 +1,21 @@
+{
+  "generated_at": "2026-07-06",
+  "method_note": "Cobertura ponderada do LEGION após G3. A G3 não transforma estimativa em fato real; ela reduz lacunas criando proxies e sintéticos controlados.",
+  "before_g3": {
+    "real_plus_derived": 79.02,
+    "estimated_proxy": 8.0,
+    "synthetic_comparable": 0.0,
+    "missing": 12.98
+  },
+  "after_g3": {
+    "real_plus_derived": 79.02,
+    "estimated_proxy": 16.48,
+    "synthetic_comparable": 4.5,
+    "missing": 0.0
+  },
+  "delta": {
+    "estimated_proxy": 8.48,
+    "synthetic_comparable": 4.5,
+    "missing": -12.98
+  }
+}

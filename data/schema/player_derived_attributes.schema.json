@@ -1,0 +1,221 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "player_wc_id",
+      "team_wc_id",
+      "year",
+      "attributes",
+      "confidence_level",
+      "method_note"
+    ],
+    "properties": {
+      "player_wc_id": {
+        "type": "string"
+      },
+      "player_base_id": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "team_wc_id": {
+        "type": "string"
+      },
+      "country_id": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "year": {
+        "type": "integer"
+      },
+      "attributes": {
+        "type": "object",
+        "properties": {
+          "finishing": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "heading": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "dribbling": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "vision": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "passing": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "crossing": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "pace": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "power": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "off_ball_movement": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "marking": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "tackling": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "interception": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "aerial_defense": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "defensive_positioning": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "reflexes": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "handling": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "one_v_one": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "penalty_save": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "aerial_claim": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "decision": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "composure": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "clutch": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "leadership": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "discipline": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "reliability": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "stamina": {
+            "type": [
+              "number",
+              "null"
+            ]
+          }
+        }
+      },
+      "evidence_fields": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "formula_ids": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "confidence_level": {
+        "enum": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "method_note": {
+        "type": "string"
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "stage": "G2",
+  "checks": [
+    {
+      "id": "G2-001",
+      "name": "record origin summary generated",
+      "status": "done"
+    },
+    {
+      "id": "G2-002",
+      "name": "field coverage matrix generated",
+      "status": "done"
+    },
+    {
+      "id": "G2-003",
+      "name": "player coverage report generated",
+      "status": "done"
+    },
+    {
+      "id": "G2-004",
+      "name": "team coverage report generated",
+      "status": "done"
+    },
+    {
+      "id": "G2-005",
+      "name": "gap register generated",
+      "status": "done"
+    },
+    {
+      "id": "G2-006",
+      "name": "LEGION weighted coverage calculated",
+      "status": "done"
+    },
+    {
+      "id": "G2-007",
+      "name": "G3 estimation plan defined",
+      "status": "done"
+    }
+  ]
+}

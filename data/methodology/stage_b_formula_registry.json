@@ -1,0 +1,59 @@
+{
+  "generated_at": "2026-07-06",
+  "stage": "B",
+  "formulas": [
+    {
+      "metric": "goals_for_per_game",
+      "formula": "goals_for / games",
+      "requires": [
+        "goals_for",
+        "games"
+      ],
+      "null_if_missing": true
+    },
+    {
+      "metric": "goals_against_per_game",
+      "formula": "goals_against / games",
+      "requires": [
+        "goals_against",
+        "games"
+      ],
+      "null_if_missing": true
+    },
+    {
+      "metric": "points_equivalent",
+      "formula": "wins * 3 + draws",
+      "requires": [
+        "wins",
+        "draws"
+      ],
+      "null_if_missing": true
+    },
+    {
+      "metric": "goals_per_90",
+      "formula": "goals / minutes * 90",
+      "requires": [
+        "goals",
+        "minutes"
+      ],
+      "null_if_missing": true
+    },
+    {
+      "metric": "team_goal_share",
+      "formula": "player_goals / team_goals_for",
+      "requires": [
+        "player_goals",
+        "team_goals_for"
+      ],
+      "null_if_missing": true
+    },
+    {
+      "metric": "head_to_head_weight_cap",
+      "formula": "min(0.08, sample_size * 0.015)",
+      "requires": [
+        "sample_size"
+      ],
+      "null_if_missing": false
+    }
+  ]
+}

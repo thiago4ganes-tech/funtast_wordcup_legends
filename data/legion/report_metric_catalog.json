@@ -1,0 +1,32 @@
+{
+  "version": "stage_e_v1",
+  "required_team_metrics": [
+    "goals",
+    "xg",
+    "shots",
+    "shots_on_target",
+    "crosses",
+    "corners",
+    "fouls",
+    "cards",
+    "turnovers",
+    "final_third_entries"
+  ],
+  "required_player_metrics": [
+    "rating",
+    "goals",
+    "assists",
+    "shots",
+    "key_passes",
+    "crosses",
+    "defensive_actions",
+    "errors"
+  ],
+  "derived_report_metrics": {
+    "finishing_efficiency": "goals / xg",
+    "shot_accuracy": "shots_on_target / shots",
+    "chance_quality": "xg / shots",
+    "territorial_pressure": "final_third_entries + corners + crosses",
+    "defensive_disruption": "turnovers_forced + interceptions + blocked_shots"
+  }
+}

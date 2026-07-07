@@ -1,0 +1,65 @@
+{
+  "stage": "WCHD_STAGE_A",
+  "critical_checks": [
+    {
+      "id": "A-001",
+      "name": "world_cups loaded",
+      "status": "pending"
+    },
+    {
+      "id": "A-002",
+      "name": "countries loaded",
+      "status": "pending"
+    },
+    {
+      "id": "A-003",
+      "name": "team_world_cup loaded",
+      "status": "pending"
+    },
+    {
+      "id": "A-004",
+      "name": "matches loaded",
+      "status": "pending"
+    },
+    {
+      "id": "A-005",
+      "name": "player_base loaded",
+      "status": "pending"
+    },
+    {
+      "id": "A-006",
+      "name": "player_world_cup loaded",
+      "status": "pending"
+    },
+    {
+      "id": "A-007",
+      "name": "all records have source_primary",
+      "status": "pending"
+    },
+    {
+      "id": "A-008",
+      "name": "all records have source_confidence",
+      "status": "pending"
+    },
+    {
+      "id": "A-009",
+      "name": "no duplicate IDs",
+      "status": "pending"
+    },
+    {
+      "id": "A-010",
+      "name": "all player_world_cup map to player_base",
+      "status": "pending"
+    },
+    {
+      "id": "A-011",
+      "name": "all matches have two teams",
+      "status": "pending"
+    },
+    {
+      "id": "A-012",
+      "name": "events map to existing matches",
+      "status": "pending"
+    }
+  ]
+}

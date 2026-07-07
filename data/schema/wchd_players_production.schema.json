@@ -1,0 +1,41 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "player_wc_id",
+      "player_base_id",
+      "team_wc_id",
+      "year",
+      "real_metrics",
+      "technical_estimates",
+      "record_origin_composition"
+    ],
+    "properties": {
+      "player_wc_id": {
+        "type": "string"
+      },
+      "player_base_id": {
+        "type": "string"
+      },
+      "team_wc_id": {
+        "type": "string"
+      },
+      "year": {
+        "type": "integer"
+      },
+      "real_metrics": {
+        "type": "object"
+      },
+      "technical_estimates": {
+        "type": "object"
+      },
+      "record_origin_composition": {
+        "type": "object"
+      },
+      "production_ready": {
+        "type": "boolean"
+      }
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "possession": {
+    "boost_events": {
+      "build_up": 0.06,
+      "central_progression": 0.05,
+      "recycle_possession": 0.04
+    },
+    "reduce_events": {
+      "long_ball": -0.04,
+      "turnover": -0.03
+    }
+  },
+  "transition": {
+    "boost_events": {
+      "transition_attack": 0.08,
+      "through_ball": 0.05,
+      "dribble_carry": 0.03
+    },
+    "reduce_events": {
+      "recycle_possession": -0.04
+    }
+  },
+  "wide_aerial": {
+    "boost_events": {
+      "wide_progression": 0.05,
+      "cross": 0.07,
+      "header_attempt": 0.05
+    },
+    "reduce_events": {
+      "central_progression": -0.03
+    }
+  },
+  "defensive_block": {
+    "boost_events": {
+      "clearance": 0.06,
+      "interception": 0.05,
+      "blocked": 0.04
+    },
+    "reduce_events": {
+      "transition_attack": -0.02
+    }
+  }
+}

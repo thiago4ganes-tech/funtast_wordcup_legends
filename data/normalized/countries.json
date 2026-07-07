@@ -1,0 +1,38 @@
+[
+  {
+    "country_id": "country_brazil",
+    "country_name": "Brazil",
+    "fifa_code": "BRA",
+    "confederation": "CONMEBOL",
+    "historical_name_variation": [
+      "Brasil"
+    ],
+    "active_flag": true,
+    "source_primary": "src_fifa_data_centre",
+    "source_confidence": "A"
+  },
+  {
+    "country_id": "country_germany",
+    "country_name": "Germany",
+    "fifa_code": "GER",
+    "confederation": "UEFA",
+    "historical_name_variation": [
+      "Deutschland"
+    ],
+    "active_flag": true,
+    "source_primary": "src_fifa_data_centre",
+    "source_confidence": "A"
+  },
+  {
+    "country_id": "country_west_germany",
+    "country_name": "West Germany",
+    "fifa_code": "FRG",
+    "confederation": "UEFA",
+    "historical_name_variation": [
+      "Federal Republic of Germany"
+    ],
+    "active_flag": false,
+    "source_primary": "src_fifa_data_centre",
+    "source_confidence": "A"
+  }
+]

@@ -1,0 +1,45 @@
+{
+  "stage": "WCHD_STAGE_B",
+  "critical_checks": [
+    {
+      "id": "B-001",
+      "name": "team_wc_metrics generated",
+      "status": "pending"
+    },
+    {
+      "id": "B-002",
+      "name": "player_wc_metrics generated",
+      "status": "pending"
+    },
+    {
+      "id": "B-003",
+      "name": "player_pair_minutes generated",
+      "status": "pending"
+    },
+    {
+      "id": "B-004",
+      "name": "head_to_head_metrics generated",
+      "status": "pending"
+    },
+    {
+      "id": "B-005",
+      "name": "zero vs unknown rule applied",
+      "status": "pending"
+    },
+    {
+      "id": "B-006",
+      "name": "all metrics have confidence_level",
+      "status": "pending"
+    },
+    {
+      "id": "B-007",
+      "name": "head_to_head weight_cap applied",
+      "status": "pending"
+    },
+    {
+      "id": "B-008",
+      "name": "metrics with missing base return null",
+      "status": "pending"
+    }
+  ]
+}

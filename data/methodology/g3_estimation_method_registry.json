@@ -1,0 +1,85 @@
+{
+  "generated_at": "2026-07-06",
+  "stage": "G3",
+  "methods": [
+    {
+      "method_id": "G3_player_role_era_team_context_v1",
+      "outputs": [
+        "shots",
+        "shots_on_target",
+        "xg_estimated",
+        "passes",
+        "key_passes",
+        "progressive_passes",
+        "dribbles",
+        "tackles",
+        "interceptions",
+        "aerial_duels",
+        "pressures",
+        "saves"
+      ],
+      "input_basis": [
+        "player role",
+        "minutes",
+        "goals",
+        "goals_per_90",
+        "team_goal_share",
+        "team attack/defense profile"
+      ],
+      "origin_mix": [
+        "estimated_proxy",
+        "synthetic_comparable"
+      ],
+      "max_confidence": "C"
+    },
+    {
+      "method_id": "G3_team_style_from_results_and_goal_profile_v1",
+      "outputs": [
+        "possession_avg",
+        "shots_for",
+        "shots_against",
+        "passes_completed",
+        "crosses",
+        "pressing_intensity",
+        "direct_attacks",
+        "tactical_style_profile"
+      ],
+      "input_basis": [
+        "goals_for_per_game",
+        "goals_against_per_game",
+        "win_rate",
+        "goal_difference"
+      ],
+      "origin_mix": [
+        "estimated_proxy",
+        "synthetic_comparable"
+      ],
+      "max_confidence": "C"
+    },
+    {
+      "method_id": "G3_pair_minutes_role_complementarity_v1",
+      "outputs": [
+        "synergy_type_estimated",
+        "direct_goal_combinations_estimated",
+        "synergy_score_estimated"
+      ],
+      "input_basis": [
+        "shared_minutes_estimated",
+        "starts_together",
+        "matches_together",
+        "team_goals_with_both_on_pitch",
+        "role complementarity"
+      ],
+      "origin_mix": [
+        "estimated_proxy"
+      ],
+      "max_confidence": "C"
+    }
+  ],
+  "rules": [
+    "Nenhum campo estimado pode substituir ou sobrescrever dado real.",
+    "Todo campo estimado deve carregar data_origin, estimation_method, confidence_level e engine_weight_limit.",
+    "Campos synthetic_comparable devem ter peso limitado no motor.",
+    "G4 deve consolidar e expor percentuais reais/estimados/sintéticos por jogador, seleção e campo."
+  ]
+}

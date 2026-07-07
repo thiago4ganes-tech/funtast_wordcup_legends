@@ -1,0 +1,31 @@
+{
+  "release_candidate": "LEGION_0.4_RC1",
+  "created_at": "2026-07-06",
+  "engine_modes": [
+    "legacy",
+    "calibrated",
+    "comparison"
+  ],
+  "requires": [
+    "stage_a_structural_foundation",
+    "stage_b_observed_metrics",
+    "stage_c_derived_attributes",
+    "stage_d_calibrated_event_graph",
+    "stage_e_integration_telemetry"
+  ],
+  "go_no_go": {
+    "go": [
+      "quality_gate_passed",
+      "regression_passed",
+      "manual_playtest_passed",
+      "rollback_available"
+    ],
+    "no_go": [
+      "critical_metric_failure",
+      "runtime_error",
+      "lineup_break",
+      "report_contradiction",
+      "github_pages_break"
+    ]
+  }
+}

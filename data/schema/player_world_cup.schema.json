@@ -1,0 +1,90 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "player_wc_id",
+      "player_base_id",
+      "country_id",
+      "team_wc_id",
+      "year",
+      "primary_position_wc",
+      "source_primary",
+      "source_confidence"
+    ],
+    "properties": {
+      "player_wc_id": {
+        "type": [
+          "string",
+          "integer",
+          "boolean",
+          "array",
+          "null"
+        ]
+      },
+      "player_base_id": {
+        "type": [
+          "string",
+          "integer",
+          "boolean",
+          "array",
+          "null"
+        ]
+      },
+      "country_id": {
+        "type": [
+          "string",
+          "integer",
+          "boolean",
+          "array",
+          "null"
+        ]
+      },
+      "team_wc_id": {
+        "type": [
+          "string",
+          "integer",
+          "boolean",
+          "array",
+          "null"
+        ]
+      },
+      "year": {
+        "type": [
+          "string",
+          "integer",
+          "boolean",
+          "array",
+          "null"
+        ]
+      },
+      "primary_position_wc": {
+        "type": [
+          "string",
+          "integer",
+          "boolean",
+          "array",
+          "null"
+        ]
+      },
+      "source_primary": {
+        "type": [
+          "string",
+          "integer",
+          "boolean",
+          "array",
+          "null"
+        ]
+      },
+      "source_confidence": {
+        "type": [
+          "string",
+          "integer",
+          "boolean",
+          "array",
+          "null"
+        ]
+      }
+    }
+  }
+}

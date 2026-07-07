@@ -1,0 +1,55 @@
+{
+  "stage": "WCHD_STAGE_E",
+  "critical_checks": [
+    {
+      "id": "E-001",
+      "name": "integration bridge created",
+      "status": "done"
+    },
+    {
+      "id": "E-002",
+      "name": "telemetry collector created",
+      "status": "done"
+    },
+    {
+      "id": "E-003",
+      "name": "quality gate created",
+      "status": "done"
+    },
+    {
+      "id": "E-004",
+      "name": "match report analyzer created",
+      "status": "done"
+    },
+    {
+      "id": "E-005",
+      "name": "narration event mapper created",
+      "status": "done"
+    },
+    {
+      "id": "E-006",
+      "name": "batch runner created",
+      "status": "done"
+    },
+    {
+      "id": "E-007",
+      "name": "feature flag implemented in current app",
+      "status": "pending"
+    },
+    {
+      "id": "E-008",
+      "name": "calibrated mode connected to UI",
+      "status": "pending"
+    },
+    {
+      "id": "E-009",
+      "name": "100-run test batches executed",
+      "status": "pending"
+    },
+    {
+      "id": "E-010",
+      "name": "thresholds approved after calibration",
+      "status": "pending"
+    }
+  ]
+}

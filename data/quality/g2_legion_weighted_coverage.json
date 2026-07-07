@@ -1,0 +1,86 @@
+{
+  "method_note": "Percentual ponderado por peso declarado de uso no motor; não é percentual bruto de registros.",
+  "weights_total": 100,
+  "components": [
+    {
+      "component": "competition_team_match_structure",
+      "weight": 12,
+      "origin_class": "real_structured",
+      "coverage_percent": 100,
+      "basis": "world_cups, countries, team_world_cup, matches"
+    },
+    {
+      "component": "squads_players_positions",
+      "weight": 14,
+      "origin_class": "real_structured",
+      "coverage_percent": 100,
+      "basis": "player_base, player_world_cup, squad_membership"
+    },
+    {
+      "component": "goals_cards_penalties_substitutions",
+      "weight": 14,
+      "origin_class": "real_structured_or_derived_from_real_structured",
+      "coverage_percent": 100,
+      "basis": "goals, bookings, penalty_kicks, substitutions"
+    },
+    {
+      "component": "appearances_and_minutes",
+      "weight": 12,
+      "origin_class": "derived_from_real_structured",
+      "coverage_percent": 100,
+      "basis": "player_match_appearance with derived minutes"
+    },
+    {
+      "component": "team_performance_metrics",
+      "weight": 10,
+      "origin_class": "derived_from_real_structured",
+      "coverage_percent": 100,
+      "basis": "team_wc_metrics"
+    },
+    {
+      "component": "player_goal_discipline_penalty_metrics",
+      "weight": 14,
+      "origin_class": "derived_from_real_structured",
+      "coverage_percent": 93,
+      "basis": "player_wc_metrics excluding missing assists; assist gap reduces component"
+    },
+    {
+      "component": "head_to_head",
+      "weight": 4,
+      "origin_class": "derived_from_real_structured",
+      "coverage_percent": 100,
+      "basis": "head_to_head_metrics"
+    },
+    {
+      "component": "player_pair_minutes_synergy_proxy",
+      "weight": 8,
+      "origin_class": "estimated_proxy",
+      "coverage_percent": 100,
+      "basis": "player_pair_minutes estimated from appearances and substitutions"
+    },
+    {
+      "component": "advanced_player_actions",
+      "weight": 9,
+      "origin_class": "missing",
+      "coverage_percent": 0,
+      "basis": "passes, shots, dribbles, tackles, interceptions, pressures, saves"
+    },
+    {
+      "component": "team_style_metrics",
+      "weight": 3,
+      "origin_class": "missing",
+      "coverage_percent": 0,
+      "basis": "possession, pressing, crosses, set pieces, shot profile"
+    }
+  ],
+  "weighted_origin_percentages": {
+    "real_structured": 26.0,
+    "derived_from_real_structured": 53.02,
+    "missing": 12.98,
+    "estimated_proxy": 8.0
+  },
+  "weighted_real_plus_derived_percent": 79.02,
+  "weighted_estimated_proxy_percent": 8.0,
+  "weighted_missing_percent": 12.98,
+  "weighted_synthetic_comparable_percent": 0
+}

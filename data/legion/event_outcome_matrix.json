@@ -1,0 +1,84 @@
+{
+  "events": [
+    {
+      "event_type": "through_ball",
+      "positive_modifiers": [
+        "chance_through_ball_success_bonus",
+        "team_transition_speed_modifier"
+      ],
+      "negative_modifiers": [
+        "chance_interception_bonus",
+        "team_defensive_resistance_modifier"
+      ],
+      "outcomes": [
+        "box_shot",
+        "goalkeeper_sweep",
+        "interception",
+        "offside",
+        "heavy_touch",
+        "foul_won"
+      ]
+    },
+    {
+      "event_type": "cross",
+      "positive_modifiers": [
+        "chance_cross_accuracy_bonus",
+        "team_aerial_threat_modifier"
+      ],
+      "negative_modifiers": [
+        "chance_claim_cross_bonus",
+        "team_defensive_resistance_modifier"
+      ],
+      "outcomes": [
+        "header_attempt",
+        "volley_attempt",
+        "clearance",
+        "goalkeeper_claim",
+        "cross_blocked",
+        "overhit",
+        "corner_won",
+        "penalty_incident"
+      ]
+    },
+    {
+      "event_type": "box_shot",
+      "positive_modifiers": [
+        "chance_shot_conversion_bonus",
+        "chance_big_chance_conversion_bonus",
+        "team_attack_volume_modifier"
+      ],
+      "negative_modifiers": [
+        "chance_save_bonus",
+        "chance_block_bonus",
+        "team_defensive_resistance_modifier"
+      ],
+      "outcomes": [
+        "goal",
+        "save",
+        "miss",
+        "blocked",
+        "rebound",
+        "corner_won"
+      ]
+    },
+    {
+      "event_type": "header_attempt",
+      "positive_modifiers": [
+        "chance_header_goal_bonus",
+        "team_aerial_threat_modifier"
+      ],
+      "negative_modifiers": [
+        "chance_claim_cross_bonus",
+        "team_defensive_resistance_modifier"
+      ],
+      "outcomes": [
+        "goal",
+        "save",
+        "miss",
+        "blocked",
+        "rebound",
+        "clearance"
+      ]
+    }
+  ]
+}

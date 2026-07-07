@@ -1,0 +1,60 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "country_id",
+      "country_name",
+      "active_flag",
+      "source_primary",
+      "source_confidence"
+    ],
+    "properties": {
+      "country_id": {
+        "type": [
+          "string",
+          "integer",
+          "boolean",
+          "array",
+          "null"
+        ]
+      },
+      "country_name": {
+        "type": [
+          "string",
+          "integer",
+          "boolean",
+          "array",
+          "null"
+        ]
+      },
+      "active_flag": {
+        "type": [
+          "string",
+          "integer",
+          "boolean",
+          "array",
+          "null"
+        ]
+      },
+      "source_primary": {
+        "type": [
+          "string",
+          "integer",
+          "boolean",
+          "array",
+          "null"
+        ]
+      },
+      "source_confidence": {
+        "type": [
+          "string",
+          "integer",
+          "boolean",
+          "array",
+          "null"
+        ]
+      }
+    }
+  }
+}

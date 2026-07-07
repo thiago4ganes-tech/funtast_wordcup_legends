@@ -1,0 +1,30 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "team_wc_id",
+      "modifiers",
+      "confidence_level"
+    ],
+    "properties": {
+      "team_wc_id": {
+        "type": "string"
+      },
+      "modifiers": {
+        "type": "object"
+      },
+      "confidence_level": {
+        "enum": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "method_note": {
+        "type": "string"
+      }
+    }
+  }
+}

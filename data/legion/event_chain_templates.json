@@ -1,0 +1,79 @@
+[
+  {
+    "chain_id": "wide_cross_header",
+    "sequence": [
+      "build_up",
+      "wide_progression",
+      "cross",
+      "header_attempt"
+    ],
+    "terminal_options": [
+      "goal",
+      "save",
+      "miss",
+      "clearance",
+      "corner_won"
+    ],
+    "style_affinity": [
+      "wide_aerial",
+      "transition"
+    ]
+  },
+  {
+    "chain_id": "central_through_ball",
+    "sequence": [
+      "build_up",
+      "central_progression",
+      "through_ball",
+      "box_shot"
+    ],
+    "terminal_options": [
+      "goal",
+      "save",
+      "miss",
+      "blocked",
+      "offside"
+    ],
+    "style_affinity": [
+      "possession",
+      "transition"
+    ]
+  },
+  {
+    "chain_id": "fast_transition_shot",
+    "sequence": [
+      "turnover",
+      "transition_attack",
+      "through_ball",
+      "box_shot"
+    ],
+    "terminal_options": [
+      "goal",
+      "save",
+      "miss",
+      "blocked",
+      "tactical_foul"
+    ],
+    "style_affinity": [
+      "transition"
+    ]
+  },
+  {
+    "chain_id": "set_piece_aerial",
+    "sequence": [
+      "foul_won",
+      "set_piece_cross",
+      "header_attempt"
+    ],
+    "terminal_options": [
+      "goal",
+      "save",
+      "miss",
+      "clearance",
+      "foul_attacking"
+    ],
+    "style_affinity": [
+      "wide_aerial"
+    ]
+  }
+]

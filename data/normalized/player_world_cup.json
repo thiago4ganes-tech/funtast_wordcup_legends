@@ -1,0 +1,19 @@
+[
+  {
+    "player_wc_id": "player_ronaldo_nazario_2002",
+    "player_base_id": "player_ronaldo_nazario",
+    "country_id": "country_brazil",
+    "team_wc_id": "team_brazil_2002",
+    "year": 2002,
+    "squad_number": 9,
+    "age_at_tournament": 25,
+    "club_at_time": null,
+    "primary_position_wc": "CA",
+    "secondary_positions_wc": [
+      "SA"
+    ],
+    "squad_status": "starter",
+    "source_primary": "src_fjelstul_worldcup",
+    "source_confidence": "A"
+  }
+]

@@ -1,0 +1,110 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "match_id",
+      "world_cup_id",
+      "year",
+      "stage",
+      "team_home_id",
+      "team_away_id",
+      "home_score",
+      "away_score",
+      "source_primary",
+      "source_confidence"
+    ],
+    "properties": {
+      "match_id": {
+        "type": [
+          "string",
+          "integer",
+          "boolean",
+          "array",
+          "null"
+        ]
+      },
+      "world_cup_id": {
+        "type": [
+          "string",
+          "integer",
+          "boolean",
+          "array",
+          "null"
+        ]
+      },
+      "year": {
+        "type": [
+          "string",
+          "integer",
+          "boolean",
+          "array",
+          "null"
+        ]
+      },
+      "stage": {
+        "type": [
+          "string",
+          "integer",
+          "boolean",
+          "array",
+          "null"
+        ]
+      },
+      "team_home_id": {
+        "type": [
+          "string",
+          "integer",
+          "boolean",
+          "array",
+          "null"
+        ]
+      },
+      "team_away_id": {
+        "type": [
+          "string",
+          "integer",
+          "boolean",
+          "array",
+          "null"
+        ]
+      },
+      "home_score": {
+        "type": [
+          "string",
+          "integer",
+          "boolean",
+          "array",
+          "null"
+        ]
+      },
+      "away_score": {
+        "type": [
+          "string",
+          "integer",
+          "boolean",
+          "array",
+          "null"
+        ]
+      },
+      "source_primary": {
+        "type": [
+          "string",
+          "integer",
+          "boolean",
+          "array",
+          "null"
+        ]
+      },
+      "source_confidence": {
+        "type": [
+          "string",
+          "integer",
+          "boolean",
+          "array",
+          "null"
+        ]
+      }
+    }
+  }
+}

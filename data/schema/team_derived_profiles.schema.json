@@ -1,0 +1,94 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "team_wc_id",
+      "country_id",
+      "year",
+      "profiles",
+      "confidence_level"
+    ],
+    "properties": {
+      "team_wc_id": {
+        "type": "string"
+      },
+      "country_id": {
+        "type": "string"
+      },
+      "year": {
+        "type": "integer"
+      },
+      "profiles": {
+        "type": "object",
+        "properties": {
+          "attack_profile": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "defense_profile": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "transition_profile": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "possession_profile": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "aerial_profile": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "set_piece_profile": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "knockout_resilience_profile": {
+            "type": [
+              "number",
+              "null"
+            ]
+          }
+        }
+      },
+      "evidence_fields": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "formula_ids": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "confidence_level": {
+        "enum": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "method_note": {
+        "type": "string"
+      }
+    }
+  }
+}

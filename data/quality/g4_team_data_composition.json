@@ -1,0 +1,2965 @@
+{
+  "generated_at": "2026-07-07",
+  "teams": [
+    {
+      "team_wc_id": "team_algeria_1986",
+      "team_display_name": "Algeria 1986",
+      "year": 1986,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_argentina_1986",
+      "team_display_name": "Argentina 1986",
+      "year": 1986,
+      "real_structured_fields": 6,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_belgium_1986",
+      "team_display_name": "Belgium 1986",
+      "year": 1986,
+      "real_structured_fields": 6,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_brazil_1986",
+      "team_display_name": "Brazil 1986",
+      "year": 1986,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_bulgaria_1986",
+      "team_display_name": "Bulgaria 1986",
+      "year": 1986,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_canada_1986",
+      "team_display_name": "Canada 1986",
+      "year": 1986,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_denmark_1986",
+      "team_display_name": "Denmark 1986",
+      "year": 1986,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_england_1986",
+      "team_display_name": "England 1986",
+      "year": 1986,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_france_1986",
+      "team_display_name": "France 1986",
+      "year": 1986,
+      "real_structured_fields": 6,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_hungary_1986",
+      "team_display_name": "Hungary 1986",
+      "year": 1986,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_iraq_1986",
+      "team_display_name": "Iraq 1986",
+      "year": 1986,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_italy_1986",
+      "team_display_name": "Italy 1986",
+      "year": 1986,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_mexico_1986",
+      "team_display_name": "Mexico 1986",
+      "year": 1986,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_morocco_1986",
+      "team_display_name": "Morocco 1986",
+      "year": 1986,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_northern_ireland_1986",
+      "team_display_name": "Northern Ireland 1986",
+      "year": 1986,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_paraguay_1986",
+      "team_display_name": "Paraguay 1986",
+      "year": 1986,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_poland_1986",
+      "team_display_name": "Poland 1986",
+      "year": 1986,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_portugal_1986",
+      "team_display_name": "Portugal 1986",
+      "year": 1986,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_scotland_1986",
+      "team_display_name": "Scotland 1986",
+      "year": 1986,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_south_korea_1986",
+      "team_display_name": "South Korea 1986",
+      "year": 1986,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_soviet_union_1986",
+      "team_display_name": "Soviet Union 1986",
+      "year": 1986,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_spain_1986",
+      "team_display_name": "Spain 1986",
+      "year": 1986,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_uruguay_1986",
+      "team_display_name": "Uruguay 1986",
+      "year": 1986,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_west_germany_1986",
+      "team_display_name": "West Germany 1986",
+      "year": 1986,
+      "real_structured_fields": 6,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_argentina_1990",
+      "team_display_name": "Argentina 1990",
+      "year": 1990,
+      "real_structured_fields": 6,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_austria_1990",
+      "team_display_name": "Austria 1990",
+      "year": 1990,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_belgium_1990",
+      "team_display_name": "Belgium 1990",
+      "year": 1990,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_brazil_1990",
+      "team_display_name": "Brazil 1990",
+      "year": 1990,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_cameroon_1990",
+      "team_display_name": "Cameroon 1990",
+      "year": 1990,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_colombia_1990",
+      "team_display_name": "Colombia 1990",
+      "year": 1990,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_costa_rica_1990",
+      "team_display_name": "Costa Rica 1990",
+      "year": 1990,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_czechoslovakia_1990",
+      "team_display_name": "Czechoslovakia 1990",
+      "year": 1990,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_egypt_1990",
+      "team_display_name": "Egypt 1990",
+      "year": 1990,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_england_1990",
+      "team_display_name": "England 1990",
+      "year": 1990,
+      "real_structured_fields": 6,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_italy_1990",
+      "team_display_name": "Italy 1990",
+      "year": 1990,
+      "real_structured_fields": 6,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_netherlands_1990",
+      "team_display_name": "Netherlands 1990",
+      "year": 1990,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_republic_of_ireland_1990",
+      "team_display_name": "Republic of Ireland 1990",
+      "year": 1990,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_romania_1990",
+      "team_display_name": "Romania 1990",
+      "year": 1990,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_scotland_1990",
+      "team_display_name": "Scotland 1990",
+      "year": 1990,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_south_korea_1990",
+      "team_display_name": "South Korea 1990",
+      "year": 1990,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_soviet_union_1990",
+      "team_display_name": "Soviet Union 1990",
+      "year": 1990,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_spain_1990",
+      "team_display_name": "Spain 1990",
+      "year": 1990,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_sweden_1990",
+      "team_display_name": "Sweden 1990",
+      "year": 1990,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_united_arab_emirates_1990",
+      "team_display_name": "United Arab Emirates 1990",
+      "year": 1990,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_united_states_1990",
+      "team_display_name": "United States 1990",
+      "year": 1990,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_uruguay_1990",
+      "team_display_name": "Uruguay 1990",
+      "year": 1990,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_west_germany_1990",
+      "team_display_name": "West Germany 1990",
+      "year": 1990,
+      "real_structured_fields": 6,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_yugoslavia_1990",
+      "team_display_name": "Yugoslavia 1990",
+      "year": 1990,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_argentina_1994",
+      "team_display_name": "Argentina 1994",
+      "year": 1994,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_belgium_1994",
+      "team_display_name": "Belgium 1994",
+      "year": 1994,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_bolivia_1994",
+      "team_display_name": "Bolivia 1994",
+      "year": 1994,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_brazil_1994",
+      "team_display_name": "Brazil 1994",
+      "year": 1994,
+      "real_structured_fields": 6,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_bulgaria_1994",
+      "team_display_name": "Bulgaria 1994",
+      "year": 1994,
+      "real_structured_fields": 6,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_cameroon_1994",
+      "team_display_name": "Cameroon 1994",
+      "year": 1994,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_colombia_1994",
+      "team_display_name": "Colombia 1994",
+      "year": 1994,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_germany_1994",
+      "team_display_name": "Germany 1994",
+      "year": 1994,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_greece_1994",
+      "team_display_name": "Greece 1994",
+      "year": 1994,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_italy_1994",
+      "team_display_name": "Italy 1994",
+      "year": 1994,
+      "real_structured_fields": 6,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_mexico_1994",
+      "team_display_name": "Mexico 1994",
+      "year": 1994,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_morocco_1994",
+      "team_display_name": "Morocco 1994",
+      "year": 1994,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_netherlands_1994",
+      "team_display_name": "Netherlands 1994",
+      "year": 1994,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_nigeria_1994",
+      "team_display_name": "Nigeria 1994",
+      "year": 1994,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_norway_1994",
+      "team_display_name": "Norway 1994",
+      "year": 1994,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_republic_of_ireland_1994",
+      "team_display_name": "Republic of Ireland 1994",
+      "year": 1994,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_romania_1994",
+      "team_display_name": "Romania 1994",
+      "year": 1994,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_russia_1994",
+      "team_display_name": "Russia 1994",
+      "year": 1994,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_saudi_arabia_1994",
+      "team_display_name": "Saudi Arabia 1994",
+      "year": 1994,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_south_korea_1994",
+      "team_display_name": "South Korea 1994",
+      "year": 1994,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_spain_1994",
+      "team_display_name": "Spain 1994",
+      "year": 1994,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_sweden_1994",
+      "team_display_name": "Sweden 1994",
+      "year": 1994,
+      "real_structured_fields": 6,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_switzerland_1994",
+      "team_display_name": "Switzerland 1994",
+      "year": 1994,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_united_states_1994",
+      "team_display_name": "United States 1994",
+      "year": 1994,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_argentina_1998",
+      "team_display_name": "Argentina 1998",
+      "year": 1998,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_austria_1998",
+      "team_display_name": "Austria 1998",
+      "year": 1998,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_belgium_1998",
+      "team_display_name": "Belgium 1998",
+      "year": 1998,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_brazil_1998",
+      "team_display_name": "Brazil 1998",
+      "year": 1998,
+      "real_structured_fields": 6,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_bulgaria_1998",
+      "team_display_name": "Bulgaria 1998",
+      "year": 1998,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_cameroon_1998",
+      "team_display_name": "Cameroon 1998",
+      "year": 1998,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_chile_1998",
+      "team_display_name": "Chile 1998",
+      "year": 1998,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_colombia_1998",
+      "team_display_name": "Colombia 1998",
+      "year": 1998,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_croatia_1998",
+      "team_display_name": "Croatia 1998",
+      "year": 1998,
+      "real_structured_fields": 6,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_denmark_1998",
+      "team_display_name": "Denmark 1998",
+      "year": 1998,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_england_1998",
+      "team_display_name": "England 1998",
+      "year": 1998,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_france_1998",
+      "team_display_name": "France 1998",
+      "year": 1998,
+      "real_structured_fields": 6,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_germany_1998",
+      "team_display_name": "Germany 1998",
+      "year": 1998,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_iran_1998",
+      "team_display_name": "Iran 1998",
+      "year": 1998,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_italy_1998",
+      "team_display_name": "Italy 1998",
+      "year": 1998,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_jamaica_1998",
+      "team_display_name": "Jamaica 1998",
+      "year": 1998,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_japan_1998",
+      "team_display_name": "Japan 1998",
+      "year": 1998,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_mexico_1998",
+      "team_display_name": "Mexico 1998",
+      "year": 1998,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_morocco_1998",
+      "team_display_name": "Morocco 1998",
+      "year": 1998,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_netherlands_1998",
+      "team_display_name": "Netherlands 1998",
+      "year": 1998,
+      "real_structured_fields": 6,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_nigeria_1998",
+      "team_display_name": "Nigeria 1998",
+      "year": 1998,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_norway_1998",
+      "team_display_name": "Norway 1998",
+      "year": 1998,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_paraguay_1998",
+      "team_display_name": "Paraguay 1998",
+      "year": 1998,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_romania_1998",
+      "team_display_name": "Romania 1998",
+      "year": 1998,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_saudi_arabia_1998",
+      "team_display_name": "Saudi Arabia 1998",
+      "year": 1998,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_scotland_1998",
+      "team_display_name": "Scotland 1998",
+      "year": 1998,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_south_africa_1998",
+      "team_display_name": "South Africa 1998",
+      "year": 1998,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_south_korea_1998",
+      "team_display_name": "South Korea 1998",
+      "year": 1998,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_spain_1998",
+      "team_display_name": "Spain 1998",
+      "year": 1998,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_tunisia_1998",
+      "team_display_name": "Tunisia 1998",
+      "year": 1998,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_united_states_1998",
+      "team_display_name": "United States 1998",
+      "year": 1998,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_yugoslavia_1998",
+      "team_display_name": "Yugoslavia 1998",
+      "year": 1998,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_argentina_2002",
+      "team_display_name": "Argentina 2002",
+      "year": 2002,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_belgium_2002",
+      "team_display_name": "Belgium 2002",
+      "year": 2002,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_brazil_2002",
+      "team_display_name": "Brazil 2002",
+      "year": 2002,
+      "real_structured_fields": 6,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_cameroon_2002",
+      "team_display_name": "Cameroon 2002",
+      "year": 2002,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_china_2002",
+      "team_display_name": "China 2002",
+      "year": 2002,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_costa_rica_2002",
+      "team_display_name": "Costa Rica 2002",
+      "year": 2002,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_croatia_2002",
+      "team_display_name": "Croatia 2002",
+      "year": 2002,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_denmark_2002",
+      "team_display_name": "Denmark 2002",
+      "year": 2002,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_ecuador_2002",
+      "team_display_name": "Ecuador 2002",
+      "year": 2002,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_england_2002",
+      "team_display_name": "England 2002",
+      "year": 2002,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_france_2002",
+      "team_display_name": "France 2002",
+      "year": 2002,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_germany_2002",
+      "team_display_name": "Germany 2002",
+      "year": 2002,
+      "real_structured_fields": 6,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_italy_2002",
+      "team_display_name": "Italy 2002",
+      "year": 2002,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_japan_2002",
+      "team_display_name": "Japan 2002",
+      "year": 2002,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_mexico_2002",
+      "team_display_name": "Mexico 2002",
+      "year": 2002,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_nigeria_2002",
+      "team_display_name": "Nigeria 2002",
+      "year": 2002,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_paraguay_2002",
+      "team_display_name": "Paraguay 2002",
+      "year": 2002,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_poland_2002",
+      "team_display_name": "Poland 2002",
+      "year": 2002,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_portugal_2002",
+      "team_display_name": "Portugal 2002",
+      "year": 2002,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_republic_of_ireland_2002",
+      "team_display_name": "Republic of Ireland 2002",
+      "year": 2002,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_russia_2002",
+      "team_display_name": "Russia 2002",
+      "year": 2002,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_saudi_arabia_2002",
+      "team_display_name": "Saudi Arabia 2002",
+      "year": 2002,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_senegal_2002",
+      "team_display_name": "Senegal 2002",
+      "year": 2002,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_slovenia_2002",
+      "team_display_name": "Slovenia 2002",
+      "year": 2002,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_south_africa_2002",
+      "team_display_name": "South Africa 2002",
+      "year": 2002,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_south_korea_2002",
+      "team_display_name": "South Korea 2002",
+      "year": 2002,
+      "real_structured_fields": 6,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_spain_2002",
+      "team_display_name": "Spain 2002",
+      "year": 2002,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_sweden_2002",
+      "team_display_name": "Sweden 2002",
+      "year": 2002,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_tunisia_2002",
+      "team_display_name": "Tunisia 2002",
+      "year": 2002,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_turkey_2002",
+      "team_display_name": "Turkey 2002",
+      "year": 2002,
+      "real_structured_fields": 6,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_united_states_2002",
+      "team_display_name": "United States 2002",
+      "year": 2002,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_uruguay_2002",
+      "team_display_name": "Uruguay 2002",
+      "year": 2002,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_angola_2006",
+      "team_display_name": "Angola 2006",
+      "year": 2006,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_argentina_2006",
+      "team_display_name": "Argentina 2006",
+      "year": 2006,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_australia_2006",
+      "team_display_name": "Australia 2006",
+      "year": 2006,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_brazil_2006",
+      "team_display_name": "Brazil 2006",
+      "year": 2006,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_costa_rica_2006",
+      "team_display_name": "Costa Rica 2006",
+      "year": 2006,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_croatia_2006",
+      "team_display_name": "Croatia 2006",
+      "year": 2006,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_czech_republic_2006",
+      "team_display_name": "Czech Republic 2006",
+      "year": 2006,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_ecuador_2006",
+      "team_display_name": "Ecuador 2006",
+      "year": 2006,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_england_2006",
+      "team_display_name": "England 2006",
+      "year": 2006,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_france_2006",
+      "team_display_name": "France 2006",
+      "year": 2006,
+      "real_structured_fields": 6,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_germany_2006",
+      "team_display_name": "Germany 2006",
+      "year": 2006,
+      "real_structured_fields": 6,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_ghana_2006",
+      "team_display_name": "Ghana 2006",
+      "year": 2006,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_iran_2006",
+      "team_display_name": "Iran 2006",
+      "year": 2006,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_italy_2006",
+      "team_display_name": "Italy 2006",
+      "year": 2006,
+      "real_structured_fields": 6,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_ivory_coast_2006",
+      "team_display_name": "Ivory Coast 2006",
+      "year": 2006,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_japan_2006",
+      "team_display_name": "Japan 2006",
+      "year": 2006,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_mexico_2006",
+      "team_display_name": "Mexico 2006",
+      "year": 2006,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_netherlands_2006",
+      "team_display_name": "Netherlands 2006",
+      "year": 2006,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_paraguay_2006",
+      "team_display_name": "Paraguay 2006",
+      "year": 2006,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_poland_2006",
+      "team_display_name": "Poland 2006",
+      "year": 2006,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_portugal_2006",
+      "team_display_name": "Portugal 2006",
+      "year": 2006,
+      "real_structured_fields": 6,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_saudi_arabia_2006",
+      "team_display_name": "Saudi Arabia 2006",
+      "year": 2006,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_serbia_and_montenegro_2006",
+      "team_display_name": "Serbia and Montenegro 2006",
+      "year": 2006,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_south_korea_2006",
+      "team_display_name": "South Korea 2006",
+      "year": 2006,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_spain_2006",
+      "team_display_name": "Spain 2006",
+      "year": 2006,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_sweden_2006",
+      "team_display_name": "Sweden 2006",
+      "year": 2006,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_switzerland_2006",
+      "team_display_name": "Switzerland 2006",
+      "year": 2006,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_togo_2006",
+      "team_display_name": "Togo 2006",
+      "year": 2006,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_trinidad_and_tobago_2006",
+      "team_display_name": "Trinidad and Tobago 2006",
+      "year": 2006,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_tunisia_2006",
+      "team_display_name": "Tunisia 2006",
+      "year": 2006,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_ukraine_2006",
+      "team_display_name": "Ukraine 2006",
+      "year": 2006,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_united_states_2006",
+      "team_display_name": "United States 2006",
+      "year": 2006,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_algeria_2010",
+      "team_display_name": "Algeria 2010",
+      "year": 2010,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_argentina_2010",
+      "team_display_name": "Argentina 2010",
+      "year": 2010,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_australia_2010",
+      "team_display_name": "Australia 2010",
+      "year": 2010,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_brazil_2010",
+      "team_display_name": "Brazil 2010",
+      "year": 2010,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_cameroon_2010",
+      "team_display_name": "Cameroon 2010",
+      "year": 2010,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_chile_2010",
+      "team_display_name": "Chile 2010",
+      "year": 2010,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_denmark_2010",
+      "team_display_name": "Denmark 2010",
+      "year": 2010,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_england_2010",
+      "team_display_name": "England 2010",
+      "year": 2010,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_france_2010",
+      "team_display_name": "France 2010",
+      "year": 2010,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_germany_2010",
+      "team_display_name": "Germany 2010",
+      "year": 2010,
+      "real_structured_fields": 6,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_ghana_2010",
+      "team_display_name": "Ghana 2010",
+      "year": 2010,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_greece_2010",
+      "team_display_name": "Greece 2010",
+      "year": 2010,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_honduras_2010",
+      "team_display_name": "Honduras 2010",
+      "year": 2010,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_italy_2010",
+      "team_display_name": "Italy 2010",
+      "year": 2010,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_ivory_coast_2010",
+      "team_display_name": "Ivory Coast 2010",
+      "year": 2010,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_japan_2010",
+      "team_display_name": "Japan 2010",
+      "year": 2010,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_mexico_2010",
+      "team_display_name": "Mexico 2010",
+      "year": 2010,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_netherlands_2010",
+      "team_display_name": "Netherlands 2010",
+      "year": 2010,
+      "real_structured_fields": 6,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_new_zealand_2010",
+      "team_display_name": "New Zealand 2010",
+      "year": 2010,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_nigeria_2010",
+      "team_display_name": "Nigeria 2010",
+      "year": 2010,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_north_korea_2010",
+      "team_display_name": "North Korea 2010",
+      "year": 2010,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_paraguay_2010",
+      "team_display_name": "Paraguay 2010",
+      "year": 2010,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_portugal_2010",
+      "team_display_name": "Portugal 2010",
+      "year": 2010,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_serbia_2010",
+      "team_display_name": "Serbia 2010",
+      "year": 2010,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_slovakia_2010",
+      "team_display_name": "Slovakia 2010",
+      "year": 2010,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_slovenia_2010",
+      "team_display_name": "Slovenia 2010",
+      "year": 2010,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_south_africa_2010",
+      "team_display_name": "South Africa 2010",
+      "year": 2010,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_south_korea_2010",
+      "team_display_name": "South Korea 2010",
+      "year": 2010,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_spain_2010",
+      "team_display_name": "Spain 2010",
+      "year": 2010,
+      "real_structured_fields": 6,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_switzerland_2010",
+      "team_display_name": "Switzerland 2010",
+      "year": 2010,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_united_states_2010",
+      "team_display_name": "United States 2010",
+      "year": 2010,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_uruguay_2010",
+      "team_display_name": "Uruguay 2010",
+      "year": 2010,
+      "real_structured_fields": 6,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_algeria_2014",
+      "team_display_name": "Algeria 2014",
+      "year": 2014,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_argentina_2014",
+      "team_display_name": "Argentina 2014",
+      "year": 2014,
+      "real_structured_fields": 6,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_australia_2014",
+      "team_display_name": "Australia 2014",
+      "year": 2014,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_belgium_2014",
+      "team_display_name": "Belgium 2014",
+      "year": 2014,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_bosnia_and_herzegovina_2014",
+      "team_display_name": "Bosnia and Herzegovina 2014",
+      "year": 2014,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_brazil_2014",
+      "team_display_name": "Brazil 2014",
+      "year": 2014,
+      "real_structured_fields": 6,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_cameroon_2014",
+      "team_display_name": "Cameroon 2014",
+      "year": 2014,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_chile_2014",
+      "team_display_name": "Chile 2014",
+      "year": 2014,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_colombia_2014",
+      "team_display_name": "Colombia 2014",
+      "year": 2014,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_costa_rica_2014",
+      "team_display_name": "Costa Rica 2014",
+      "year": 2014,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_croatia_2014",
+      "team_display_name": "Croatia 2014",
+      "year": 2014,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_ecuador_2014",
+      "team_display_name": "Ecuador 2014",
+      "year": 2014,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_england_2014",
+      "team_display_name": "England 2014",
+      "year": 2014,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_france_2014",
+      "team_display_name": "France 2014",
+      "year": 2014,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_germany_2014",
+      "team_display_name": "Germany 2014",
+      "year": 2014,
+      "real_structured_fields": 6,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_ghana_2014",
+      "team_display_name": "Ghana 2014",
+      "year": 2014,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_greece_2014",
+      "team_display_name": "Greece 2014",
+      "year": 2014,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_honduras_2014",
+      "team_display_name": "Honduras 2014",
+      "year": 2014,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_iran_2014",
+      "team_display_name": "Iran 2014",
+      "year": 2014,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_italy_2014",
+      "team_display_name": "Italy 2014",
+      "year": 2014,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_ivory_coast_2014",
+      "team_display_name": "Ivory Coast 2014",
+      "year": 2014,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_japan_2014",
+      "team_display_name": "Japan 2014",
+      "year": 2014,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_mexico_2014",
+      "team_display_name": "Mexico 2014",
+      "year": 2014,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_netherlands_2014",
+      "team_display_name": "Netherlands 2014",
+      "year": 2014,
+      "real_structured_fields": 6,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_nigeria_2014",
+      "team_display_name": "Nigeria 2014",
+      "year": 2014,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_portugal_2014",
+      "team_display_name": "Portugal 2014",
+      "year": 2014,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_russia_2014",
+      "team_display_name": "Russia 2014",
+      "year": 2014,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_south_korea_2014",
+      "team_display_name": "South Korea 2014",
+      "year": 2014,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_spain_2014",
+      "team_display_name": "Spain 2014",
+      "year": 2014,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_switzerland_2014",
+      "team_display_name": "Switzerland 2014",
+      "year": 2014,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_united_states_2014",
+      "team_display_name": "United States 2014",
+      "year": 2014,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_uruguay_2014",
+      "team_display_name": "Uruguay 2014",
+      "year": 2014,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_argentina_2018",
+      "team_display_name": "Argentina 2018",
+      "year": 2018,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_australia_2018",
+      "team_display_name": "Australia 2018",
+      "year": 2018,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_belgium_2018",
+      "team_display_name": "Belgium 2018",
+      "year": 2018,
+      "real_structured_fields": 6,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_brazil_2018",
+      "team_display_name": "Brazil 2018",
+      "year": 2018,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_colombia_2018",
+      "team_display_name": "Colombia 2018",
+      "year": 2018,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_costa_rica_2018",
+      "team_display_name": "Costa Rica 2018",
+      "year": 2018,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_croatia_2018",
+      "team_display_name": "Croatia 2018",
+      "year": 2018,
+      "real_structured_fields": 6,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_denmark_2018",
+      "team_display_name": "Denmark 2018",
+      "year": 2018,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_egypt_2018",
+      "team_display_name": "Egypt 2018",
+      "year": 2018,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_england_2018",
+      "team_display_name": "England 2018",
+      "year": 2018,
+      "real_structured_fields": 6,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_france_2018",
+      "team_display_name": "France 2018",
+      "year": 2018,
+      "real_structured_fields": 6,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_germany_2018",
+      "team_display_name": "Germany 2018",
+      "year": 2018,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_iceland_2018",
+      "team_display_name": "Iceland 2018",
+      "year": 2018,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_iran_2018",
+      "team_display_name": "Iran 2018",
+      "year": 2018,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_japan_2018",
+      "team_display_name": "Japan 2018",
+      "year": 2018,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_mexico_2018",
+      "team_display_name": "Mexico 2018",
+      "year": 2018,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_morocco_2018",
+      "team_display_name": "Morocco 2018",
+      "year": 2018,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_nigeria_2018",
+      "team_display_name": "Nigeria 2018",
+      "year": 2018,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_panama_2018",
+      "team_display_name": "Panama 2018",
+      "year": 2018,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_peru_2018",
+      "team_display_name": "Peru 2018",
+      "year": 2018,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_poland_2018",
+      "team_display_name": "Poland 2018",
+      "year": 2018,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_portugal_2018",
+      "team_display_name": "Portugal 2018",
+      "year": 2018,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_russia_2018",
+      "team_display_name": "Russia 2018",
+      "year": 2018,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_saudi_arabia_2018",
+      "team_display_name": "Saudi Arabia 2018",
+      "year": 2018,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_senegal_2018",
+      "team_display_name": "Senegal 2018",
+      "year": 2018,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_serbia_2018",
+      "team_display_name": "Serbia 2018",
+      "year": 2018,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_south_korea_2018",
+      "team_display_name": "South Korea 2018",
+      "year": 2018,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_spain_2018",
+      "team_display_name": "Spain 2018",
+      "year": 2018,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_sweden_2018",
+      "team_display_name": "Sweden 2018",
+      "year": 2018,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_switzerland_2018",
+      "team_display_name": "Switzerland 2018",
+      "year": 2018,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_tunisia_2018",
+      "team_display_name": "Tunisia 2018",
+      "year": 2018,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_uruguay_2018",
+      "team_display_name": "Uruguay 2018",
+      "year": 2018,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_argentina_2022",
+      "team_display_name": "Argentina 2022",
+      "year": 2022,
+      "real_structured_fields": 6,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_australia_2022",
+      "team_display_name": "Australia 2022",
+      "year": 2022,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_belgium_2022",
+      "team_display_name": "Belgium 2022",
+      "year": 2022,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_brazil_2022",
+      "team_display_name": "Brazil 2022",
+      "year": 2022,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_cameroon_2022",
+      "team_display_name": "Cameroon 2022",
+      "year": 2022,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_canada_2022",
+      "team_display_name": "Canada 2022",
+      "year": 2022,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_costa_rica_2022",
+      "team_display_name": "Costa Rica 2022",
+      "year": 2022,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_croatia_2022",
+      "team_display_name": "Croatia 2022",
+      "year": 2022,
+      "real_structured_fields": 6,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_denmark_2022",
+      "team_display_name": "Denmark 2022",
+      "year": 2022,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_ecuador_2022",
+      "team_display_name": "Ecuador 2022",
+      "year": 2022,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_england_2022",
+      "team_display_name": "England 2022",
+      "year": 2022,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_france_2022",
+      "team_display_name": "France 2022",
+      "year": 2022,
+      "real_structured_fields": 6,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_germany_2022",
+      "team_display_name": "Germany 2022",
+      "year": 2022,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_ghana_2022",
+      "team_display_name": "Ghana 2022",
+      "year": 2022,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_iran_2022",
+      "team_display_name": "Iran 2022",
+      "year": 2022,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_japan_2022",
+      "team_display_name": "Japan 2022",
+      "year": 2022,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_mexico_2022",
+      "team_display_name": "Mexico 2022",
+      "year": 2022,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_morocco_2022",
+      "team_display_name": "Morocco 2022",
+      "year": 2022,
+      "real_structured_fields": 6,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_netherlands_2022",
+      "team_display_name": "Netherlands 2022",
+      "year": 2022,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_poland_2022",
+      "team_display_name": "Poland 2022",
+      "year": 2022,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_portugal_2022",
+      "team_display_name": "Portugal 2022",
+      "year": 2022,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_qatar_2022",
+      "team_display_name": "Qatar 2022",
+      "year": 2022,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_saudi_arabia_2022",
+      "team_display_name": "Saudi Arabia 2022",
+      "year": 2022,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_senegal_2022",
+      "team_display_name": "Senegal 2022",
+      "year": 2022,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_serbia_2022",
+      "team_display_name": "Serbia 2022",
+      "year": 2022,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_south_korea_2022",
+      "team_display_name": "South Korea 2022",
+      "year": 2022,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_spain_2022",
+      "team_display_name": "Spain 2022",
+      "year": 2022,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_switzerland_2022",
+      "team_display_name": "Switzerland 2022",
+      "year": 2022,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_tunisia_2022",
+      "team_display_name": "Tunisia 2022",
+      "year": 2022,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_united_states_2022",
+      "team_display_name": "United States 2022",
+      "year": 2022,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_uruguay_2022",
+      "team_display_name": "Uruguay 2022",
+      "year": 2022,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    },
+    {
+      "team_wc_id": "team_wales_2022",
+      "team_display_name": "Wales 2022",
+      "year": 2022,
+      "real_structured_fields": 5,
+      "derived_from_real_fields": 18,
+      "estimated_or_synthetic_fields": 8,
+      "missing_fields": 0,
+      "dominant_estimate_confidence": "C"
+    }
+  ]
+}

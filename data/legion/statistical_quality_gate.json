@@ -1,0 +1,20 @@
+{
+  "version": "stage_f_v1",
+  "approval_rule": {
+    "minimum_fixture_pass_rate": 0.8,
+    "critical_failure_allowed": 0,
+    "requires_report_consistency": true,
+    "requires_no_console_errors": true
+  },
+  "automatic_rejection": [
+    "avg_total_goals_above_critical_max",
+    "avg_total_goals_below_critical_min",
+    "avg_total_xg_above_critical_max",
+    "avg_total_xg_below_critical_min",
+    "avg_total_shots_above_critical_max",
+    "avg_total_shots_below_critical_min",
+    "engine_runtime_error",
+    "score_event_mismatch",
+    "report_score_contradiction"
+  ]
+}

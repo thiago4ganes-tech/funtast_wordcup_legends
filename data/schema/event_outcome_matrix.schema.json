@@ -1,0 +1,41 @@
+{
+  "type": "object",
+  "required": [
+    "events"
+  ],
+  "properties": {
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "event_type",
+          "outcomes"
+        ],
+        "properties": {
+          "event_type": {
+            "type": "string"
+          },
+          "positive_modifiers": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "negative_modifiers": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "outcomes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

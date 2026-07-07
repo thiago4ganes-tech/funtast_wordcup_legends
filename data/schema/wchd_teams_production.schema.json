@@ -1,0 +1,37 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "team_wc_id",
+      "country_id",
+      "year",
+      "real_metrics",
+      "style_estimates",
+      "record_origin_composition"
+    ],
+    "properties": {
+      "team_wc_id": {
+        "type": "string"
+      },
+      "country_id": {
+        "type": "string"
+      },
+      "year": {
+        "type": "integer"
+      },
+      "real_metrics": {
+        "type": "object"
+      },
+      "style_estimates": {
+        "type": "object"
+      },
+      "record_origin_composition": {
+        "type": "object"
+      },
+      "production_ready": {
+        "type": "boolean"
+      }
+    }
+  }
+}

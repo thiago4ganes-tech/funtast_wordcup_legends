@@ -1,0 +1,50 @@
+{
+  "stage": "G4",
+  "checks": [
+    {
+      "id": "G4-001",
+      "name": "players production file generated",
+      "status": "done"
+    },
+    {
+      "id": "G4-002",
+      "name": "teams production file generated",
+      "status": "done"
+    },
+    {
+      "id": "G4-003",
+      "name": "matches production file generated",
+      "status": "done"
+    },
+    {
+      "id": "G4-004",
+      "name": "synergies production file generated",
+      "status": "done"
+    },
+    {
+      "id": "G4-005",
+      "name": "legion inputs generated",
+      "status": "done"
+    },
+    {
+      "id": "G4-006",
+      "name": "final composition report generated",
+      "status": "done"
+    },
+    {
+      "id": "G4-007",
+      "name": "source traceability report generated",
+      "status": "done"
+    },
+    {
+      "id": "G4-008",
+      "name": "production manifest generated",
+      "status": "done"
+    },
+    {
+      "id": "G4-009",
+      "name": "A-G consolidation still pending",
+      "status": "pending"
+    }
+  ]
+}

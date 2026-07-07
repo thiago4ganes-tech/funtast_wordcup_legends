@@ -1,0 +1,50 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "player_wc_id",
+      "competency_candidate",
+      "status",
+      "confidence_level"
+    ],
+    "properties": {
+      "player_wc_id": {
+        "type": "string"
+      },
+      "competency_candidate": {
+        "type": "string"
+      },
+      "trigger": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "evidence": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "status": {
+        "enum": [
+          "candidate_pending_review",
+          "approved",
+          "rejected"
+        ]
+      },
+      "confidence_level": {
+        "enum": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "method_note": {
+        "type": "string"
+      }
+    }
+  }
+}

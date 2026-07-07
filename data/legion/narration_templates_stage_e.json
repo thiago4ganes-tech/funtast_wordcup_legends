@@ -1,0 +1,61 @@
+{
+  "version": "stage_e_v1",
+  "templates": {
+    "through_ball": {
+      "box_shot": [
+        "{actor} recebe entre linhas, levanta a cabeça e encontra {support_actor} atacando o espaço.",
+        "{actor} acelera a jogada pelo centro e enfia uma bola perigosa para {support_actor}."
+      ],
+      "interception": [
+        "{actor} tenta o passe vertical, mas a defesa lê bem o lance e intercepta.",
+        "A tentativa de ruptura não passa. A marcação fecha o corredor e recupera a bola."
+      ]
+    },
+    "cross": {
+      "header_attempt": [
+        "{actor} ganha espaço pelo lado e cruza na medida para {support_actor} disputar pelo alto.",
+        "A bola vem da ponta com perigo. {support_actor} ataca a área e sobe para o cabeceio."
+      ],
+      "goalkeeper_claim": [
+        "O cruzamento vem fechado, mas o goleiro sai com segurança e fica com a bola.",
+        "A bola procura a área, só que o goleiro antecipa e corta o perigo."
+      ],
+      "clearance": [
+        "A defesa se impõe pelo alto e afasta o cruzamento.",
+        "O cruzamento chega à área, mas a zaga corta antes da finalização."
+      ]
+    },
+    "box_shot": {
+      "goal": [
+        "GOL! {actor} recebe em condição de finalizar, bate firme e manda para o fundo da rede.",
+        "É GOL! A jogada entra limpa na área e {actor} conclui com precisão."
+      ],
+      "save": [
+        "{actor} finaliza com perigo, mas o goleiro faz grande defesa.",
+        "A batida sai forte, no alvo, e o goleiro salva a equipe."
+      ],
+      "miss": [
+        "{actor} consegue a finalização, mas a bola sai sem direção suficiente.",
+        "Boa chegada, mas a conclusão não acompanha a construção da jogada."
+      ],
+      "blocked": [
+        "{actor} bate para o gol, mas a defesa se joga na frente e bloqueia.",
+        "A finalização tinha endereço, mas o bloqueio defensivo corta o lance."
+      ]
+    },
+    "header_attempt": {
+      "goal": [
+        "GOL! {actor} sobe no tempo certo e cabeceia com força para marcar.",
+        "É GOL! Cruzamento preciso, cabeceio firme e bola na rede."
+      ],
+      "save": [
+        "{actor} testa com perigo, mas o goleiro reage bem e defende.",
+        "Cabeceio forte, defesa difícil. O goleiro evita o gol."
+      ],
+      "miss": [
+        "{actor} sobe para cabecear, mas não consegue direcionar como queria.",
+        "A bola chega pelo alto, mas o cabeceio passa sem levar perigo suficiente."
+      ]
+    }
+  }
+}

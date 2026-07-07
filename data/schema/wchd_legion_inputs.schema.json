@@ -1,0 +1,35 @@
+{
+  "type": "object",
+  "required": [
+    "generated_at",
+    "version",
+    "coverage_weighted",
+    "players",
+    "teams",
+    "synergies",
+    "head_to_head"
+  ],
+  "properties": {
+    "generated_at": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "coverage_weighted": {
+      "type": "object"
+    },
+    "players": {
+      "type": "array"
+    },
+    "teams": {
+      "type": "array"
+    },
+    "synergies": {
+      "type": "array"
+    },
+    "head_to_head": {
+      "type": "array"
+    }
+  }
+}

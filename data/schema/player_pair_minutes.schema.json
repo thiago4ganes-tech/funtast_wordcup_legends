@@ -1,0 +1,75 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "pair_id",
+      "team_wc_id",
+      "year",
+      "player_a_wc_id",
+      "player_b_wc_id",
+      "confidence_level"
+    ],
+    "properties": {
+      "pair_id": {
+        "type": "string"
+      },
+      "team_wc_id": {
+        "type": "string"
+      },
+      "year": {
+        "type": "integer"
+      },
+      "player_a_wc_id": {
+        "type": "string"
+      },
+      "player_b_wc_id": {
+        "type": "string"
+      },
+      "matches_together": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "starts_together": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "shared_minutes_estimated": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "team_goals_with_both_on_pitch": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "direct_goal_combinations": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "factual_synergy_index": {
+        "type": [
+          "number",
+          "null"
+        ]
+      },
+      "confidence_level": {
+        "enum": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      }
+    }
+  }
+}

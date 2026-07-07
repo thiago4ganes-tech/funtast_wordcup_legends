@@ -1,0 +1,18 @@
+[
+  {
+    "player_base_id": "player_ronaldo_nazario",
+    "player_name": "Ronaldo Luís Nazário de Lima",
+    "short_name": "Ronaldo",
+    "birth_date": null,
+    "nationality_country_id": "country_brazil",
+    "height": null,
+    "preferred_foot": null,
+    "primary_career_position": "CA",
+    "name_variations": [
+      "Ronaldo Nazário",
+      "R9"
+    ],
+    "source_primary": "src_fjelstul_worldcup",
+    "source_confidence": "A"
+  }
+]

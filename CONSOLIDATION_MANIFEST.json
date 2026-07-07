@@ -1,0 +1,17 @@
+{
+  "consolidated_at": "2026-07-06",
+  "package": "fwcl_wchd_a_f_consolidated",
+  "stages": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "copied_files_count": 155,
+  "conflicts_count": 0,
+  "conflicts": [],
+  "recommended_commit": "WCHD A-F - framework consolidado de pesquisa e motor LEGION",
+  "next_step": "Release 0.4 integrated playable package"
+}

@@ -1,0 +1,42 @@
+{
+  "version": "stage_e_v1",
+  "default_runs": 100,
+  "fixtures": [
+    {
+      "fixture_id": "brazil_2002_vs_germany_2014",
+      "team_a": "team_brazil_2002",
+      "team_b": "team_germany_2014",
+      "runs": 100
+    },
+    {
+      "fixture_id": "argentina_1986_vs_france_1998",
+      "team_a": "team_argentina_1986",
+      "team_b": "team_france_1998",
+      "runs": 100
+    },
+    {
+      "fixture_id": "spain_2010_vs_italy_2006",
+      "team_a": "team_spain_2010",
+      "team_b": "team_italy_2006",
+      "runs": 100
+    },
+    {
+      "fixture_id": "brazil_1994_vs_argentina_2022",
+      "team_a": "team_brazil_1994",
+      "team_b": "team_argentina_2022",
+      "runs": 100
+    },
+    {
+      "fixture_id": "france_2018_vs_brazil_2002",
+      "team_a": "team_france_2018",
+      "team_b": "team_brazil_2002",
+      "runs": 100
+    },
+    {
+      "fixture_id": "netherlands_1974_vs_spain_2010",
+      "team_a": "team_netherlands_1974",
+      "team_b": "team_spain_2010",
+      "runs": 100
+    }
+  ]
+}

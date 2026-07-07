@@ -1,0 +1,17 @@
+[
+  {
+    "world_cup_id": "wc_2002",
+    "year": 2002,
+    "host_country": "Japan/South Korea",
+    "start_date": null,
+    "end_date": null,
+    "champion": "country_brazil",
+    "runner_up": "country_germany",
+    "third_place": null,
+    "fourth_place": null,
+    "teams_count": 32,
+    "matches_count": 64,
+    "source_primary": "src_fifa_data_centre",
+    "source_confidence": "A"
+  }
+]

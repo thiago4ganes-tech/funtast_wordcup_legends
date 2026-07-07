@@ -1,0 +1,15 @@
+{
+  "type": "object",
+  "required": [
+    "version",
+    "targets"
+  ],
+  "properties": {
+    "version": {
+      "type": "string"
+    },
+    "targets": {
+      "type": "object"
+    }
+  }
+}

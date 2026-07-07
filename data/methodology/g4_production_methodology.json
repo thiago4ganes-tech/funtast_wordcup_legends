@@ -1,0 +1,27 @@
+{
+  "generated_at": "2026-07-07",
+  "stage": "G4",
+  "principles": [
+    "Dado real não é sobrescrito por dado estimado.",
+    "Campos estimados são consolidados apenas como estimates.",
+    "Todos os registros de produção carregam record_origin_composition.",
+    "O LEGION deve consultar engine_weight_limit antes de aplicar estimativas.",
+    "A interface futura deve permitir exibir selo REAL / DERIVADO / PROXY / SINTÉTICO."
+  ],
+  "data_origin_hierarchy": [
+    "real_official",
+    "real_structured",
+    "real_complementary",
+    "derived_from_real_structured",
+    "estimated_proxy",
+    "synthetic_comparable",
+    "manual_review",
+    "missing"
+  ],
+  "coverage_weighted": {
+    "real_plus_derived_from_real": 79.02,
+    "estimated_proxy": 16.48,
+    "synthetic_comparable": 4.5,
+    "missing": 0.0
+  }
+}

@@ -1,0 +1,310 @@
+{
+  "generated_at": "2026-07-06",
+  "scope": {
+    "competition": "FIFA Men's World Cup",
+    "years": [
+      1986,
+      1990,
+      1994,
+      1998,
+      2002,
+      2006,
+      2010,
+      2014,
+      2018,
+      2022
+    ],
+    "source": "DataHub package sourced from Fjelstul World Cup Database"
+  },
+  "record_counts": {
+    "world_cups.json": 10,
+    "countries.json": 77,
+    "team_world_cup.json": 296,
+    "matches.json": 604,
+    "player_base.json": 5120,
+    "player_world_cup.json": 6800,
+    "squad_membership.json": 6800,
+    "player_match_appearance.json": 16614,
+    "goals.json": 1524,
+    "bookings.json": 2331,
+    "substitutions.json": 3326,
+    "penalty_kicks.json": 308,
+    "substitution_actions.json": 6652,
+    "team_wc_metrics": 296,
+    "player_wc_metrics": 6800,
+    "head_to_head_metrics": 470,
+    "player_pair_minutes": 44378
+  },
+  "origin_summary_by_table": [
+    {
+      "table": "world_cups.json",
+      "records": 10,
+      "origin_counts": {
+        "real_structured": 10
+      },
+      "origin_percentages": {
+        "real_structured": 100.0
+      }
+    },
+    {
+      "table": "countries.json",
+      "records": 77,
+      "origin_counts": {
+        "real_structured": 77
+      },
+      "origin_percentages": {
+        "real_structured": 100.0
+      }
+    },
+    {
+      "table": "team_world_cup.json",
+      "records": 296,
+      "origin_counts": {
+        "real_structured": 296
+      },
+      "origin_percentages": {
+        "real_structured": 100.0
+      }
+    },
+    {
+      "table": "matches.json",
+      "records": 604,
+      "origin_counts": {
+        "real_structured": 604
+      },
+      "origin_percentages": {
+        "real_structured": 100.0
+      }
+    },
+    {
+      "table": "player_base.json",
+      "records": 5120,
+      "origin_counts": {
+        "real_structured": 5120
+      },
+      "origin_percentages": {
+        "real_structured": 100.0
+      }
+    },
+    {
+      "table": "player_world_cup.json",
+      "records": 6800,
+      "origin_counts": {
+        "real_structured": 6800
+      },
+      "origin_percentages": {
+        "real_structured": 100.0
+      }
+    },
+    {
+      "table": "squad_membership.json",
+      "records": 6800,
+      "origin_counts": {
+        "real_structured": 6800
+      },
+      "origin_percentages": {
+        "real_structured": 100.0
+      }
+    },
+    {
+      "table": "player_match_appearance.json",
+      "records": 16614,
+      "origin_counts": {
+        "real_structured_with_derived_minutes": 16614
+      },
+      "origin_percentages": {
+        "real_structured_with_derived_minutes": 100.0
+      }
+    },
+    {
+      "table": "goals.json",
+      "records": 1524,
+      "origin_counts": {
+        "real_structured": 1524
+      },
+      "origin_percentages": {
+        "real_structured": 100.0
+      }
+    },
+    {
+      "table": "bookings.json",
+      "records": 2331,
+      "origin_counts": {
+        "real_structured": 2331
+      },
+      "origin_percentages": {
+        "real_structured": 100.0
+      }
+    },
+    {
+      "table": "substitutions.json",
+      "records": 3326,
+      "origin_counts": {
+        "derived_from_real_structured": 3326
+      },
+      "origin_percentages": {
+        "derived_from_real_structured": 100.0
+      }
+    },
+    {
+      "table": "penalty_kicks.json",
+      "records": 308,
+      "origin_counts": {
+        "real_structured": 308
+      },
+      "origin_percentages": {
+        "real_structured": 100.0
+      }
+    },
+    {
+      "table": "substitution_actions.json",
+      "records": 6652,
+      "origin_counts": {
+        "real_structured": 6652
+      },
+      "origin_percentages": {
+        "real_structured": 100.0
+      }
+    },
+    {
+      "table": "team_wc_metrics",
+      "records": 296,
+      "origin_counts": {
+        "derived_from_real_structured": 296
+      },
+      "origin_percentages": {
+        "derived_from_real_structured": 100.0
+      }
+    },
+    {
+      "table": "player_wc_metrics",
+      "records": 6800,
+      "origin_counts": {
+        "derived_from_real_structured_with_missing_assists": 6800
+      },
+      "origin_percentages": {
+        "derived_from_real_structured_with_missing_assists": 100.0
+      }
+    },
+    {
+      "table": "head_to_head_metrics",
+      "records": 470,
+      "origin_counts": {
+        "derived_from_real_structured": 470
+      },
+      "origin_percentages": {
+        "derived_from_real_structured": 100.0
+      }
+    },
+    {
+      "table": "player_pair_minutes",
+      "records": 44378,
+      "origin_counts": {
+        "estimated_proxy_from_real_appearances_and_substitutions": 44378
+      },
+      "origin_percentages": {
+        "estimated_proxy_from_real_appearances_and_substitutions": 100.0
+      }
+    }
+  ],
+  "field_origin_matrix": [
+    {
+      "data_class": "tournaments",
+      "fields": "year, host, dates, winner, teams_count",
+      "origin": "real_structured",
+      "confidence": "A",
+      "coverage_pct": 100.0
+    },
+    {
+      "data_class": "countries/teams",
+      "fields": "team name, code, confederation",
+      "origin": "real_structured",
+      "confidence": "A",
+      "coverage_pct": 100.0
+    },
+    {
+      "data_class": "matches",
+      "fields": "date, stage, teams, score, extra time, penalties",
+      "origin": "real_structured",
+      "confidence": "A",
+      "coverage_pct": 100.0
+    },
+    {
+      "data_class": "squads",
+      "fields": "player, team, shirt number, listed position",
+      "origin": "real_structured",
+      "confidence": "A",
+      "coverage_pct": 100.0
+    },
+    {
+      "data_class": "player appearances",
+      "fields": "starter/substitute, position listed",
+      "origin": "real_structured",
+      "confidence": "A",
+      "coverage_pct": 100.0
+    },
+    {
+      "data_class": "minutes played",
+      "fields": "minute_in, minute_out, minutes_played",
+      "origin": "derived_from_real_structured",
+      "confidence": "B",
+      "coverage_pct": 100.0
+    },
+    {
+      "data_class": "goals",
+      "fields": "scorer, minute, penalty, own goal",
+      "origin": "real_structured",
+      "confidence": "A",
+      "coverage_pct": 100.0
+    },
+    {
+      "data_class": "assists",
+      "fields": "assist_player_wc_id",
+      "origin": "missing_not_available_in_source",
+      "confidence": "D",
+      "coverage_pct": 0.0
+    },
+    {
+      "data_class": "bookings",
+      "fields": "yellow, red, second yellow, minute",
+      "origin": "real_structured",
+      "confidence": "A",
+      "coverage_pct": 100.0
+    },
+    {
+      "data_class": "substitutions",
+      "fields": "player on/off, minute",
+      "origin": "real_structured / derived pair",
+      "confidence": "A/B",
+      "coverage_pct": 100.0
+    },
+    {
+      "data_class": "penalty kicks",
+      "fields": "taker, converted",
+      "origin": "real_structured",
+      "confidence": "A",
+      "coverage_pct": 100.0
+    },
+    {
+      "data_class": "passes and progressive passes",
+      "fields": "passes, key passes, progressive passes",
+      "origin": "missing_pending_proxy_stage_g3",
+      "confidence": "D",
+      "coverage_pct": 0.0
+    },
+    {
+      "data_class": "player pair shared minutes",
+      "fields": "shared_minutes_estimated, starts_together",
+      "origin": "estimated_proxy_from_real_appearances_and_substitutions",
+      "confidence": "B",
+      "coverage_pct": 100.0
+    }
+  ],
+  "known_gaps_after_g1": [
+    "Assists are not available in the primary source files used in G1.",
+    "Passes, key passes, progressive passes, dribbles, pressures and duels are not uniformly available for 1986-2022 in the selected structural source.",
+    "Player pair shared minutes are computed from appearances and substitutions; this is a proxy derived from real structured data, not a direct tracking feed.",
+    "Substitution pairings are derived by match/team/minute/order because the source stores substitution actions by player involvement."
+  ],
+  "next_stage": "G2/G3: real complementary stats and controlled proxy/synthetic comparable estimates."
+}

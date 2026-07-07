@@ -1,0 +1,29 @@
+{
+  "version": "stage_e_v1",
+  "match_single": {
+    "max_goals_total_soft": 7,
+    "max_goals_total_hard": 10,
+    "max_shots_total_soft": 42,
+    "max_xg_total_soft": 5.5,
+    "allow_goals_without_shots": false,
+    "allow_nan_stats": false,
+    "require_goalkeeper": true
+  },
+  "batch_average": {
+    "avg_goals_total_min": 1.2,
+    "avg_goals_total_max": 4.0,
+    "avg_xg_total_min": 1.2,
+    "avg_xg_total_max": 4.5,
+    "avg_shots_total_min": 12,
+    "avg_shots_total_max": 36,
+    "avg_shots_on_target_min": 3,
+    "avg_shots_on_target_max": 15,
+    "avg_cards_total_min": 0.5,
+    "avg_cards_total_max": 7
+  },
+  "modifiers": {
+    "common_event_abs_max": 0.12,
+    "specialty_abs_max": 0.18,
+    "historic_exception_abs_max": 0.25
+  }
+}

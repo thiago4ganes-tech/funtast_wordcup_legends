@@ -1,0 +1,16 @@
+{
+  "generated_at": "2026-07-06",
+  "method": "G2 coverage and gap analysis",
+  "origin_classes": {
+    "real_official": "Fonte oficial direta.",
+    "real_structured": "Fonte estruturada confiável, importada como fato.",
+    "real_complementary": "Fonte complementar real, ainda não carregada nesta G2.",
+    "derived_from_real_structured": "Métrica calculada a partir de fato estruturado.",
+    "estimated_proxy": "Estimativa calculada a partir de dados reais indiretos.",
+    "synthetic_comparable": "Dado sintético por comparação, reservado para G3.",
+    "manual_review": "Dado interpretativo pendente de revisão.",
+    "missing": "Dado ausente."
+  },
+  "player_coverage_rule": "Duas leituras: core_known_percent mede o que já está real/derivado no G1; legion_input_known_percent inclui dados avançados necessários ao motor, expondo lacunas.",
+  "weighted_coverage_rule": "Peso no motor é cálculo metodológico declarado, não percentual bruto de registros."
+}

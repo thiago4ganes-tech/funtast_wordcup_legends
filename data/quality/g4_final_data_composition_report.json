@@ -1,0 +1,51 @@
+{
+  "generated_at": "2026-07-07",
+  "stage": "G4",
+  "version": "WCHD_G4_PRODUCTION_V1",
+  "scope": "FIFA Men's World Cup 1986-2022 production data pack for LEGION",
+  "record_counts": {
+    "world_cups": 10,
+    "countries": 77,
+    "team_world_cup": 296,
+    "matches": 604,
+    "player_base": 5120,
+    "player_world_cup": 6800,
+    "squad_membership": 6800,
+    "player_match_appearance": 16614,
+    "goals": 1524,
+    "bookings": 2331,
+    "substitutions": 3326,
+    "penalty_kicks": 308,
+    "head_to_head_metrics": 470,
+    "player_pair_minutes": 44378,
+    "player_technical_estimates": 6800,
+    "team_style_estimates": 296,
+    "synergy_estimates": 44378
+  },
+  "weighted_legion_input_composition": {
+    "real_plus_derived_from_real": 79.02,
+    "estimated_proxy": 16.48,
+    "synthetic_comparable": 4.5,
+    "missing": 0.0
+  },
+  "important_interpretation": [
+    "O percentual real não aumentou na G3/G4; o que aumentou foi a completude operacional do motor por estimativas marcadas.",
+    "Campos estimados e sintéticos não devem ser exibidos nem usados como se fossem dados observados.",
+    "O motor deve respeitar engine_weight_limit para dados C/D ou sintéticos."
+  ],
+  "global_field_counts": {
+    "player_real_structured_fields": 61200,
+    "player_derived_from_real_fields": 114089,
+    "player_estimated_or_synthetic_fields": 102000,
+    "player_missing_fields": 8311,
+    "team_real_structured_fields": 1520,
+    "team_derived_from_real_fields": 5328,
+    "team_estimated_or_synthetic_fields": 2368,
+    "team_missing_fields": 0
+  },
+  "source_packages_used": [
+    "G1 real backbone",
+    "G2 coverage and gaps",
+    "G3 estimates and synthetic comparables"
+  ]
+}
