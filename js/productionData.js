@@ -50,6 +50,13 @@
     return String(text||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase()
       .replace(/[^a-z0-9]/g,'');
   }
+  function cleanPlayerName(name){
+    return String(name||'Jogador')
+      .replace(/^\s*not\s+applicable\s+/i,'')
+      .replace(/\s+not\s+applicable\s*$/i,'')
+      .replace(/\s+/g,' ')
+      .trim()||'Jogador';
+  }
   function translateCountry(name){ return countryTranslations[name] || name || 'Seleção'; }
   function teamCountry(team){
     const display=String(team.team_display_name||'');
@@ -62,7 +69,8 @@
   function scoreFromRate(rate, low, high){
     return clamp(40 + ((rate-low)/(high-low))*48, 30, 94);
   }
-  function inferPositions(raw,index){
+  function inferPositions(raw,index,positionOverride){
+    if(positionOverride?.positions?.length)return [...positionOverride.positions];
     const pos=raw.primary_position_wc;
     const e=raw.technical_estimates||{};
     if(pos==='GK') return ['GK'];
@@ -157,8 +165,8 @@
     if(!sorted.length) return 0;
     return sorted[Math.min(sorted.length-1,Math.floor((sorted.length-1)*q))];
   }
-  function playerToGame(raw,index,thresholds){
-    const positions=inferPositions(raw,index);
+  function playerToGame(raw,index,thresholds,positionOverride){
+    const positions=inferPositions(raw,index,positionOverride);
     const skills=deriveSkills(raw,positions);
     const score=historicalScore(raw,skills);
     const [player_class,tier]=classFromPercentile(score,thresholds,raw);
@@ -176,7 +184,7 @@
     return {
       id:raw.player_wc_id,
       athlete_id:raw.player_base_id,
-      name:raw.player_name,
+      name:cleanPlayerName(raw.player_name),
       country:'',
       flag:'🌍',
       year:raw.year,
@@ -193,13 +201,13 @@
       production_record:true
     };
   }
-  function mergeProduction(prod,countries){
+  function mergeProduction(prod,countries,positionOverrides={}){
     if(!prod || !Array.isArray(prod.teams) || !Array.isArray(prod.players)) return {ok:false};
     const curated=(window.WCHD_PART4&&window.WCHD_PART4.teams)||[];
     const curatedTeamMap=new Map(curated.map(t=>[norm(t.country)+'_'+t.year,t]));
     const countryById=new Map((countries||[]).map(c=>[c.country_id,c]));
     const rawScores=prod.players.map(raw=>{
-      const positions=inferPositions(raw,0);
+      const positions=inferPositions(raw,0,positionOverrides[raw.player_wc_id]);
       const skills=deriveSkills(raw,positions);
       return historicalScore(raw,skills);
     }).sort((a,b)=>a-b);
@@ -211,7 +219,7 @@
     const playersByTeam=new Map();
     prod.players.forEach((p,i)=>{
       if(!playersByTeam.has(p.team_wc_id)) playersByTeam.set(p.team_wc_id,[]);
-      playersByTeam.get(p.team_wc_id).push(playerToGame(p,i,thresholds));
+      playersByTeam.get(p.team_wc_id).push(playerToGame(p,i,thresholds,positionOverrides[p.player_wc_id]));
     });
     const merged=[];
     prod.teams.forEach((rawTeam)=>{
@@ -222,14 +230,14 @@
       const key=norm(country)+'_'+rawTeam.year;
       const curatedTeam=curatedTeamMap.get(key);
       const generated=(playersByTeam.get(rawTeam.team_wc_id)||[]).map(p=>({...p,country,flag}));
-      const curatedByName=new Map(((curatedTeam&&curatedTeam.players)||[]).map(p=>[norm(p.name),p]));
+      const curatedByName=new Map(((curatedTeam&&curatedTeam.players)||[]).map(p=>[norm(cleanPlayerName(p.name)),p]));
       const combined=generated.map(p=>{
-        const known=curatedByName.get(norm(p.name));
+        const known=curatedByName.get(norm(cleanPlayerName(p.name)));
         return known ? {...p,...known,country,flag,production_record:true,data_origin:p.data_origin} : p;
       });
       if(curatedTeam){
-        const names=new Set(combined.map(p=>norm(p.name)));
-        curatedTeam.players.forEach(p=>{ if(!names.has(norm(p.name))) combined.push({...p,production_record:false}); });
+        const names=new Set(combined.map(p=>norm(cleanPlayerName(p.name))));
+        curatedTeam.players.forEach(p=>{ if(!names.has(norm(cleanPlayerName(p.name)))) combined.push({...p,production_record:false}); });
       }
       merged.push({
         id:rawTeam.team_wc_id,
@@ -261,14 +269,16 @@
   async function load(){
     const status=document.getElementById('productionLoadStatus');
     try{
-      const [prodRes,countryRes]=await Promise.all([
+      const [prodRes,countryRes,positionRes]=await Promise.all([
         fetch(`data/production/wchd_legion_inputs.json?v=${encodeURIComponent(window.FWCL_RELEASE?.cacheKey||window.FWCL_VERSION||'current')}`,{cache:'no-store'}),
-        fetch(`data/production/wchd_countries_production.json?v=${encodeURIComponent(window.FWCL_RELEASE?.cacheKey||window.FWCL_VERSION||'current')}`,{cache:'no-store'})
+        fetch(`data/production/wchd_countries_production.json?v=${encodeURIComponent(window.FWCL_RELEASE?.cacheKey||window.FWCL_VERSION||'current')}`,{cache:'no-store'}),
+        fetch(`data/production/wchd_player_position_overrides.json?v=${encodeURIComponent(window.FWCL_RELEASE?.cacheKey||window.FWCL_VERSION||'current')}`,{cache:'no-store'})
       ]);
       if(!prodRes.ok) throw new Error(`Production data HTTP ${prodRes.status}`);
       const prod=await prodRes.json();
       const countries=countryRes.ok?await countryRes.json():[];
-      const result=mergeProduction(prod,countries);
+      const positionOverrides=positionRes.ok?await positionRes.json():{};
+      const result=mergeProduction(prod,countries,positionOverrides);
       if(status){
         status.className='notice ok';
         status.textContent=`${window.FWCL_RELEASE?.label||'Release atual'}: Production Data Pack carregado com ${result.teams} seleções-Copa e ${result.players} jogadores-Copa.`;
@@ -284,6 +294,6 @@
     }
   }
 
-  window.FWCL_PRODUCTION_DATA={load,mergeProduction};
+  window.FWCL_PRODUCTION_DATA={load,mergeProduction,cleanPlayerName};
   window.FWCL_DATA_READY=load();
 })();

@@ -1,0 +1,158 @@
+{
+  "release": "0.4.3",
+  "generated_at": "2026-07-07",
+  "runtime_result": {
+    "release": {
+      "version": "0.4.3",
+      "name": "Data, Retro Goal Audio & Live Pitch",
+      "label": "Release 0.4.3 — Dados, áudio e campo ao vivo",
+      "cacheKey": "fwcl-0-4-3-20260707",
+      "generatedAt": "2026-07-07"
+    },
+    "production": {
+      "teams": 298,
+      "players": 6855,
+      "bad_name_count": 0
+    },
+    "samples": [
+      {
+        "name": "Neymar",
+        "year": 2014,
+        "found": true,
+        "positions": [
+          "PE",
+          "MEI",
+          "SA"
+        ],
+        "player_class": "⭐ Craque"
+      },
+      {
+        "name": "Neymar",
+        "year": 2022,
+        "found": true,
+        "positions": [
+          "MEI",
+          "PE",
+          "SA"
+        ],
+        "player_class": "⭐ Craque"
+      },
+      {
+        "name": "Dunga",
+        "year": 1994,
+        "found": true,
+        "positions": [
+          "VOL"
+        ],
+        "player_class": "🛡️ Líder"
+      },
+      {
+        "name": "Robinho",
+        "year": 2010,
+        "found": true,
+        "positions": [
+          "SA",
+          "CA",
+          "PD"
+        ],
+        "player_class": "⭐ Craque"
+      },
+      {
+        "name": "Branco",
+        "year": 1994,
+        "found": true,
+        "positions": [
+          "LE"
+        ],
+        "player_class": "🎯 Especialista"
+      },
+      {
+        "name": "Cris",
+        "year": 2006,
+        "found": true,
+        "positions": [
+          "ZAG"
+        ],
+        "player_class": "🔥 Promessa"
+      },
+      {
+        "name": "Aldair",
+        "year": 1998,
+        "found": true,
+        "positions": [
+          "ZAG"
+        ],
+        "player_class": "🛡️ Líder"
+      }
+    ],
+    "tournament_name_test": {
+      "flag": "🇺🇸",
+      "name": "Estados Unidos 1990"
+    },
+    "audio": {
+      "enabled": true,
+      "toggle_off": false,
+      "toggle_on": true
+    },
+    "simulation": {
+      "matches": 200,
+      "avg_goals": 2.52,
+      "avg_shots": 17.515,
+      "avg_corners": 4.13,
+      "avg_subs": 6.01,
+      "avg_events": 219.88,
+      "event_types": [
+        "build",
+        "corner",
+        "cross",
+        "crowd",
+        "danger",
+        "defense",
+        "discipline",
+        "dribble",
+        "foul",
+        "goal",
+        "goalkick",
+        "header",
+        "injury",
+        "miss",
+        "offside",
+        "pass",
+        "penalty",
+        "rebound",
+        "referee",
+        "save",
+        "setpiece",
+        "shot",
+        "substitution",
+        "tackle",
+        "tactical",
+        "throwin"
+      ]
+    }
+  },
+  "quality_gate": {
+    "version_visible": true,
+    "audio_module_loaded": true,
+    "sound_toggle_present": true,
+    "pitch_trace_present": true,
+    "position_override_file_present": true,
+    "no_bad_names": true,
+    "all_position_samples_found": true,
+    "neymar_2014_left_wing": true,
+    "dunga_1994_defensive_mid": true,
+    "branco_1994_left_back": true,
+    "cris_2006_center_back": true,
+    "aldair_1998_center_back": true,
+    "tournament_name_has_no_flag_duplication": true,
+    "simulation_stable": true,
+    "substitutions_still_work": true
+  },
+  "overall_passed": true,
+  "manual_browser_test_required": true,
+  "manual_focus": [
+    "Confirmar se a voz portuguesa escolhida pelo navegador soa natural.",
+    "Verificar legibilidade dos nomes em telas menores.",
+    "Confirmar linhas de apoio e disputa durante a simulação em tempo real."
+  ]
+}

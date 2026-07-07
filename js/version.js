@@ -1,9 +1,9 @@
 (function(){
   const release={
-    version:'0.4.2',
-    name:'LEGION Dynamic Match Management',
-    label:'Release 0.4.2 — Gestão tática dinâmica',
-    cacheKey:'fwcl-0-4-2-20260707',
+    version:'0.4.3',
+    name:'Data, Retro Goal Audio & Live Pitch',
+    label:'Release 0.4.3 — Dados, áudio e campo ao vivo',
+    cacheKey:'fwcl-0-4-3-20260707',
     generatedAt:'2026-07-07'
   };
   window.FWCL_RELEASE=release;

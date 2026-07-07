@@ -1,0 +1,18 @@
+{
+  "version": "0.4.3",
+  "name": "Data, Retro Goal Audio & Live Pitch",
+  "generated_at": "2026-07-07",
+  "base_release": "0.4.2",
+  "cache_key": "fwcl-0-4-3-20260707",
+  "features": [
+    "not_applicable_name_cleanup",
+    "evidence_based_player_positions",
+    "manual_career_position_review_for_known_cases",
+    "tournament_flag_deduplication",
+    "original_retro_style_goal_voice",
+    "goal_sound_toggle",
+    "formation_aware_live_pitch",
+    "play_support_and_duel_traces",
+    "improved_player_markers_and_labels"
+  ]
+}

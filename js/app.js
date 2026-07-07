@@ -100,6 +100,7 @@
     else document.getElementById('continueCupBtn').classList.add('hide');
   }
   function simulateRealTime(){
+    window.FWCL_AUDIO?.unlock();
     if(!state.opponent)return;
     clearInterval(state.timer);resetPlayersMatch();state.match=buildMatch();state.matchFinalized=false;
     window.FWCL_UI.clearEvents();window.FWCL_UI.report(null);window.FWCL_UI.renderScore(state.match);window.FWCL_UI.renderLivePitch(state.match,null);window.FWCL_UI.renderManagement(state.match,null);
@@ -118,6 +119,7 @@
     },680);
   }
   function simulateInstant(){
+    window.FWCL_AUDIO?.unlock();
     if(!state.opponent)return;
     clearInterval(state.timer);resetPlayersMatch();state.match=buildMatch();state.matchFinalized=false;
     state.match.currentMinute=90;state.match.liveScore={...state.match.score};
@@ -133,6 +135,11 @@
     document.getElementById('startBtn').onclick=resetAssembly;document.getElementById('resetBtn').onclick=resetAssembly;
     document.getElementById('goMatchBtn').onclick=startCup;
     document.getElementById('realBtn').onclick=simulateRealTime;document.getElementById('instantBtn').onclick=simulateInstant;
+    document.getElementById('soundToggle').onclick=e=>{
+      window.FWCL_AUDIO?.unlock();
+      const active=window.FWCL_AUDIO?.toggle();
+      e.currentTarget.textContent=active?'🔊 Gol narrado: ligado':'🔇 Gol narrado: desligado';
+    };
     document.getElementById('draftReset').onclick=resetAssembly;
     document.getElementById('continueCupBtn').onclick=()=>{prepareNextMatch();document.getElementById('matchSection').scrollIntoView({behavior:'smooth'});};
   }

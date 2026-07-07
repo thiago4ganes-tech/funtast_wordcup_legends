@@ -76,51 +76,140 @@
     div.innerHTML=ev.html;$('log').appendChild(div);$('log').scrollTop=$('log').scrollHeight;
   }
   function clearEvents(){$('log').innerHTML='';}
-  function playGoalSound(){
-    try{
-      const C=window.AudioContext||window.webkitAudioContext;if(!C)return;
-      const ctx=new C(),gain=ctx.createGain();gain.gain.value=.065;gain.connect(ctx.destination);const now=ctx.currentTime;
-      [392,523.25,659.25].forEach((f,i)=>{const o=ctx.createOscillator();o.type='triangle';o.frequency.setValueAtTime(f,now+i*.09);o.connect(gain);o.start(now+i*.09);o.stop(now+i*.09+.16);});
-      setTimeout(()=>ctx.close&&ctx.close(),900);
-    }catch(e){}
-  }
   function goalAlert(ev){
-    playGoalSound();const el=$('goalAlert');el.textContent=`⚽ GOL! ${ev.team} — ${ev.player} (${ev.score})`;
+    window.FWCL_AUDIO?.goal({player:ev.player,team:ev.team,score:ev.score});const el=$('goalAlert');el.textContent=`⚽ GOL! ${ev.team} — ${ev.player} (${ev.score})`;
     el.classList.add('show');setTimeout(()=>el.classList.remove('show'),1400);
   }
-  const coords=[
-    [50,89],[18,72],[38,76],[62,76],[82,72],[50,61],[33,49],[67,49],[22,29],[50,22],[78,29]
-  ];
+  function roleRank(player){
+    const pos=player?.positions||[];
+    if(pos.includes('GK'))return 0;
+    if(pos.some(x=>['ZAG','LE','LD','ALA_E','ALA_D'].includes(x)))return 1;
+    if(pos.some(x=>['VOL','MC','MEI'].includes(x)))return 2;
+    return 3;
+  }
+  function sideBias(player){
+    const pos=player?.positions||[];
+    if(pos.some(x=>['LE','ALA_E','PE'].includes(x)))return -1;
+    if(pos.some(x=>['LD','ALA_D','PD'].includes(x)))return 1;
+    return 0;
+  }
+  function formationLines(shape){
+    const known={
+      '5-4-1':[1,5,4,1],
+      '4-5-1':[1,4,5,1],
+      '4-4-2':[1,4,4,2],
+      '4-3-3':[1,4,3,3],
+      '4-2-3-1':[1,4,2,3,1],
+      '4-2-4':[1,4,2,4],
+      '3-4-3':[1,3,4,3],
+      '3-3-4':[1,3,3,4]
+    };
+    return known[shape]||known['4-2-3-1'];
+  }
+  function assignFormation(players,shape,side){
+    const sorted=[...players].sort((a,b)=>
+      roleRank(a)-roleRank(b)||sideBias(a)-sideBias(b)||String(a.name).localeCompare(String(b.name))
+    );
+    const lines=formationLines(shape);
+    const coords=[];
+    let cursor=0;
+    const minX=side==='home'?7:93;
+    const maxX=side==='home'?45:55;
+    lines.forEach((count,lineIndex)=>{
+      const ratio=lines.length===1?0:lineIndex/(lines.length-1);
+      const x=minX+(maxX-minX)*ratio;
+      const ys=count===1?[50]:Array.from({length:count},(_,i)=>12+i*(76/(count-1)));
+      for(let i=0;i<count&&cursor<sorted.length;i++,cursor++){
+        coords.push({player:sorted[cursor],x,y:ys[i]});
+      }
+    });
+    while(cursor<sorted.length){
+      coords.push({player:sorted[cursor],x:side==='home'?42:58,y:18+(cursor%5)*15});
+      cursor++;
+    }
+    return coords;
+  }
+  function shortLabel(name){
+    const clean=String(name||'Jogador').replace(/^not applicable\s+/i,'').trim();
+    const parts=clean.split(/\s+/);
+    return parts.length<=2?clean:parts[parts.length-1];
+  }
   function renderLivePitch(match,ev){
-    const pitch=$('livePitch');pitch.querySelectorAll('.livePlayer').forEach(n=>n.remove());
-    const homeSquad=match?.home?.squad||match?.home?.lineup||[],awaySquad=match?.away?.squad||match?.away?.lineup||[];
+    const pitch=$('livePitch');
+    pitch.querySelectorAll('.livePlayer').forEach(node=>node.remove());
+    const trace=$('playTrace');
+    if(trace)trace.querySelectorAll('.dynamicTrace').forEach(node=>node.remove());
+
+    const homeSquad=match?.home?.squad||match?.home?.lineup||[];
+    const awaySquad=match?.away?.squad||match?.away?.lineup||[];
     const homeIds=new Set(ev?.activeLineups?.home?.activeIds||match?.home?.lineup?.map(p=>p.id||p.player_wc_id)||[]);
     const awayIds=new Set(ev?.activeLineups?.away?.activeIds||match?.away?.lineup?.map(p=>p.id||p.player_wc_id)||[]);
     const home=homeSquad.filter(p=>homeIds.has(p.id||p.player_wc_id));
     const away=awaySquad.filter(p=>awayIds.has(p.id||p.player_wc_id));
-    function marker(p,teamKey,i){
-      const c=coords[i]||[10+(i%6)*15,20+Math.floor(i/6)*20];
-      const x=teamKey==='home'?c[0]:100-c[0],y=teamKey==='home'?c[1]:100-c[1];
-      const div=document.createElement('div');div.className=`livePlayer ${teamKey}`;
-      const id=p.id||p.player_wc_id;
-      if(ev?.actor?.id===id)div.classList.add('ballCarrier');
-      if(ev?.support?.id===id)div.classList.add('supporting');
-      if(ev?.defender?.id===id)div.classList.add('dueling');
-      div.style.left=x+'%';div.style.top=y+'%';div.textContent=p.name.split(' ').slice(-1)[0];div.title=p.name;pitch.appendChild(div);
-      if(ev?.actor?.id===id){
-        const ball=$('liveBall');ball.classList.remove('hide');ball.style.left=(x+2)+'%';ball.style.top=(y-3)+'%';
-      }
+
+    const homeShape=ev?.activeLineups?.home?.shape||match?.home?.currentShape||'4-2-3-1';
+    const awayShape=ev?.activeLineups?.away?.shape||match?.away?.currentShape||'4-2-3-1';
+    const positions=[
+      ...assignFormation(home,homeShape,'home').map(x=>({...x,side:'home'})),
+      ...assignFormation(away,awayShape,'away').map(x=>({...x,side:'away'}))
+    ];
+    const pointById=new Map();
+
+    positions.forEach(({player,x,y,side},index)=>{
+      const id=player.id||player.player_wc_id;
+      pointById.set(id,{x,y});
+      const marker=document.createElement('div');
+      marker.className=`livePlayer ${side}`;
+      if(ev?.actor?.id===id)marker.classList.add('ballCarrier');
+      if(ev?.support?.id===id)marker.classList.add('supporting');
+      if(ev?.defender?.id===id)marker.classList.add('dueling');
+      marker.style.left=x+'%';
+      marker.style.top=y+'%';
+      const number=player.shirt||((index%11)+1);
+      marker.innerHTML=`<span class="playerDisc"><b>${number}</b></span><span class="playerTag">${shortLabel(player.name)}</span>`;
+      marker.title=`${player.name} • ${(player.positions||[]).join('/')}`;
+      pitch.appendChild(marker);
+    });
+
+    const ball=$('liveBall');
+    const actorPoint=ev?.actor?.id?pointById.get(ev.actor.id):null;
+    if(actorPoint){
+      ball.classList.remove('hide');
+      ball.style.left=(actorPoint.x+1.1)+'%';
+      ball.style.top=(actorPoint.y-4.2)+'%';
+    }else{
+      ball.classList.add('hide');
     }
-    home.forEach((p,i)=>marker(p,'home',i));away.forEach((p,i)=>marker(p,'away',i));
-    if(!ev?.actor)$('liveBall').classList.add('hide');
+
+    function traceLine(fromId,toId,cssClass){
+      if(!trace||!fromId||!toId)return;
+      const from=pointById.get(fromId),to=pointById.get(toId);
+      if(!from||!to)return;
+      const line=document.createElementNS('http://www.w3.org/2000/svg','line');
+      line.setAttribute('x1',String(from.x*10));
+      line.setAttribute('y1',String(from.y*5.6));
+      line.setAttribute('x2',String(to.x*10));
+      line.setAttribute('y2',String(to.y*5.6));
+      line.setAttribute('class',`dynamicTrace ${cssClass}`);
+      trace.appendChild(line);
+    }
+    traceLine(ev?.actor?.id,ev?.support?.id,'supportTrace');
+    traceLine(ev?.actor?.id,ev?.defender?.id,'duelTrace');
+
     const team=ev?.possessionTeam==='home'?match?.home:ev?.possessionTeam==='away'?match?.away:null;
-    $('possessionBanner').textContent=team?`⚽ Posse: ${team.name}${ev.actor?.name?` — ${ev.actor.name} com a bola`:''}`:'⚪ Bola parada ou transição de posse';
+    $('possessionBanner').textContent=team
+      ?`⚽ Posse: ${team.name}${ev.actor?.name?` — ${ev.actor.name} com a bola`:''}`
+      :'⚪ Bola parada ou transição de posse';
     $('possessionBanner').className=`possessionBanner ${ev?.possessionTeam||''}`;
+
     const pieces=[];
     if(ev?.actor?.name)pieces.push(`<b>Com a bola:</b> ${ev.actor.name}`);
     if(ev?.support?.name)pieces.push(`<b>Apoio:</b> ${ev.support.name}`);
-    if(ev?.defender?.name)pieces.push(`<b>Disputa:</b> ${ev.defender.name}`);
-    $('duelPanel').innerHTML=pieces.length?pieces.join(' <span class="duelSep">×</span> '):'<span>Jogada sem disputa individual destacada.</span>';
+    if(ev?.defender?.name)pieces.push(`<b>Marcador:</b> ${ev.defender.name}`);
+    if(ev?.type)pieces.push(`<b>Ação:</b> ${window.FWCL_NARRATION.labels?.[ev.type]||ev.type}`);
+    $('duelPanel').innerHTML=pieces.length
+      ?pieces.join(' <span class="duelSep">•</span> ')
+      :'<span>Jogada sem disputa individual destacada.</span>';
   }
   function renderManagement(match,ev){
     if(!match){

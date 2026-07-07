@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Fantasy World Cup Legends — Release 0.4.2</title>
-  <link rel="stylesheet" href="css/style.css?v=0.4.2" />
+  <title>Fantasy World Cup Legends — Release 0.4.3</title>
+  <link rel="stylesheet" href="css/style.css?v=0.4.3" />
 </head>
 <body>
   <header>
@@ -14,8 +14,8 @@
       <p>LEGION, Copa do Mundo e Production Data Pack A–G</p>
     </div>
     <div class="versionIdentity">
-      <strong id="versionBadge">Release 0.4.2 — Gestão tática dinâmica</strong>
-      <span id="buildIdentity">Build fwcl-0-4-2-20260707</span>
+      <strong id="versionBadge">Release 0.4.3 — Dados, áudio e campo ao vivo</strong>
+      <span id="buildIdentity">Build fwcl-0-4-3-20260707</span>
     </div>
   </div>
 </header>
@@ -128,9 +128,32 @@
       </div>
 
       <div id="livePitch" class="livePitch">
+        <div class="pitchStripe stripe1"></div>
+        <div class="pitchStripe stripe2"></div>
+        <div class="pitchStripe stripe3"></div>
+        <div class="pitchStripe stripe4"></div>
         <div class="pitchMidline"></div>
         <div class="pitchCircle"></div>
+        <div class="penaltyArea homeArea"></div>
+        <div class="penaltyArea awayArea"></div>
+        <div class="goalBox homeGoalBox"></div>
+        <div class="goalBox awayGoalBox"></div>
+        <div class="attackDirection homeDirection">ATAQUE →</div>
+        <div class="attackDirection awayDirection">← ATAQUE</div>
+        <svg id="playTrace" class="playTrace" viewBox="0 0 1000 560" preserveAspectRatio="none">
+          <defs>
+            <marker id="arrowHome" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L7,3 z"></path>
+            </marker>
+          </defs>
+        </svg>
         <div id="liveBall" class="liveBall hide">⚽</div>
+      </div>
+
+      <div class="pitchLegend">
+        <span><i class="legendDot carrier"></i> Com a bola</span>
+        <span><i class="legendDot support"></i> Apoio</span>
+        <span><i class="legendDot duel"></i> Marcador</span>
       </div>
 
       <div id="duelPanel" class="duelPanel">
@@ -141,6 +164,7 @@
       <div class="row">
         <button id="realBtn" class="primary">Simular em tempo real</button>
         <button id="instantBtn" class="secondary">Simulação instantânea</button>
+        <button id="soundToggle" class="secondary soundToggle">🔊 Gol narrado: ligado</button>
       </div>
 
       <div class="spacer20"></div>
@@ -166,17 +190,18 @@
 
   <div id="goalAlert" class="goalAlert">⚽ GOL!</div>
 
-  <script src="js/version.js?v=0.4.2"></script>
-  <script src="data/wchd.js?v=0.4.2"></script>
-  <script src="data/formations.js?v=0.4.2"></script>
-  <script src="js/productionData.js?v=0.4.2"></script>
-  <script src="js/dataQuality.js?v=0.4.2"></script>
-  <script src="js/skillsEngine.js?v=0.4.2"></script>
-  <script src="js/narration.js?v=0.4.2"></script>
-  <script src="js/eventGraph.js?v=0.4.2"></script>
-  <script src="js/market.js?v=0.4.2"></script>
-  <script src="js/tournament.js?v=0.4.2"></script>
-  <script src="js/ui.js?v=0.4.2"></script>
-  <script src="js/app.js?v=0.4.2"></script>
+  <script src="js/version.js?v=0.4.3"></script>
+  <script src="data/wchd.js?v=0.4.3"></script>
+  <script src="data/formations.js?v=0.4.3"></script>
+  <script src="js/productionData.js?v=0.4.3"></script>
+  <script src="js/dataQuality.js?v=0.4.3"></script>
+  <script src="js/skillsEngine.js?v=0.4.3"></script>
+  <script src="js/narration.js?v=0.4.3"></script>
+  <script src="js/eventGraph.js?v=0.4.3"></script>
+  <script src="js/market.js?v=0.4.3"></script>
+  <script src="js/tournament.js?v=0.4.3"></script>
+  <script src="js/audioEngine.js?v=0.4.3"></script>
+  <script src="js/ui.js?v=0.4.3"></script>
+  <script src="js/app.js?v=0.4.3"></script>
 </body>
 </html>

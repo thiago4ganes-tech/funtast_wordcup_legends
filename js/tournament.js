@@ -5,7 +5,8 @@
     return a;
   }
   function entryFromTeam(team){
-    return {id:team.id,name:team.name,flag:team.flag,team,user:false};
+    const cleanName=`${team.country||String(team.name||'Seleção').replace(/^\S+\s+/,'').replace(/\s+\d{4}$/,'')} ${team.year||''}`.trim();
+    return {id:team.id,name:cleanName,flag:team.flag,team,user:false};
   }
   function create(allTeams){
     const chosen=shuffle(allTeams).slice(0,15).map(entryFromTeam);
