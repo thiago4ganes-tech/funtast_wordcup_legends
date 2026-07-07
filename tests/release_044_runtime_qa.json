@@ -1,0 +1,130 @@
+{
+  "release": "0.4.4",
+  "generated_at": "2026-07-07",
+  "runtime_result": {
+    "release": {
+      "version": "0.4.4",
+      "name": "Interactive Match & Data Cleanup",
+      "label": "Release 0.4.4 — Seleção detalhada e partida interativa",
+      "cacheKey": "fwcl-0-4-4-20260707",
+      "generatedAt": "2026-07-07"
+    },
+    "production": {
+      "teams": 298,
+      "players": 6855,
+      "bad_names": 0,
+      "bad_classes": 0
+    },
+    "known_positions": [
+      {
+        "name": "Neymar",
+        "year": 2014,
+        "found": true,
+        "positions": [
+          "PE",
+          "MEI",
+          "SA"
+        ],
+        "expected": "PE",
+        "pass": true
+      },
+      {
+        "name": "Dunga",
+        "year": 1994,
+        "found": true,
+        "positions": [
+          "VOL",
+          "MC"
+        ],
+        "expected": "VOL",
+        "pass": true
+      },
+      {
+        "name": "Robinho",
+        "year": 2010,
+        "found": true,
+        "positions": [
+          "SA",
+          "CA",
+          "PD"
+        ],
+        "expected": "SA",
+        "pass": true
+      },
+      {
+        "name": "Branco",
+        "year": 1994,
+        "found": true,
+        "positions": [
+          "LE",
+          "ALA_E"
+        ],
+        "expected": "LE",
+        "pass": true
+      },
+      {
+        "name": "Cris",
+        "year": 2006,
+        "found": true,
+        "positions": [
+          "ZAG"
+        ],
+        "expected": "ZAG",
+        "pass": true
+      },
+      {
+        "name": "Aldair",
+        "year": 1998,
+        "found": true,
+        "positions": [
+          "ZAG"
+        ],
+        "expected": "ZAG",
+        "pass": true
+      }
+    ],
+    "audio": {
+      "source": "assets/audio/gol_retro_original.wav?v=fwcl-0-4-4-20260707",
+      "enabled": true
+    },
+    "simulation": {
+      "matches": 120,
+      "avg_goals": 2.5,
+      "avg_shots": 17.717,
+      "avg_corners": 4.383,
+      "avg_substitutions": 6
+    },
+    "interactive_substitution": {
+      "minute": 73,
+      "teamKey": "home",
+      "slot": "LE",
+      "candidateCount": 3,
+      "outgoing": "Mahmoud Guendouz",
+      "suggested": "Karim Maroc"
+    }
+  },
+  "quality_gate": {
+    "version_visible": true,
+    "all_bad_names_removed": true,
+    "all_bad_classes_removed": true,
+    "known_positions_pass": true,
+    "local_audio_exists": true,
+    "audio_test_button_present": true,
+    "substitution_modal_present": true,
+    "interactive_substitution_metadata": true,
+    "radar_profile_present": true,
+    "exact_pitch_templates_present": true,
+    "ball_carrier_highlight_present": true,
+    "goal_flash_present": true,
+    "app_pauses_for_user_substitution": true,
+    "simulation_stable": true
+  },
+  "overall_passed": true,
+  "manual_browser_test_required": true,
+  "manual_focus": [
+    "Clicar em 'Testar áudio do gol' antes da primeira partida.",
+    "Confirmar que o modal de substituição pausa e retoma a simulação.",
+    "Verificar o posicionamento em 4-3-3, 4-2-3-1 e após mudança para 3-4-3.",
+    "Confirmar o pisca-pisca em tela cheia no gol."
+  ]
+}

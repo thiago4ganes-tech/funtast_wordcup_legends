@@ -1,0 +1,18 @@
+{
+  "version": "0.4.4",
+  "name": "Interactive Match & Data Cleanup",
+  "generated_at": "2026-07-07",
+  "base_release": "0.4.3",
+  "cache_key": "fwcl-0-4-4-20260707",
+  "features": [
+    "definitive_not_applicable_sanitization",
+    "position_override_precedence_fix",
+    "rich_candidate_radar_and_profile",
+    "local_goal_wav_audio",
+    "goal_audio_test_button",
+    "full_screen_flashing_goal_alert",
+    "exact_formation_pitch_templates",
+    "strong_ball_carrier_highlight",
+    "interactive_user_substitution_selection"
+  ]
+}

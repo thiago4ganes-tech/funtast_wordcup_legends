@@ -1,81 +1,67 @@
 (function(){
   let enabled=true;
   let unlocked=false;
+  const sourceUrl=`assets/audio/gol_retro_original.wav?v=${encodeURIComponent(window.FWCL_RELEASE?.cacheKey||'fwcl-0-4-4-20260707')}`;
+  const baseAudio=new Audio(sourceUrl);
+  baseAudio.preload='auto';
+  baseAudio.volume=1;
 
-  function availableVoice(){
-    if(!('speechSynthesis' in window))return null;
-    const voices=window.speechSynthesis.getVoices();
-    return voices.find(v=>/^pt-BR$/i.test(v.lang))||
-      voices.find(v=>/^pt/i.test(v.lang))||
-      voices.find(v=>/Brazil|Portugu/i.test(v.name))||
-      voices[0]||null;
-  }
-
-  function retroTone(){
+  function fallbackSpeech(info={}){
+    if(!('speechSynthesis' in window))return;
     try{
-      const AudioCtx=window.AudioContext||window.webkitAudioContext;
-      if(!AudioCtx)return;
-      const ctx=new AudioCtx();
-      const gain=ctx.createGain();
-      gain.gain.setValueAtTime(.0001,ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(.075,ctx.currentTime+.02);
-      gain.gain.exponentialRampToValueAtTime(.0001,ctx.currentTime+.75);
-      gain.connect(ctx.destination);
-      [261.63,329.63,392,523.25].forEach((freq,index)=>{
-        const osc=ctx.createOscillator();
-        osc.type=index%2?'square':'sawtooth';
-        osc.frequency.setValueAtTime(freq,ctx.currentTime+index*.055);
-        osc.connect(gain);
-        osc.start(ctx.currentTime+index*.055);
-        osc.stop(ctx.currentTime+.55+index*.055);
-      });
-      setTimeout(()=>ctx.close?.(),1100);
+      window.speechSynthesis.cancel();
+      const call=new SpeechSynthesisUtterance('Gooooooooooooooooool!');
+      call.lang='pt-BR';call.rate=.72;call.pitch=1.08;call.volume=1;
+      window.speechSynthesis.speak(call);
+      if(info.player){
+        call.onend=()=>{
+          const detail=new SpeechSynthesisUtterance(`Gol de ${info.player}!`);
+          detail.lang='pt-BR';detail.rate=.92;detail.pitch=1;detail.volume=.95;
+          window.speechSynthesis.speak(detail);
+        };
+      }
     }catch(error){}
   }
 
-  function speakGoal(info={}){
-    if(!enabled)return;
-    retroTone();
-    if(!('speechSynthesis' in window))return;
-    window.speechSynthesis.cancel();
-    const utterance=new SpeechSynthesisUtterance('Gooooooooooooooooool!');
-    utterance.lang='pt-BR';
-    utterance.rate=.68;
-    utterance.pitch=1.12;
-    utterance.volume=1;
-    const voice=availableVoice();
-    if(voice)utterance.voice=voice;
-    window.speechSynthesis.speak(utterance);
-
-    if(info.player){
-      utterance.onend=()=>{
-        if(!enabled)return;
-        const detail=new SpeechSynthesisUtterance(`Gol de ${info.player}!`);
-        detail.lang='pt-BR';
-        detail.rate=.92;
-        detail.pitch=1.02;
-        detail.volume=.92;
-        const detailVoice=availableVoice();
-        if(detailVoice)detail.voice=detailVoice;
-        window.speechSynthesis.speak(detail);
-      };
+  async function playGoal(info={}){
+    if(!enabled)return false;
+    try{
+      const audio=baseAudio.cloneNode(true);
+      audio.volume=1;
+      audio.currentTime=0;
+      await audio.play();
+      return true;
+    }catch(error){
+      fallbackSpeech(info);
+      return false;
     }
   }
 
-  function unlock(){
-    unlocked=true;
-    if('speechSynthesis' in window){
-      const silent=new SpeechSynthesisUtterance(' ');
-      silent.volume=0;
-      window.speechSynthesis.speak(silent);
+  async function unlock(){
+    if(unlocked)return true;
+    try{
+      baseAudio.volume=.001;
+      await baseAudio.play();
+      baseAudio.pause();
+      baseAudio.currentTime=0;
+      baseAudio.volume=1;
+      unlocked=true;
+      return true;
+    }catch(error){
+      unlocked=false;
+      return false;
     }
   }
+
   function toggle(){
     enabled=!enabled;
-    if(!enabled&&'speechSynthesis' in window)window.speechSynthesis.cancel();
+    if(!enabled){
+      baseAudio.pause();
+      if('speechSynthesis' in window)window.speechSynthesis.cancel();
+    }
     return enabled;
   }
   function isEnabled(){return enabled;}
-
-  window.FWCL_AUDIO={goal:speakGoal,unlock,toggle,isEnabled};
+  function test(){return playGoal({player:'Teste'});}
+  window.FWCL_AUDIO={goal:playGoal,unlock,toggle,isEnabled,test,sourceUrl};
 })();

@@ -144,12 +144,16 @@
     const outPlayer=outs.find(p=>p.match?.injured)||outs[0];
     if(!outPlayer)return [];
     const candidates=(team.bench||[]).filter(p=>compatibleSub(outPlayer,p)).sort((a,b)=>reserveValue(b,t)-reserveValue(a,t));
-    const inPlayer=candidates[0]||(team.bench||[]).sort((a,b)=>reserveValue(b,t)-reserveValue(a,t))[0];
+    const fallbackCandidates=(team.bench||[]).sort((a,b)=>reserveValue(b,t)-reserveValue(a,t));
+    const eligibleCandidates=(candidates.length?candidates:fallbackCandidates).slice(0,7);
+    const inPlayer=eligibleCandidates[0];
     if(!inPlayer)return [];
     if(!forced&&Number(outPlayer.match?.fitness??100)>77&&minute<68)return [];
 
     const index=team.lineup.indexOf(outPlayer);
     if(index<0)return [];
+    inPlayer.slot=outPlayer.slot;
+    inPlayer.slotId=outPlayer.slotId;
     team.lineup[index]=inPlayer;
     team.bench=team.bench.filter(p=>p!==inPlayer);
     team.bench.push(outPlayer);
@@ -160,7 +164,15 @@
 
     const reason=outPlayer.match.injured?'por condição física':t.trailing?'para aumentar a presença ofensiva':t.leading?'para proteger a vantagem':'para renovar a intensidade';
     return [event(match,minute,`${team.name} muda: sai ${outPlayer.name}, entra ${inPlayer.name} ${reason}.`,'substitution',team,inPlayer,outPlayer,null,'',{
-      substitution:{out:playerMeta(outPlayer),in:playerMeta(inPlayer),reason}
+      substitution:{
+        teamKey:team.key,
+        out:playerMeta(outPlayer),
+        in:playerMeta(inPlayer),
+        reason,
+        slot:outPlayer.slot||outPlayer.positions?.[0]||null,
+        slotId:outPlayer.slotId||null,
+        candidateIds:eligibleCandidates.map(p=>p.id||p.player_wc_id)
+      }
     })];
   }
   function manageTeam(match,team,opponent,minute){

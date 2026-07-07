@@ -1,14 +1,13 @@
 (function(){
   const release={
-    version:'0.4.3',
-    name:'Data, Retro Goal Audio & Live Pitch',
-    label:'Release 0.4.3 — Dados, áudio e campo ao vivo',
-    cacheKey:'fwcl-0-4-3-20260707',
+    version:'0.4.4',
+    name:'Interactive Match & Data Cleanup',
+    label:'Release 0.4.4 — Seleção detalhada e partida interativa',
+    cacheKey:'fwcl-0-4-4-20260707',
     generatedAt:'2026-07-07'
   };
   window.FWCL_RELEASE=release;
   window.FWCL_VERSION=release.version;
-
   function apply(){
     const badge=document.getElementById('versionBadge');
     if(badge)badge.textContent=release.label;

@@ -51,11 +51,15 @@
       .replace(/[^a-z0-9]/g,'');
   }
   function cleanPlayerName(name){
-    return String(name||'Jogador')
-      .replace(/^\s*not\s+applicable\s+/i,'')
-      .replace(/\s+not\s+applicable\s*$/i,'')
+    const cleaned=String(name||'Jogador')
+      .replace(/not[\s_-]*applicable/ig,' ')
+      .replace(/\bn[\s._-]*a\b/ig,' ')
+      .replace(/\bundefined\b/ig,' ')
+      .replace(/\bnull\b/ig,' ')
       .replace(/\s+/g,' ')
-      .trim()||'Jogador';
+      .replace(/^[-–—:;,\s]+|[-–—:;,\s]+$/g,'')
+      .trim();
+    return cleaned||'Jogador';
   }
   function translateCountry(name){ return countryTranslations[name] || name || 'Seleção'; }
   function teamCountry(team){
@@ -233,12 +237,45 @@
       const curatedByName=new Map(((curatedTeam&&curatedTeam.players)||[]).map(p=>[norm(cleanPlayerName(p.name)),p]));
       const combined=generated.map(p=>{
         const known=curatedByName.get(norm(cleanPlayerName(p.name)));
-        return known ? {...p,...known,country,flag,production_record:true,data_origin:p.data_origin} : p;
+        const mergedPlayer=known ? {
+          ...known,
+          ...p,
+          name:cleanPlayerName(p.name||known.name),
+          positions:(p.positions&&p.positions.length)?[...p.positions]:[...(known.positions||[])],
+          role:(p.positions&&p.positions.length)?p.positions[0]:(known.role||p.role),
+          traits:Array.from(new Set([...(known.traits||[]),...(p.traits||[])])),
+          tendencies:Array.from(new Set([...(known.tendencies||[]),...(p.tendencies||[])])),
+          skills:{...(p.skills||{}),...(known.skills||{})},
+          country,flag,production_record:true,data_origin:p.data_origin
+        } : {...p,name:cleanPlayerName(p.name),country,flag};
+        mergedPlayer.player_class=String(mergedPlayer.player_class||'⚙️ Operário')
+          .replace(/not[\s_-]*applicable/ig,' ')
+          .replace(/\s+/g,' ')
+          .trim();
+        return mergedPlayer;
       });
       if(curatedTeam){
         const names=new Set(combined.map(p=>norm(cleanPlayerName(p.name))));
-        curatedTeam.players.forEach(p=>{ if(!names.has(norm(cleanPlayerName(p.name)))) combined.push({...p,production_record:false}); });
+        curatedTeam.players.forEach(p=>{
+          const cleanName=cleanPlayerName(p.name);
+          if(!names.has(norm(cleanName))) combined.push({
+            ...p,
+            name:cleanName,
+            positions:[...(p.positions||[])],
+            player_class:String(p.player_class||'⚙️ Operário')
+              .replace(/not[\s_-]*applicable/ig,' ')
+              .replace(/\s+/g,' ')
+              .trim(),
+            country,flag,production_record:false
+          });
+        });
       }
+      combined.forEach(player=>{
+        player.name=cleanPlayerName(player.name);
+        player.positions=Array.from(new Set((player.positions||[]).filter(Boolean)));
+        if(!player.positions.length)player.positions=['MC'];
+        player.role=player.positions[0];
+      });
       merged.push({
         id:rawTeam.team_wc_id,
         country,flag,year:rawTeam.year,

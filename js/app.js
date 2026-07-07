@@ -2,7 +2,7 @@
   const state={
     mode:'dynasty',country:'Brasil',formation:'4-3-3',difficulty:'normal',
     budgetTotal:100,budgetLeft:100,lineup:{},chosenAthletes:new Set(),activeDraft:null,
-    opponent:null,match:null,timer:null,tournament:null,currentFixture:null,matchFinalized:false
+    opponent:null,match:null,timer:null,tournament:null,currentFixture:null,matchFinalized:false,playbackIndex:0,pendingSubstitution:null,userTeamKey:null
   };
   function slots(){return window.FWCL_FORMATIONS[state.formation]||[];}
   function slotById(id){return slots().find(s=>s.id===id);}
@@ -11,7 +11,7 @@
     clearInterval(state.timer);
     const diff=window.FWCL_DIFFICULTIES[state.difficulty];
     state.budgetTotal=diff.budget;state.budgetLeft=diff.budget;state.lineup={};state.chosenAthletes=new Set();
-    state.activeDraft=null;state.opponent=null;state.match=null;state.tournament=null;state.currentFixture=null;state.matchFinalized=false;
+    state.activeDraft=null;state.opponent=null;state.match=null;state.tournament=null;state.currentFixture=null;state.matchFinalized=false;state.playbackIndex=0;state.pendingSubstitution=null;state.userTeamKey=null;
     document.getElementById('matchSection').classList.add('hide');
     document.getElementById('tournamentSection').classList.add('hide');
     document.getElementById('continueCupBtn').classList.add('hide');
@@ -80,6 +80,7 @@
     const knockout=state.currentFixture.phase!=='group';
     const match=window.FWCL_EVENT_GRAPH.simulate(home,away,{knockout,stage:state.currentFixture.phase});
     match.currentMinute=0;match.liveScore={home:0,away:0};match.lastEvent=null;
+    match.userTeamKey=state.currentFixture.home.user?'home':'away';state.userTeamKey=match.userTeamKey;
     return match;
   }
   function tournamentResult(match){
@@ -99,24 +100,79 @@
     if(state.tournament.status==='active')document.getElementById('continueCupBtn').classList.remove('hide');
     else document.getElementById('continueCupBtn').classList.add('hide');
   }
+  function renderPlaybackEvent(ev){
+    state.match.currentMinute=ev.minute;state.match.lastEvent=ev;
+    if(ev.scoreAfter)state.match.liveScore={...ev.scoreAfter};
+    window.FWCL_UI.addEvent(ev);window.FWCL_UI.renderScore(state.match);
+    window.FWCL_UI.renderLivePitch(state.match,ev);window.FWCL_UI.renderManagement(state.match,ev);
+    if(ev.type==='goal'){
+      const goal=state.match.goalEvents.find(g=>g.minute===ev.minute&&g.teamKey===ev.possessionTeam);
+      if(goal)window.FWCL_UI.goalAlert(goal);
+    }
+  }
+  function replacePlayerReference(ref,oldId,newPlayer){
+    return ref?.id===oldId?{id:newPlayer.id||newPlayer.player_wc_id,name:newPlayer.name}:ref;
+  }
+  function applyInteractiveSubstitution(candidateId){
+    const pending=state.pendingSubstitution;
+    if(!pending||!state.match)return;
+    const {ev,eventIndex}=pending,data=ev.substitution,team=state.match[data.teamKey];
+    const oldInId=data.in?.id;
+    const chosen=(team.squad||[]).find(p=>(p.id||p.player_wc_id)===candidateId);
+    const autoIn=(team.squad||[]).find(p=>(p.id||p.player_wc_id)===oldInId);
+    const outPlayer=(team.squad||[]).find(p=>(p.id||p.player_wc_id)===data.out?.id);
+    if(!chosen){window.FWCL_UI.hideSubstitution();state.pendingSubstitution=null;startPlaybackTimer();return;}
+
+    if(autoIn&&chosen!==autoIn){
+      chosen.match=autoIn.match;chosen.slot=outPlayer?.slot||autoIn.slot;chosen.slotId=outPlayer?.slotId||autoIn.slotId;
+      for(let index=eventIndex;index<state.match.events.length;index++){
+        const future=state.match.events[index],active=future.activeLineups?.[data.teamKey]?.activeIds;
+        if(active)future.activeLineups[data.teamKey].activeIds=active.map(id=>id===oldInId?candidateId:id);
+        future.actor=replacePlayerReference(future.actor,oldInId,chosen);
+        future.support=replacePlayerReference(future.support,oldInId,chosen);
+        future.defender=replacePlayerReference(future.defender,oldInId,chosen);
+        if(future.substitution?.out?.id===oldInId)future.substitution.out={id:candidateId,name:chosen.name};
+        if(future.substitution?.in?.id===oldInId)future.substitution.in={id:candidateId,name:chosen.name};
+        if(typeof future.text==='string')future.text=future.text.replaceAll(autoIn.name,chosen.name);
+        if(typeof future.html==='string')future.html=future.html.replaceAll(autoIn.name,chosen.name);
+      }
+      state.match.goalEvents.forEach(goal=>{if(goal.minute>=ev.minute&&goal.player===autoIn.name)goal.player=chosen.name;});
+      const lineupIndex=team.lineup.findIndex(p=>(p.id||p.player_wc_id)===oldInId);
+      if(lineupIndex>=0)team.lineup[lineupIndex]=chosen;
+      team.bench=(team.bench||[]).filter(p=>(p.id||p.player_wc_id)!==candidateId);
+      if(autoIn&&!team.bench.includes(autoIn))team.bench.push(autoIn);
+    }
+
+    data.in={id:chosen.id||chosen.player_wc_id,name:chosen.name};
+    ev.actor={id:chosen.id||chosen.player_wc_id,name:chosen.name};
+    ev.text=`${team.name} muda: sai ${outPlayer?.name||data.out?.name}, entra ${chosen.name} por decisão do treinador.`;
+    ev.html=`<b>${ev.minute}'</b> ${ev.text} ${window.FWCL_NARRATION.tag('substitution')}`;
+    ev.substitution.userResolved=true;
+    window.FWCL_UI.hideSubstitution();state.pendingSubstitution=null;
+    renderPlaybackEvent(ev);startPlaybackTimer();
+  }
+  function processPlaybackStep(){
+    if(!state.match)return;
+    if(state.playbackIndex>=state.match.events.length){
+      clearInterval(state.timer);window.FWCL_UI.report(state.match);finalizeMatch();return;
+    }
+    const eventIndex=state.playbackIndex,ev=state.match.events[state.playbackIndex++];
+    const interactive=ev.type==='substitution'&&ev.substitution?.teamKey===state.userTeamKey&&!ev.substitution?.userResolved;
+    if(interactive){
+      clearInterval(state.timer);state.pendingSubstitution={ev,eventIndex,data:ev.substitution};
+      if(window.FWCL_UI.showSubstitution(state.match,ev,applyInteractiveSubstitution))return;
+    }
+    renderPlaybackEvent(ev);
+  }
+  function startPlaybackTimer(){clearInterval(state.timer);state.timer=setInterval(processPlaybackStep,680);}
   function simulateRealTime(){
     window.FWCL_AUDIO?.unlock();
     if(!state.opponent)return;
     clearInterval(state.timer);resetPlayersMatch();state.match=buildMatch();state.matchFinalized=false;
-    window.FWCL_UI.clearEvents();window.FWCL_UI.report(null);window.FWCL_UI.renderScore(state.match);window.FWCL_UI.renderLivePitch(state.match,null);window.FWCL_UI.renderManagement(state.match,null);
-    let i=0;
-    state.timer=setInterval(()=>{
-      if(i>=state.match.events.length){
-        clearInterval(state.timer);window.FWCL_UI.report(state.match);finalizeMatch();return;
-      }
-      const ev=state.match.events[i++];state.match.currentMinute=ev.minute;state.match.lastEvent=ev;
-      if(ev.scoreAfter)state.match.liveScore={...ev.scoreAfter};
-      window.FWCL_UI.addEvent(ev);window.FWCL_UI.renderScore(state.match);window.FWCL_UI.renderLivePitch(state.match,ev);window.FWCL_UI.renderManagement(state.match,ev);
-      if(ev.type==='goal'){
-        const goal=state.match.goalEvents.find(g=>g.minute===ev.minute&&g.teamKey===ev.possessionTeam);
-        if(goal)window.FWCL_UI.goalAlert(goal);
-      }
-    },680);
+    state.playbackIndex=0;state.pendingSubstitution=null;
+    window.FWCL_UI.clearEvents();window.FWCL_UI.report(null);window.FWCL_UI.renderScore(state.match);
+    window.FWCL_UI.renderLivePitch(state.match,null);window.FWCL_UI.renderManagement(state.match,null);
+    startPlaybackTimer();
   }
   function simulateInstant(){
     window.FWCL_AUDIO?.unlock();
@@ -135,10 +191,14 @@
     document.getElementById('startBtn').onclick=resetAssembly;document.getElementById('resetBtn').onclick=resetAssembly;
     document.getElementById('goMatchBtn').onclick=startCup;
     document.getElementById('realBtn').onclick=simulateRealTime;document.getElementById('instantBtn').onclick=simulateInstant;
-    document.getElementById('soundToggle').onclick=e=>{
-      window.FWCL_AUDIO?.unlock();
+    document.getElementById('soundToggle').onclick=async e=>{
+      await window.FWCL_AUDIO?.unlock();
       const active=window.FWCL_AUDIO?.toggle();
       e.currentTarget.textContent=active?'🔊 Gol narrado: ligado':'🔇 Gol narrado: desligado';
+    };
+    document.getElementById('testSoundBtn').onclick=async()=>{
+      await window.FWCL_AUDIO?.unlock();
+      await window.FWCL_AUDIO?.test();
     };
     document.getElementById('draftReset').onclick=resetAssembly;
     document.getElementById('continueCupBtn').onclick=()=>{prepareNextMatch();document.getElementById('matchSection').scrollIntoView({behavior:'smooth'});};
