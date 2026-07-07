@@ -6,6 +6,15 @@
   };
   window.FWCL_COMPATIBILITY = compat;
   function teams(){ return (window.WCHD_PART4 && window.WCHD_PART4.teams) || []; }
+  function teamStrength(team){
+    const players=team?.players||[];
+    if(!players.length) return 50;
+    const best=[...players].sort((a,b)=>{
+      const sa=window.FWCL_SKILLS.actionScore(a,'build',{}), sb=window.FWCL_SKILLS.actionScore(b,'build',{});
+      return sb-sa;
+    }).slice(0,11);
+    return best.reduce((sum,p)=>sum+window.FWCL_SKILLS.actionScore(p,'build',{}),0)/best.length;
+  }
   function countries(){ const map=new Map(); teams().forEach(t=>{ if(!map.has(t.country)) map.set(t.country,{country:t.country,flag:t.flag}); }); return Array.from(map.values()).sort((a,b)=>a.country.localeCompare(b.country,'pt-BR')); }
   function hashText(text){ let h=0; for(let i=0;i<String(text).length;i++) h=((h<<5)-h+String(text).charCodeAt(i))|0; return Math.abs(h); }
   function tierBase(player){
@@ -40,7 +49,8 @@
     if(fit<100) price-= (100-fit)*0.035;
     if(slot==='GK') price-=0.8;
     if(['LE','LD','VOL'].includes(slot)) price-=0.4;
-    price=Math.max(1.0,Math.min(20.0,price));
+    price*=0.80; // Redução global de 20% solicitada para adequação aos orçamentos.
+    price=Math.max(0.8,Math.min(16.0,price));
     return Math.round(price*10)/10;
   }
   function teamCandidatesForMode(mode,country){ let list=teams(); if(mode==='dynasty') list=list.filter(t=>t.country===country); return list; }
@@ -74,5 +84,5 @@
     }
     return lineup;
   }
-  window.FWCL_MARKET={countries,teams,drawTeamForSlot,availablePlayers,buildAutoLineup,marketPrice,depthScore};
+  window.FWCL_MARKET={countries,teams,drawTeamForSlot,availablePlayers,buildAutoLineup,marketPrice,depthScore,teamStrength};
 })();

@@ -1,0 +1,126 @@
+{
+  "release": "0.4.1",
+  "generated_at": "2026-07-07",
+  "batch_test": {
+    "batch": {
+      "matches": 1000,
+      "average": {
+        "goals": 2.295,
+        "shots": 16.488,
+        "xg": 3.151,
+        "onTarget": 5.815,
+        "corners": 4.025,
+        "penalties": 0.11,
+        "dangerous": 13.302,
+        "counters": 0.215,
+        "longBalls": 4.12,
+        "defendersInAttack": 0.737,
+        "timeManagement": 0.458,
+        "events": 203.513
+      },
+      "distribution": {
+        "zero_zero": 0.111,
+        "five_plus_goals": 0.094,
+        "four_plus_goal_diff": 0.041,
+        "shots_16_to_32": 0.576,
+        "corners_4_to_12": 0.566
+      }
+    },
+    "tactical_scenarios": {
+      "losing_by_two_at_60": {
+        "risk": 0.43,
+        "aerial": 0.33999999999999997,
+        "defenderJoin": 0.38,
+        "directness": 0.45999999999999996,
+        "press": 0.27,
+        "penaltyPressure": 0.12240000000000001
+      },
+      "losing_by_two_at_82": {
+        "risk": 0.56,
+        "aerial": 0.62,
+        "defenderJoin": 0.54,
+        "directness": 0.45999999999999996,
+        "press": 0.27,
+        "penaltyPressure": 0.16
+      },
+      "winning_by_one_at_82": {
+        "risk": -0.020000000000000004,
+        "timeManagement": 0.33999999999999997,
+        "directness": 0.38,
+        "defensiveBlock": 0.368,
+        "possessionControl": 0.039999999999999994
+      }
+    }
+  },
+  "quality_gate": {
+    "targets": {
+      "avg_goals": [
+        1.6,
+        3.4
+      ],
+      "avg_shots": [
+        16,
+        32
+      ],
+      "avg_xg": [
+        1.6,
+        3.8
+      ],
+      "avg_corners": [
+        4,
+        12
+      ],
+      "avg_penalties": [
+        0.05,
+        0.3
+      ]
+    },
+    "passed": {
+      "goals": true,
+      "shots": true,
+      "xg": true,
+      "corners": true,
+      "penalties": true
+    },
+    "overall_passed": true
+  },
+  "syntax_checks": {
+    "app.js": {
+      "ok": true,
+      "error": ""
+    },
+    "dataQuality.js": {
+      "ok": true,
+      "error": ""
+    },
+    "eventGraph.js": {
+      "ok": true,
+      "error": ""
+    },
+    "market.js": {
+      "ok": true,
+      "error": ""
+    },
+    "narration.js": {
+      "ok": true,
+      "error": ""
+    },
+    "productionData.js": {
+      "ok": true,
+      "error": ""
+    },
+    "skillsEngine.js": {
+      "ok": true,
+      "error": ""
+    },
+    "tournament.js": {
+      "ok": true,
+      "error": ""
+    },
+    "ui.js": {
+      "ok": true,
+      "error": ""
+    }
+  },
+  "manual_browser_test_required": true
+}

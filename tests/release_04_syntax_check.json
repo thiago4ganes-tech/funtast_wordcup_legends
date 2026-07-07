@@ -1,0 +1,34 @@
+{
+  "js/productionData.js": {
+    "ok": false,
+    "stderr": "/mnt/data/fwcl_release_04_legion_cup_integrated/js/productionData.js:4\n    Belgium:'Bélgica', Bolivia:'Bolívia', Bosnia and Herzegovina:'Bósnia e Herzegovina',\n                                                 ^^^\n\nSyntaxError: Unexpected identifier 'and'\n\u001b[90m    at wrapSafe (node:internal/modules/cjs/loader:1662:18)\u001b[39m\n\u001b[90m    at checkSyntax (node:internal/main/check_syntax:78:3)\u001b[39m\n\nNode.js v22.16.0"
+  },
+  "js/skillsEngine.js": {
+    "ok": true,
+    "stderr": ""
+  },
+  "js/narration.js": {
+    "ok": true,
+    "stderr": ""
+  },
+  "js/eventGraph.js": {
+    "ok": true,
+    "stderr": ""
+  },
+  "js/market.js": {
+    "ok": true,
+    "stderr": ""
+  },
+  "js/tournament.js": {
+    "ok": true,
+    "stderr": ""
+  },
+  "js/ui.js": {
+    "ok": true,
+    "stderr": ""
+  },
+  "js/app.js": {
+    "ok": true,
+    "stderr": ""
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "version": "0.4",
+  "name": "LEGION Cup Integrated",
+  "generated_at": "2026-07-07",
+  "features": [
+    "20_percent_global_price_reduction",
+    "production_data_pack_loader",
+    "16_team_world_cup",
+    "expanded_event_graph",
+    "live_possession_visualization",
+    "stronger_legend_class"
+  ],
+  "base": "full_project_with_wchd_a_g_v1"
+}

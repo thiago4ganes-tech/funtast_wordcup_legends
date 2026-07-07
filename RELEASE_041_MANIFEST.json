@@ -1,0 +1,18 @@
+{
+  "version": "0.4.1",
+  "name": "Tactical Attack vs Defense Calibration",
+  "generated_at": "2026-07-07",
+  "base": "0.4",
+  "features": [
+    "strength_based_attack_initiative",
+    "weak_team_deep_block",
+    "post_60_minute_attacking_risk",
+    "two_goal_deficit_desperation",
+    "late_aerial_pressure",
+    "defenders_join_attack",
+    "leading_team_time_management",
+    "long_clearances_and_second_balls",
+    "counter_attack_exposure",
+    "defensive_block_fatigue"
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "generated_at": "2026-07-07",
+  "result": {
+    "batch": {
+      "matches": 800,
+      "average": {
+        "goals": 2.243,
+        "shots": 15.387,
+        "xg": 3.008,
+        "onTarget": 5.553,
+        "corners": 2.815,
+        "penalties": 0.122,
+        "dangerous": 12.595,
+        "counters": 0.274,
+        "longBalls": 4.14,
+        "defendersInAttack": 0.613,
+        "timeManagement": 0.455,
+        "events": 196.414
+      },
+      "distribution": {
+        "zero_zero": 0.11,
+        "five_plus_goals": 0.076,
+        "four_plus_goal_diff": 0.029,
+        "shots_16_to_32": 0.461,
+        "corners_4_to_12": 0.326
+      },
+      "event_types": [
+        "build",
+        "corner",
+        "cross",
+        "crowd",
+        "danger",
+        "defense",
+        "discipline",
+        "dribble",
+        "foul",
+        "goal",
+        "goalkick",
+        "header",
+        "miss",
+        "offside",
+        "pass",
+        "penalty",
+        "rebound",
+        "save",
+        "setpiece",
+        "shot",
+        "tackle",
+        "throwin"
+      ]
+    },
+    "strong_vs_weak": {
+      "strong_team": "🇮🇹 Itália 1994",
+      "weak_team": "🌍 Togo 2006",
+      "avg_strong_attacks": 38.61,
+      "avg_weak_attacks": 21.05,
+      "avg_strong_goals": 2.185,
+      "avg_weak_goals": 0.39,
+      "avg_strong_shots": 13.57,
+      "avg_weak_shots": 3.915,
+      "avg_strong_corners": 2.725,
+      "avg_weak_counters": 0.145,
+      "strong_win_rate": 0.8
+    },
+    "tactical_scenarios": {
+      "losing_by_two_at_60": {
+        "risk": 0.43,
+        "aerial": 0.33999999999999997,
+        "defenderJoin": 0.38,
+        "defensiveBlock": 0,
+        "penaltyPressure": 0.12240000000000001
+      },
+      "losing_by_two_at_82": {
+        "risk": 0.56,
+        "aerial": 0.62,
+        "defenderJoin": 0.54,
+        "defensiveBlock": 0,
+        "penaltyPressure": 0.16
+      },
+      "winning_by_one_at_82": {
+        "risk": -0.020000000000000004,
+        "aerial": 0.04,
+        "timeManagement": 0.33999999999999997,
+        "directness": 0.38,
+        "defensiveBlock": 0.28800000000000003
+      }
+    }
+  },
+  "target_ranges": {
+    "avg_goals": [
+      1.6,
+      3.4
+    ],
+    "avg_shots": [
+      16,
+      32
+    ],
+    "avg_xg": [
+      1.6,
+      3.8
+    ],
+    "avg_corners": [
+      4,
+      12
+    ],
+    "avg_penalties": [
+      0.05,
+      0.3
+    ]
+  }
+}

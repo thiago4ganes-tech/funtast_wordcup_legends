@@ -3,61 +3,128 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Fantasy World Cup Legends — Release 0.3.1</title>
+  <title>Fantasy World Cup Legends — Release 0.4</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
   <header>
     <h1>Fantasy World Cup Legends</h1>
-    <p>Release 0.3.1 — Data Quality + narração transmissão + mercado calibrado</p>
+    <p>Release 0.4 — Copa do Mundo, LEGION ampliado, base A–G e partida visual</p>
   </header>
+
   <main>
     <section class="card">
       <h2>1. Configuração</h2>
       <div class="grid three">
-        <div><label>Modo</label><select id="mode"><option value="dynasty">Dinastia Nacional</option><option value="world">Fantasy Mundial</option></select></div>
-        <div id="dynastyWrap"><label>Seleção da Dinastia</label><select id="dynastyCountry"></select></div>
-        <div><label>Formação</label><select id="formation"></select></div>
+        <div>
+          <label>Modo de montagem</label>
+          <select id="mode">
+            <option value="dynasty">Dinastia Nacional</option>
+            <option value="world">Fantasy Mundial</option>
+          </select>
+        </div>
+        <div id="dynastyWrap">
+          <label>Seleção da Dinastia</label>
+          <select id="dynastyCountry"></select>
+        </div>
+        <div>
+          <label>Formação</label>
+          <select id="formation"></select>
+        </div>
       </div>
-      <div style="height:14px"></div>
+
+      <div class="spacer14"></div>
+
       <div class="grid two">
-        <div><label>Dificuldade</label><select id="difficulty"></select></div>
-        <div><label>Regra</label><div class="notice">Sorteio vinculante: escolha o jogador da posição antes de continuar. Sem resortear.</div></div>
+        <div>
+          <label>Dificuldade</label>
+          <select id="difficulty"></select>
+        </div>
+        <div>
+          <label>Formato</label>
+          <div class="notice">Copa com 16 participantes: fase de grupos, quartas, semifinal e final. Os adversários são sorteados automaticamente.</div>
+        </div>
       </div>
-      <div style="height:14px"></div>
-      <div class="row"><button id="startBtn" class="primary">Iniciar montagem</button><button id="resetBtn" class="danger">Reiniciar</button></div>
+
+      <div class="spacer14"></div>
+      <div class="row">
+        <button id="startBtn" class="primary">Iniciar montagem</button>
+        <button id="resetBtn" class="danger">Reiniciar tudo</button>
+      </div>
     </section>
 
-    <section class="card" style="margin-top:18px">
+    <section class="card topGap">
       <h2>2. Qualidade da base WCHD</h2>
-      <div id="dataQualityPanel" class="dataQuality"><div class="reportBox">Carregando diagnóstico da base...</div></div>
+      <div id="productionLoadStatus" class="notice">Carregando Production Data Pack A–G...</div>
+      <div id="dataQualityPanel" class="dataQuality">
+        <div class="reportBox">Carregando diagnóstico da base...</div>
+      </div>
     </section>
 
-    <section class="card" style="margin-top:18px">
+    <section class="card topGap">
       <h2>3. Montagem do XI</h2>
       <div class="grid two">
-        <div><label>Orçamento restante</label><div id="budgetText" class="budget">US$100MM</div><div class="bar"><span id="budgetBar"></span></div></div>
-        <div><label>Status</label><div id="lineupStatus" class="notice">Monte o XI titular.</div></div>
+        <div>
+          <label>Orçamento restante</label>
+          <div id="budgetText" class="budget">US$100MM</div>
+          <div class="bar"><span id="budgetBar"></span></div>
+        </div>
+        <div>
+          <label>Status</label>
+          <div id="lineupStatus" class="notice">Monte o XI titular.</div>
+        </div>
       </div>
-      <div style="height:18px"></div>
+
+      <div class="spacer18"></div>
       <div id="field" class="field"><div class="circle"></div></div>
-      <div style="height:18px"></div>
-      <button id="goMatchBtn" class="secondary" disabled>Ir para a partida</button>
+      <div class="spacer18"></div>
+      <button id="goMatchBtn" class="secondary" disabled>Iniciar Copa do Mundo</button>
     </section>
 
-    <section id="matchSection" class="card hide" style="margin-top:18px">
-      <h2>4. Partida simulada pelo LEGION</h2>
+    <section id="tournamentSection" class="card hide topGap">
+      <h2>4. Copa do Mundo Legends</h2>
+      <div id="tournamentPanel">
+        <div class="reportBox">Aguardando sorteio da competição.</div>
+      </div>
+      <div class="spacer14"></div>
+      <button id="continueCupBtn" class="primary hide">Continuar na Copa</button>
+    </section>
+
+    <section id="matchSection" class="card hide topGap">
+      <h2>5. Partida simulada pelo LEGION</h2>
       <div class="clock" id="clock">0'</div>
-      <div class="scoreboard"><div id="homeName" class="teamName">Seu XI Legends</div><div id="score" class="score">0 x 0</div><div id="awayName" class="teamName">Adversário</div></div>
-      <div style="height:16px"></div>
-      <div class="row"><button id="realBtn" class="primary">Simular em tempo real</button><button id="instantBtn" class="secondary">Simulação instantânea</button></div>
-      <div style="height:20px"></div>
+      <div class="scoreboard">
+        <div id="homeName" class="teamName">Seu XI Legends</div>
+        <div id="score" class="score">0 x 0</div>
+        <div id="awayName" class="teamName">Adversário</div>
+      </div>
+
+      <div id="possessionBanner" class="possessionBanner">⚪ Bola ainda não está em jogo</div>
+
+      <div id="livePitch" class="livePitch">
+        <div class="pitchMidline"></div>
+        <div class="pitchCircle"></div>
+        <div id="liveBall" class="liveBall hide">⚽</div>
+      </div>
+
+      <div id="duelPanel" class="duelPanel">
+        <span>Participantes da jogada aparecerão aqui.</span>
+      </div>
+
+      <div class="spacer16"></div>
+      <div class="row">
+        <button id="realBtn" class="primary">Simular em tempo real</button>
+        <button id="instantBtn" class="secondary">Simulação instantânea</button>
+      </div>
+
+      <div class="spacer20"></div>
       <h2>Narração</h2>
       <div id="log" class="log"></div>
-      <div style="height:20px"></div>
+
+      <div class="spacer20"></div>
       <h2>Relatório transparente</h2>
       <div id="report"><div class="reportBox">Aguardando partida.</div></div>
-      <div id="ratings" style="margin-top:16px"></div>
+      <div id="ratings" class="topGapSmall"></div>
     </section>
   </main>
 
@@ -66,19 +133,22 @@
       <h3 id="draftTitle">Sorteio</h3>
       <p id="draftSubtitle" class="muted"></p>
       <div id="candidateGrid" class="candidateGrid"></div>
-      <div style="height:16px"></div>
+      <div class="spacer16"></div>
       <button id="draftReset" class="danger">Reiniciar montagem</button>
     </div>
   </div>
+
   <div id="goalAlert" class="goalAlert">⚽ GOL!</div>
 
   <script src="data/wchd.js"></script>
   <script src="data/formations.js"></script>
+  <script src="js/productionData.js"></script>
   <script src="js/dataQuality.js"></script>
   <script src="js/skillsEngine.js"></script>
   <script src="js/narration.js"></script>
   <script src="js/eventGraph.js"></script>
   <script src="js/market.js"></script>
+  <script src="js/tournament.js"></script>
   <script src="js/ui.js"></script>
   <script src="js/app.js"></script>
 </body>
