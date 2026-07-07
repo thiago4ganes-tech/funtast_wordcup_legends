@@ -2,16 +2,16 @@
   const state={
     mode:'dynasty',country:'Brasil',formation:'4-3-3',difficulty:'normal',
     budgetTotal:100,budgetLeft:100,lineup:{},chosenAthletes:new Set(),activeDraft:null,
-    opponent:null,match:null,timer:null,tournament:null,currentFixture:null,matchFinalized:false,playbackIndex:0,pendingSubstitution:null,userTeamKey:null
+    opponent:null,match:null,timer:null,tournament:null,currentFixture:null,matchFinalized:false,playbackIndex:0,pendingSubstitution:null,userTeamKey:null,fitnessLedger:{}
   };
   function slots(){return window.FWCL_FORMATIONS[state.formation]||[];}
   function slotById(id){return slots().find(s=>s.id===id);}
-  function freshMatchStats(){return {rating:5.5,goals:0,assists:0,shots:0,onTarget:0,xg:0,saves:0,passes:0,dribbles:0,crosses:0,tackles:0,headers:0,fouls:0,cards:0,losses:0,keyActions:0,fitness:100,minutesPlayed:0,subbedIn:false,subbedOut:false,injured:false};}
+  function freshMatchStats(initialFitness=100){const fit=Math.max(25,Math.min(100,Number(initialFitness||100)));return {rating:5.5,goals:0,assists:0,shots:0,onTarget:0,xg:0,saves:0,passes:0,dribbles:0,crosses:0,tackles:0,headers:0,fouls:0,cards:0,losses:0,keyActions:0,fitness:fit,startFitness:fit,minutesPlayed:0,subbedIn:false,subbedOut:false,injured:false,sentOff:false,forcedOut:false,effortPoints:0,participations:0};}
   function resetAssembly(){
     clearInterval(state.timer);
     const diff=window.FWCL_DIFFICULTIES[state.difficulty];
     state.budgetTotal=diff.budget;state.budgetLeft=diff.budget;state.lineup={};state.chosenAthletes=new Set();
-    state.activeDraft=null;state.opponent=null;state.match=null;state.tournament=null;state.currentFixture=null;state.matchFinalized=false;state.playbackIndex=0;state.pendingSubstitution=null;state.userTeamKey=null;
+    state.activeDraft=null;state.opponent=null;state.match=null;state.tournament=null;state.currentFixture=null;state.matchFinalized=false;state.playbackIndex=0;state.pendingSubstitution=null;state.userTeamKey=null;state.fitnessLedger={};
     document.getElementById('matchSection').classList.add('hide');
     document.getElementById('tournamentSection').classList.add('hide');
     document.getElementById('continueCupBtn').classList.add('hide');
@@ -72,12 +72,33 @@
     window.FWCL_UI.renderScore({currentMinute:0,liveScore:{home:0,away:0},home:{name:homeUser?'Seu XI Legends':state.opponent.name},away:{name:homeUser?state.opponent.name:'Seu XI Legends'}});
     window.FWCL_UI.clearEvents();window.FWCL_UI.report(null);
   }
-  function resetPlayersMatch(){
-    [...lineupArray(),...(state.userBench||[]),...(state.opponent?.lineup||[]),...(state.opponent?.bench||[])].forEach(p=>p.match=freshMatchStats());
+  function fitnessKey(player){return player?.athlete_id||player?.player_wc_id||player?.id||player?.name;}
+  function storedFitness(player){
+    const key=fitnessKey(player);
+    return Number(state.fitnessLedger[key]??100);
   }
+  function initializePlayer(player,fitness){player.match=freshMatchStats(fitness);return player;}
+  function initializeMatchSquads(userBench){
+    [...lineupArray(),...(userBench||[])].forEach(p=>initializePlayer(p,storedFitness(p)));
+    [...(state.opponent?.lineup||[]),...(state.opponent?.bench||[])].forEach(p=>initializePlayer(p,100));
+  }
+  function recoverUserFitness(match){
+    if(!match||!match.userTeamKey)return;
+    const team=match[match.userTeamKey];
+    (team.squad||[]).forEach(player=>{
+      const key=fitnessKey(player);if(!key)return;
+      const start=Number(player.match?.startFitness??storedFitness(player));
+      const end=Number(player.match?.fitness??start);
+      const spent=Math.max(0,start-end);
+      const physical=window.FWCL_EVENT_GRAPH.isPhysicalProfile(player);
+      const recovered=physical?100:Math.min(100,end+spent*.80);
+      state.fitnessLedger[key]=Number(recovered.toFixed(2));
+    });
+  }
+  function resetPlayersMatch(){initializeMatchSquads(state.userBench||[]);}
   function buildMatch(){
     state.userBench=window.FWCL_MARKET.buildFantasyBench(lineupArray(),7);
-    state.userBench.forEach(p=>p.match=freshMatchStats());
+    initializeMatchSquads(state.userBench);
     const user={name:'Seu XI Legends',flag:'🏆',lineup:lineupArray(),bench:state.userBench};
     const opp={name:state.opponent.name,flag:state.opponent.flag,lineup:state.opponent.lineup,bench:state.opponent.bench||[]};
     const home=state.currentFixture.home.user?user:opp;
@@ -100,6 +121,7 @@
   function finalizeMatch(){
     if(state.matchFinalized||!state.match)return;
     state.matchFinalized=true;
+    recoverUserFitness(state.match);
     window.FWCL_TOURNAMENT.recordUserResult(state.tournament,tournamentResult(state.match));
     window.FWCL_UI.renderTournament(state.tournament,null);
     if(state.tournament.status==='active')document.getElementById('continueCupBtn').classList.remove('hide');
@@ -129,7 +151,11 @@
     if(!chosen){window.FWCL_UI.hideSubstitution();state.pendingSubstitution=null;startPlaybackTimer();return;}
 
     if(autoIn&&chosen!==autoIn){
-      chosen.match=autoIn.match;chosen.slot=outPlayer?.slot||autoIn.slot;chosen.slotId=outPlayer?.slotId||autoIn.slotId;
+      const chosenStart=Number(chosen.match?.startFitness??chosen.match?.fitness??100);
+      const autoStart=Number(autoIn.match?.startFitness??100);
+      const transferredSpent=Math.max(0,autoStart-Number(autoIn.match?.fitness??autoStart));
+      chosen.match={...autoIn.match,startFitness:chosenStart,fitness:Math.max(25,chosenStart-transferredSpent)};
+      chosen.slot=outPlayer?.slot||autoIn.slot;chosen.slotId=outPlayer?.slotId||autoIn.slotId;
       for(let index=eventIndex;index<state.match.events.length;index++){
         const future=state.match.events[index],active=future.activeLineups?.[data.teamKey]?.activeIds;
         if(active)future.activeLineups[data.teamKey].activeIds=active.map(id=>id===oldInId?candidateId:id);
@@ -178,7 +204,7 @@
   function simulateRealTime(){
     window.FWCL_AUDIO?.unlock();
     if(!state.opponent)return;
-    clearInterval(state.timer);resetPlayersMatch();state.match=buildMatch();state.matchFinalized=false;
+    clearInterval(state.timer);state.match=buildMatch();state.matchFinalized=false;
     state.playbackIndex=0;state.pendingSubstitution=null;
     window.FWCL_UI.clearEvents();window.FWCL_UI.report(null);window.FWCL_UI.renderScore(state.match);
     window.FWCL_UI.renderLivePitch(state.match,null);window.FWCL_UI.renderManagement(state.match,null);
@@ -187,7 +213,7 @@
   function simulateInstant(){
     window.FWCL_AUDIO?.unlock();
     if(!state.opponent)return;
-    clearInterval(state.timer);resetPlayersMatch();state.match=buildMatch();state.matchFinalized=false;
+    clearInterval(state.timer);state.match=buildMatch();state.matchFinalized=false;
     state.match.currentMinute=90;state.match.liveScore={...state.match.score};
     window.FWCL_UI.clearEvents();state.match.events.forEach(ev=>window.FWCL_UI.addEvent(ev));
     window.FWCL_UI.renderScore(state.match);window.FWCL_UI.renderLivePitch(state.match,state.match.events[state.match.events.length-1]);window.FWCL_UI.renderManagement(state.match,state.match.events[state.match.events.length-1]);
@@ -218,6 +244,6 @@
     state.country=window.FWCL_MARKET.countries()[0]?.country||'Brasil';
     bind();resetAssembly();
   }
-  window.FWCL_APP={init,handleSlotClick,selectCandidate,state};
+  window.FWCL_APP={init,handleSlotClick,selectCandidate,state,_test:{freshMatchStats,recoverUserFitness,fitnessKey,storedFitness}};
   document.addEventListener('DOMContentLoaded',init);
 })();

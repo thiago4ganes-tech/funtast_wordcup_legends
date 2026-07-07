@@ -28,19 +28,53 @@
       penalties:0,offsides:0,turnovers:0,throwIns:0,goalKicks:0,freeKicks:0,tackles:0,
       headers:0,oneTwos:0,overlaps:0,duels:0,dangerousAttacks:0,counters:0,
       longBalls:0,defendersInAttack:0,timeManagement:0,deepBlocks:0,boxEntries:0,
-      substitutions:0,injuries:0,formationChanges:0,advantagesPlayed:0
+      substitutions:0,injuries:0,formationChanges:0,advantagesPlayed:0,
+      forcedExits:0,playersLost:0
     };
     squadPlayers(team).forEach(p=>{
       p.match=p.match||{
         rating:5.5,goals:0,assists:0,shots:0,onTarget:0,xg:0,saves:0,passes:0,
         dribbles:0,crosses:0,tackles:0,headers:0,fouls:0,cards:0,losses:0,keyActions:0,
-        fitness:100,minutesPlayed:0,subbedIn:false,subbedOut:false,injured:false
+        fitness:100,startFitness:100,minutesPlayed:0,subbedIn:false,subbedOut:false,injured:false,
+        sentOff:false,forcedOut:false,effortPoints:0,participations:0
       };
       if(!Number.isFinite(p.match.fitness))p.match.fitness=100;
     });
   }
   function addRating(p,d){ if(p?.match) p.match.rating=S().clamp(p.match.rating+d,2,9); }
   function playerMeta(p){ return p?{id:p.id||p.player_wc_id,name:p.name}:null; }
+  function isPhysicalProfile(player){
+    const traits=player?.traits||[];
+    const s=player?.skills||{};
+    const physicalAverage=(Number(s.pace||50)+Number(s.power||50)+Number(s.stamina||50))/3;
+    return traits.includes('motor_fisico')||physicalAverage>=85;
+  }
+  function manpower(team){ return Math.max(0,(team?.lineup||[]).length); }
+  function removeActivePlayer(team,player,reason){
+    const index=(team.lineup||[]).indexOf(player);
+    if(index<0)return false;
+    team.lineup.splice(index,1);
+    player.match=player.match||{};
+    if(reason==='red')player.match.sentOff=true;
+    if(reason==='injury')player.match.forcedOut=true;
+    team.stats.playersLost++;
+    if(reason==='injury')team.stats.forcedExits++;
+    return true;
+  }
+  function effortCost(type){
+    if(['dribble','duel','tackle','overlap','counter','danger','shot','rebound','header','defense','goal'].includes(type))return 0.92;
+    if(['cross','pass','build','setpiece','corner','foul','offside','throwin','goalkick'].includes(type))return 0.58;
+    if(['substitution','tactical','injury','discipline'].includes(type))return 0.16;
+    return 0.08;
+  }
+  function spendEffort(player,cost){
+    if(!player?.match||player.match.sentOff||player.match.forcedOut)return;
+    player.match.participations=(player.match.participations||0)+1;
+    player.match.effortPoints=(player.match.effortPoints||0)+cost;
+    const stamina=S().skill(player,'stamina',65);
+    const staminaFactor=S().clamp(1.14-(stamina-60)*.006,0.76,1.18);
+    player.match.fitness=S().clamp(Number(player.match.fitness??100)-cost*staminaFactor,25,100);
+  }
   function snapshotTeam(team){
     return {
       activeIds:(team.lineup||[]).map(p=>p.id||p.player_wc_id),
@@ -48,10 +82,15 @@
       stance:team.currentStance||'equilibrada',
       averageFitness:averageFitness(team),
       substitutions:team.stats?.substitutions||0,
-      injuries:team.stats?.injuries||0
+      injuries:team.stats?.injuries||0,
+      manpower:manpower(team)
     };
   }
   function event(match,minute,text,type,attack,actor,support,defender,extra='',more={}){
+    const cost=effortCost(type);
+    spendEffort(actor,cost);
+    if(support&&support!==actor)spendEffort(support,cost*.42);
+    if(defender&&defender!==actor&&defender!==support)spendEffort(defender,cost*.68);
     return N().line(minute,text,type,extra,{
       possessionTeam:attack?.key||null,
       teamName:attack?.name||null,
@@ -99,10 +138,10 @@
   function fatiguePlayer(player,delta,tactical){
     if(!player?.match)return;
     const stamina=S().skill(player,'stamina',65);
-    const roleIntensity=(player.positions||[]).some(x=>['PE','PD','LE','LD','ALA_E','ALA_D','MC'].includes(x))?1.12:1;
-    const riskIntensity=1+Math.max(0,tactical?.risk||0)*.42+Math.max(0,tactical?.press||0)*.30;
-    const loss=delta*(.085+(82-stamina)*.0023)*roleIntensity*riskIntensity;
-    player.match.fitness=S().clamp(player.match.fitness-loss,35,100);
+    const roleIntensity=(player.positions||[]).some(x=>['PE','PD','LE','LD','ALA_E','ALA_D','MC'].includes(x))?1.10:1;
+    const riskIntensity=1+Math.max(0,tactical?.risk||0)*.34+Math.max(0,tactical?.press||0)*.24;
+    const baseLoss=delta*(.075+(82-stamina)*.0019)*roleIntensity*riskIntensity;
+    player.match.fitness=S().clamp(player.match.fitness-baseLoss,25,100);
     player.match.minutesPlayed+=delta;
   }
   function applyFatigue(match,delta,minute){
@@ -112,15 +151,21 @@
     }
   }
   function maybeInjury(match,team,player,minute,source='fadiga'){
-    if(!player||player.match?.injured)return [];
+    if(!player||player.match?.injured||player.match?.sentOff||player.match?.forcedOut)return [];
     const fitness=Number(player.match?.fitness??100);
-    const base=source==='contato'?.018:.0025;
-    const chance=base+Math.max(0,62-fitness)*.0009;
+    const base=source==='contato'?.020:.0035;
+    const physicalProtection=isPhysicalProfile(player)?.48:1;
+    const involvement=Number(player.match?.effortPoints||0);
+    const chance=(base+Math.max(0,68-fitness)*.0012+Math.max(0,involvement-16)*.00022)*physicalProtection;
     if(Math.random()>=chance)return [];
     player.match.injured=true;
-    player.match.fitness=Math.min(player.match.fitness,52);
+    player.match.fitness=Math.min(player.match.fitness,50);
     team.stats.injuries++;
-    return [event(match,minute,`${player.name} sente o desgaste e recebe atendimento. A comissão técnica avalia a substituição.`,'injury',team,player,null,null,'',{injurySource:source})];
+    const lines=[event(match,minute,`${player.name} sente uma lesão e recebe atendimento médico.`,'injury',team,player,null,null,'',{injurySource:source})];
+    if(team.stats.substitutions>=3&&removeActivePlayer(team,player,'injury')){
+      lines.push(event(match,minute,`${team.name} já utilizou as três substituições. ${player.name} deixa o campo e a equipe seguirá com ${manpower(team)} jogadores.`,'tactical',team,null,null,null,'',{manpowerLoss:true,reason:'injury'}));
+    }
+    return lines;
   }
   function substitutionPriority(player,tactical){
     const fitness=Number(player.match?.fitness??100);
@@ -138,9 +183,10 @@
     return value;
   }
   function makeSubstitution(match,team,opponent,minute,forced=false){
-    if(team.stats.substitutions>=5||!(team.bench||[]).length)return [];
+    if(team.stats.substitutions>=3||!(team.bench||[]).length)return [];
     const t=tacticalState(match,team,opponent,minute);
-    const outs=[...allPlayers(team)].sort((a,b)=>substitutionPriority(b,t)-substitutionPriority(a,t));
+    const eligible=[...allPlayers(team)].filter(p=>Number(p.match?.fitness??100)<=70&&!p.match?.sentOff&&!p.match?.forcedOut);
+    const outs=eligible.sort((a,b)=>substitutionPriority(b,t)-substitutionPriority(a,t));
     const outPlayer=outs.find(p=>p.match?.injured)||outs[0];
     if(!outPlayer)return [];
     const candidates=(team.bench||[]).filter(p=>compatibleSub(outPlayer,p)).sort((a,b)=>reserveValue(b,t)-reserveValue(a,t));
@@ -148,7 +194,7 @@
     const eligibleCandidates=(candidates.length?candidates:fallbackCandidates).slice(0,7);
     const inPlayer=eligibleCandidates[0];
     if(!inPlayer)return [];
-    if(!forced&&Number(outPlayer.match?.fitness??100)>77&&minute<68)return [];
+    if(Number(outPlayer.match?.fitness??100)>70)return [];
 
     const index=team.lineup.indexOf(outPlayer);
     if(index<0)return [];
@@ -159,7 +205,7 @@
     team.bench.push(outPlayer);
     outPlayer.match.subbedOut=true;
     inPlayer.match.subbedIn=true;
-    inPlayer.match.fitness=Math.max(Number(inPlayer.match.fitness||100),92);
+    inPlayer.match.fitness=S().clamp(Number(inPlayer.match.fitness??100),25,100);
     team.stats.substitutions++;
 
     const reason=outPlayer.match.injured?'por condição física':t.trailing?'para aumentar a presença ofensiva':t.leading?'para proteger a vantagem':'para renovar a intensidade';
@@ -186,16 +232,17 @@
       }));
     }
     const injured=allPlayers(team).some(p=>p.match?.injured);
-    const windows=[55,64,72,79,85];
+    const eligible=allPlayers(team).some(p=>Number(p.match?.fitness??100)<=70);
+    const windows=[55,63,71,79,85];
     const due=windows.some(w=>minute>=w&&!team.managementWindows.has(w));
     if(due){
       const w=windows.find(x=>minute>=x&&!team.managementWindows.has(x));
       team.managementWindows.add(w);
     }
-    if(injured||due){
-      const average=averageFitness(team);
-      const should=injured||average<82||t.trailing||minute>=72||allPlayers(team).some(p=>p.match?.cards&&p.match?.fitness<78);
-      if(should)lines.push(...makeSubstitution(match,team,opponent,minute,injured));
+    if(injured&&team.stats.substitutions<3){
+      lines.push(...makeSubstitution(match,team,opponent,minute,true));
+    }else if(eligible&&due&&team.stats.substitutions<3){
+      lines.push(...makeSubstitution(match,team,opponent,minute,false));
     }
     return lines;
   }
@@ -216,8 +263,11 @@
     const muchWeaker=strengthDelta<=-10;
     const stronger=strengthDelta>=5;
     const muchStronger=strengthDelta>=10;
+    const manpowerDelta=manpower(team)-manpower(opponent);
 
     let risk=0.08;
+    if(manpowerDelta<0)risk+=0.04*Math.abs(manpowerDelta);
+    if(manpowerDelta>0)risk-=0.025*manpowerDelta;
     if(stronger)risk+=0.10;
     if(muchStronger)risk+=0.06;
     if(weaker)risk-=0.07;
@@ -260,6 +310,7 @@
     if(weaker)possessionControl-=0.08;
     if(leading&&final15)possessionControl+=0.12;
     if(trailing&&final15)possessionControl-=0.04;
+    possessionControl+=manpowerDelta*.10;
 
     let press=0.05;
     if(stronger)press+=0.08;
@@ -287,7 +338,7 @@
 
     return {
       scoreDiff,trailing,losingByTwo,leading,leadingByTwo,after60,final15,final8,
-      weaker,muchWeaker,stronger,muchStronger,strengthDelta,risk,defensiveBlock,
+      weaker,muchWeaker,stronger,muchStronger,strengthDelta,manpowerDelta,risk,defensiveBlock,
       fatigue,aerial,directness,possessionControl,press,defenderJoin,timeManagement,
       penaltyPressure,dangerousBoost
     };
@@ -365,7 +416,7 @@
     const atkT=tacticalState(match,attack,defend,minute);
     const defT=tacticalState(match,defend,attack,minute);
     if(kind!=='penalty'){
-      base+=atkT.risk*.055+atkT.dangerousBoost*.05-defT.defensiveBlock*.075;
+      base+=atkT.risk*.055+atkT.dangerousBoost*.05-defT.defensiveBlock*.075+atkT.manpowerDelta*.018;
       if(atkT.after60)base+=.008;
       if(atkT.losingByTwo)base+=.012;
       if(defT.weaker&&!defT.trailing)base-=.010;
@@ -486,7 +537,8 @@
       const red=Math.random()<Math.max(.012,(50-discipline)/100)*(match.referee?.card||1);
       if(red){
         defend.stats.redCards++; defend.stats.cards++; fouler.match.cards++; addRating(fouler,-1);
-        lines.push(event(match,minute,`Cartão vermelho para ${fouler.name}. O árbitro entende que a entrada colocou o adversário em risco.`,'discipline',defend,fouler,null,carrier));
+        removeActivePlayer(defend,fouler,'red');
+        lines.push(event(match,minute,`Cartão vermelho para ${fouler.name}. Ele está fora da partida, sem direito a substituição. ${defend.name} seguirá com ${manpower(defend)} jogadores.`,'discipline',defend,fouler,null,carrier,'',{manpowerLoss:true,reason:'red'}));
       }else{
         defend.stats.cards++; fouler.match.cards++; addRating(fouler,-.35);
         lines.push(event(match,minute,`Cartão amarelo para ${fouler.name}.`,'foul',defend,fouler,null,carrier));
@@ -774,13 +826,14 @@
       match.events.push(...manageTeam(match,home,away,minute));
       match.events.push(...manageTeam(match,away,home,minute));
       for(const team of [home,away]){
-        const tired=allPlayers(team).filter(p=>Number(p.match?.fitness??100)<58);
-        if(tired.length&&Math.random()<.025)match.events.push(...maybeInjury(match,team,tired[Math.floor(Math.random()*tired.length)],minute,'fadiga'));
+        const tired=allPlayers(team).filter(p=>Number(p.match?.fitness??100)<=70);
+        if(tired.length&&Math.random()<.030)match.events.push(...maybeInjury(match,team,tired[Math.floor(Math.random()*tired.length)],minute,'fadiga'));
       }
       const hT=tacticalState(match,home,away,minute);
       const aT=tacticalState(match,away,home,minute);
       let homeWeight=50+(hStr-aStr)*.62;
       homeWeight+=(hT.possessionControl-aT.possessionControl)*30;
+      homeWeight+=(manpower(home)-manpower(away))*6.5;
       if(hT.trailing)homeWeight+=7+(hT.losingByTwo?5:0)+(hT.final15?4:0);
       if(aT.trailing)homeWeight-=7+(aT.losingByTwo?5:0)+(aT.final15?4:0);
       if(hT.stronger)homeWeight+=3;
@@ -803,5 +856,5 @@
     }));
     return match;
   }
-  window.FWCL_EVENT_GRAPH={simulate,teamStrength,tacticalState,tacticalShape,averageFitness};
+  window.FWCL_EVENT_GRAPH={simulate,teamStrength,tacticalState,tacticalShape,averageFitness,isPhysicalProfile,manpower,_test:{maybeInjury,makeSubstitution,disciplinaryEvent,removeActivePlayer}};
 })();

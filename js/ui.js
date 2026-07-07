@@ -346,118 +346,109 @@
   function hideSubstitution(){$('substitutionModal')?.classList.remove('show');}
 
 
-function metricNumber(v){ return typeof v==='number' ? v : Number(v||0); }
-function phraseIndex(seed,length){ return Math.abs(Math.round(seed))%length; }
-function detectComeback(match,userTeamKey){
-  const goals=(match.goalEvents||[]).slice().sort((a,b)=>a.minute-b.minute);
-  let user=0,opp=0,trailed=false,led=false;
-  goals.forEach(g=>{
-    const isUser=g.teamKey===userTeamKey;
-    if(isUser) user++; else opp++;
-    if(user<opp) trailed=true;
-    if(user>opp) led=true;
-  });
-  return {wonFromBehind: trailed && user>opp, lostAfterLeading: led && user<opp};
-}
-function reportHeadline(match){
-  const userKey=match.userTeamKey||'home', oppKey=userKey==='home'?'away':'home';
-  const userTeam=match[userKey], oppTeam=match[oppKey], us=match[userKey].stats, os=match[oppKey].stats;
-  const goalsFor=match.score[userKey], goalsAgainst=match.score[oppKey];
-  const diff=goalsFor-goalsAgainst;
-  const dominant=(metricNumber(us.shots) >= Math.max(1,metricNumber(os.shots))*2) || (metricNumber(us.dangerousAttacks) > metricNumber(os.dangerousAttacks)*1.6) || (metricNumber(us.xg) > metricNumber(os.xg)*1.7);
-  const heavyLoss=(diff<=-3) || (goalsAgainst>=4 && diff<=-2) || (metricNumber(os.shots) >= Math.max(1,metricNumber(us.shots))*2);
-  const info=detectComeback(match,userKey);
-  const seed=metricNumber(us.shots)+metricNumber(os.shots)+goalsFor*7+goalsAgainst*11;
-  const dominantWins=[
-    `Foi um passeio de ${userTeam.name}: o time controlou o jogo e sufocou o rival do início ao fim.`,
-    `${userTeam.name} transformou a partida em treino de ataque contra defesa, empilhando chegadas perigosas.`,
-    `Vitória com amplo domínio: a equipe do player acelerou quando quis e praticamente não foi incomodada.`,
-    `${userTeam.name} mandou no jogo, ocupou o campo de ataque e venceu com autoridade tática.`,
-    `${diff>=3?'Foi uma goleada com assinatura tática: ':'Foi um controle absoluto: '}${userTeam.name} produziu muito mais e fez a superioridade aparecer no placar.`
-  ];
-  const comebackWins=[
-    `Reação heróica de ${userTeam.name}: o time saiu de baixo e virou no coração e na raça.`,
-    `${userTeam.name} jogou com o coração na ponta da chuteira e encontrou uma virada histórica.`,
-    `Virada construída na insistência: ${userTeam.name} resistiu ao momento ruim e cresceu no jogo.`,
-    `Quando parecia difícil, ${userTeam.name} respondeu com personalidade e arrancou a vitória de virada.`,
-    `Foi jogo de superação: ${userTeam.name} apanhou do contexto, reagiu e virou com autoridade emocional.`
-  ];
-  const reverseLosses=[
-    `Apagão tático de ${userTeam.name}: o time deixou o jogo escapar depois de estar à frente.`,
-    `${oppTeam.name} aplicou um nó tático na reta final e virou a partida sobre a equipe do player.`,
-    `${userTeam.name} perdeu a concentração nos minutos decisivos e sofreu a virada.`,
-    `A vitória parecia nas mãos, mas ${userTeam.name} caiu de rendimento e permitiu a reação rival.`,
-    `Faltou gestão emocional e tática: ${userTeam.name} liderava, perdeu o controle e saiu derrotado.`
-  ];
-  const heavyLosses=[
-    `${userTeam.name} levou uma goleada e agora é hora de repensar a estratégia.`,
-    `Que feio, jogador! ${userTeam.name} foi dominado e não conseguiu competir em nenhum trecho longo do jogo.`,
-    `Cadê a moral? ${userTeam.name} sofreu demais, cedeu espaços e terminou em larga desvantagem.`,
-    `Derrota pesada: ${userTeam.name} foi empurrado para trás e viu o adversário transformar volume em placar.`,
-    `Foi uma noite dura para ${userTeam.name}: o time apanhou taticamente e saiu goleado.`
-  ];
-  const genericWin=[
-    `${userTeam.name} foi mais eficiente nos momentos-chave e saiu com a vitória.`,
-    `Vitória construída com maturidade: ${userTeam.name} soube alternar controle e agressividade.`,
-    `${userTeam.name} fez o suficiente para vencer e administrou melhor os momentos importantes.`,
-    `O time do player encontrou as melhores soluções ofensivas e confirmou a vitória.`,
-    `${userTeam.name} jogou de forma competitiva, criou o bastante e venceu com justiça.`
-  ];
-  const genericLoss=[
-    `${userTeam.name} competiu, mas ficou abaixo nos lances decisivos.`,
-    `A equipe do player teve seus momentos, porém o adversário foi mais cirúrgico.`,
-    `${userTeam.name} não sustentou o plano de jogo até o fim e acabou derrotado.`,
-    `Derrota explicada por menor eficiência ofensiva e respostas defensivas tardias.`,
-    `${userTeam.name} perdeu um jogo em que o adversário foi mais preciso nas ações de maior valor.`
-  ];
-  const draws=[
-    `Empate de forças parecidas: o placar refletiu um jogo equilibrado.`,
-    `Ninguém conseguiu impor domínio definitivo, e a igualdade fez sentido.`,
-    `O empate nasceu de uma partida aberta, com bons momentos para os dois lados.`,
-    `Jogo nivelado: as equipes alternaram superioridade e terminaram em equilíbrio.`,
-    `Empate honesto, com produção relativamente parecida e poucas margens entre os times.`
-  ];
-  let main;
-  if(diff>0 && info.wonFromBehind) main=comebackWins[phraseIndex(seed,comebackWins.length)];
-  else if(diff>0 && (dominant || diff>=3)) main=dominantWins[phraseIndex(seed,dominantWins.length)];
-  else if(diff<0 && info.lostAfterLeading) main=reverseLosses[phraseIndex(seed,reverseLosses.length)];
-  else if(diff<0 && heavyLoss) main=heavyLosses[phraseIndex(seed,heavyLosses.length)];
-  else if(diff>0) main=genericWin[phraseIndex(seed,genericWin.length)];
-  else if(diff<0) main=genericLoss[phraseIndex(seed,genericLoss.length)];
-  else main=draws[phraseIndex(seed,draws.length)];
-  const support=[];
-  if(metricNumber(us.shots)!==metricNumber(os.shots)) support.push(`Finalizações: ${metricNumber(us.shots)} x ${metricNumber(os.shots)}.`);
-  if(metricNumber(us.xg)!==metricNumber(os.xg)) support.push(`xG: ${metricNumber(us.xg).toFixed(2)} x ${metricNumber(os.xg).toFixed(2)}.`);
-  if(metricNumber(us.dangerousAttacks)!==metricNumber(os.dangerousAttacks)) support.push(`Ataques perigosos: ${metricNumber(us.dangerousAttacks)} x ${metricNumber(os.dangerousAttacks)}.`);
-  if(metricNumber(us.corners)+metricNumber(os.corners)>0) support.push(`Escanteios: ${metricNumber(us.corners)} x ${metricNumber(os.corners)}.`);
-  return `<p>${main}</p><p>Leitura tática e estatística: ${support.slice(0,3).join(' ')}</p>`;
-}
-function statsPyramid(match){
-  const hs=match.home.stats, as=match.away.stats;
-  const rows=[
-    ['xG', metricNumber(hs.xg), metricNumber(as.xg), v=>v.toFixed(2)],
-    ['Finalizações', metricNumber(hs.shots), metricNumber(as.shots)],
-    ['No alvo', metricNumber(hs.onTarget), metricNumber(as.onTarget)],
-    ['Ataques perigosos', metricNumber(hs.dangerousAttacks), metricNumber(as.dangerousAttacks)],
-    ['Escanteios', metricNumber(hs.corners), metricNumber(as.corners)],
-    ['Dribles', metricNumber(hs.dribbles), metricNumber(as.dribbles)],
-    ['Tabelas', metricNumber(hs.oneTwos), metricNumber(as.oneTwos)],
-    ['Ultrapassagens', metricNumber(hs.overlaps), metricNumber(as.overlaps)],
-    ['Contra-ataques', metricNumber(hs.counters), metricNumber(as.counters)],
-    ['Faltas', metricNumber(hs.fouls), metricNumber(as.fouls)],
-    ['Impedimentos', metricNumber(hs.offsides), metricNumber(as.offsides)],
-    ['Substituições', metricNumber(hs.substitutions), metricNumber(as.substitutions)]
-  ];
-  return `<div class="analysisBox topGapSmall"><h3>Comparativo estatístico</h3><div class="reportPyramid">${rows.map(([label,left,right,fmt])=>{
-    const max=Math.max(left,right,1); const leftPct=(left/max)*100; const rightPct=(right/max)*100; const f=fmt||((v)=>String(v));
-    return `<div class="pyramidRow"><div class="pyramidValue left">${f(left)}</div><div class="pyramidBar left"><span class="fill" style="width:${leftPct}%"></span></div><div class="pyramidMetric">${label}</div><div class="pyramidBar right"><span class="fill" style="width:${rightPct}%"></span></div><div class="pyramidValue right">${f(right)}</div></div>`;
-  }).join('')}</div><div class="small topGapSmall"><b>${match.home.name}</b> à esquerda • <b>${match.away.name}</b> à direita</div></div>`;
-}
-function playerTable(team,title){
-  const players=[...(team.squad||team.lineup||[])].filter(p=>(p.match?.minutesPlayed||0)>0||p.match?.subbedIn).sort((a,b)=>b.match.rating-a.match.rating);
-  return `<div class="reportBox ratingsTeam"><h3>${title}</h3><table class="ratingTable"><thead><tr><th>Jogador</th><th>Pos</th><th class="num">Nota</th><th class="num">Físico</th><th class="num">Gols</th><th class="num">Ações</th></tr></thead><tbody>${players.map((p,i)=>`<tr class="${i===0?'best':''}"><td>${p.flag||''} ${displayName(p.name)}</td><td>${(p.slot||p.positions?.[0]||'—')}</td><td class="num"><b>${Number(p.match.rating||5.5).toFixed(1)}</b></td><td class="num">${Number(p.match.fitness||100).toFixed(0)}%</td><td class="num">${p.match.goals||0}</td><td class="num">${p.match.keyActions||0}</td></tr>`).join('')}</tbody></table></div>`;
-}
-
+  function metricNumber(v){return typeof v==='number'?v:Number(v||0);}
+  const transparentPhrases={
+    dominantWin:[
+      'Foi um passeio: o time do player empurrou o rival para trás e controlou a partida.',
+      'Goleada com autoridade: o vencedor transformou superioridade técnica em placar.',
+      'Parecia treino de ataque contra defesa, tamanho o desequilíbrio nas finalizações.',
+      'Domínio amplo do início ao fim: o adversário quase não conseguiu respirar.',
+      'Atuação de dono do jogo: controle territorial, volume ofensivo e vitória sem discussão.'
+    ],
+    comebackWin:[
+      'Reação heróica: o time do player recusou a derrota e buscou uma virada memorável.',
+      'Jogaram com raça e coração na ponta da chuteira para transformar o resultado.',
+      'A equipe cresceu na adversidade e construiu a virada com personalidade.',
+      'Foi uma vitória de superação: o time saiu de baixo e terminou por cima.',
+      'Virada histórica, sustentada por pressão, coragem e eficiência nos momentos decisivos.'
+    ],
+    comebackLoss:[
+      'Apagão tático: o time perdeu o controle depois de estar em vantagem.',
+      'O adversário aplicou um nó tático e virou uma partida que parecia encaminhada.',
+      'A concentração desapareceu no fim, e a vitória escapou das mãos.',
+      'Faltou gestão da vantagem: o time recuou demais e permitiu a virada.',
+      'Uma derrota dolorosa, marcada por queda física e decisões ruins na reta final.'
+    ],
+    heavyLoss:[
+      'Levou uma goleada: é hora de repensar a estratégia e a forma de defender.',
+      'Que feio, jogador! O time foi dominado e não encontrou respostas.',
+      'Cadê a moral? A equipe sofreu uma derrota pesada e ficou sem reação.',
+      'O adversário passou por cima: faltou equilíbrio, cobertura e competitividade.',
+      'Derrota de larga desvantagem, com sinais claros de desorganização tática.'
+    ],
+    normalWin:[
+      'Vitória eficiente: o time do player foi melhor nos lances de maior valor.',
+      'A equipe venceu com maturidade e soube administrar os momentos da partida.',
+      'Foi uma vitória competitiva, construída com equilíbrio entre ataque e defesa.',
+      'O time encontrou as melhores soluções e confirmou a vantagem no placar.',
+      'Vitória justa, com mais precisão nas ações decisivas.'
+    ],
+    normalLoss:[
+      'O time competiu, mas o adversário foi mais eficiente nos momentos decisivos.',
+      'A derrota veio pela dificuldade de transformar posse e volume em chances claras.',
+      'Faltou precisão ofensiva e sobrou espaço para o rival explorar.',
+      'O plano de jogo funcionou apenas em partes, e o adversário aproveitou as falhas.',
+      'Derrota equilibrada, definida por detalhes e melhor conversão do outro lado.'
+    ],
+    draw:[
+      'Empate coerente com uma partida equilibrada e alternância de domínio.',
+      'Ninguém conseguiu impor superioridade permanente, e a igualdade fez sentido.',
+      'As equipes dividiram os melhores momentos e terminaram com placar justo.',
+      'Jogo parelho: produção ofensiva e resistência defensiva se compensaram.',
+      'Um empate honesto, com margens pequenas entre os dois times.'
+    ]
+  };
+  function comebackState(match,userKey){
+    let us=0,them=0,trailed=false,led=false;
+    [...(match.goalEvents||[])].sort((a,b)=>a.minute-b.minute).forEach(g=>{
+      if(g.teamKey===userKey)us++;else them++;
+      if(us<them)trailed=true;if(us>them)led=true;
+    });
+    return {trailed,led};
+  }
+  function transparentAnalysis(match){
+    const userKey=match.userTeamKey||'home',oppKey=userKey==='home'?'away':'home';
+    const user=match[userKey],opp=match[oppKey],us=user.stats,os=opp.stats;
+    const gf=match.score[userKey],ga=match.score[oppKey],diff=gf-ga,state=comebackState(match,userKey);
+    const shotRatio=metricNumber(us.shots)/Math.max(1,metricNumber(os.shots));
+    const xgRatio=metricNumber(us.xg)/Math.max(.25,metricNumber(os.xg));
+    const dangerRatio=metricNumber(us.dangerousAttacks)/Math.max(1,metricNumber(os.dangerousAttacks));
+    const dominant=diff>=3||shotRatio>=2||xgRatio>=1.75||dangerRatio>=1.8;
+    const heavy=diff<=-3||shotRatio<=.5||xgRatio<=.55;
+    let context='draw',label='Empate equilibrado',criteria=[];
+    if(diff>0&&state.trailed){context='comebackWin';label='Vitória de virada';criteria.push('o time esteve atrás no placar e terminou vencedor');}
+    else if(diff>0&&dominant){context='dominantWin';label='Vitória com amplo domínio';if(diff>=3)criteria.push(`vantagem de ${diff} gols`);if(shotRatio>=2)criteria.push('finalizou pelo menos o dobro do adversário');if(xgRatio>=1.75)criteria.push('gerou xG muito superior');}
+    else if(diff<0&&state.led){context='comebackLoss';label='Derrota de virada';criteria.push('o time esteve em vantagem e sofreu a virada');}
+    else if(diff<0&&heavy){context='heavyLoss';label='Derrota com larga desvantagem';if(diff<=-3)criteria.push(`perdeu por ${Math.abs(diff)} gols`);if(shotRatio<=.5)criteria.push('finalizou metade ou menos que o rival');}
+    else if(diff>0){context='normalWin';label='Vitória competitiva';criteria.push('maior eficiência no placar');}
+    else if(diff<0){context='normalLoss';label='Derrota competitiva';criteria.push('menor eficiência no placar');}
+    else criteria.push('placar e produção equilibrados');
+    const list=transparentPhrases[context];
+    const seed=(gf*17+ga*23+metricNumber(us.shots)*3+metricNumber(os.shots)*5+metricNumber(us.corners));
+    const phrase=list[Math.abs(seed)%list.length];
+    const evidence=[`Finalizações ${metricNumber(us.shots)} x ${metricNumber(os.shots)}`,`xG ${metricNumber(us.xg).toFixed(2)} x ${metricNumber(os.xg).toFixed(2)}`,`Ataques perigosos ${metricNumber(us.dangerousAttacks)} x ${metricNumber(os.dangerousAttacks)}`];
+    return `<div class="reportContext"><span class="contextBadge">${label}</span><strong>${phrase}</strong><p><b>Por que o sistema classificou assim:</b> ${criteria.join('; ')}.</p><p class="muted">Evidências: ${evidence.join(' • ')}.</p></div>`;
+  }
+  function pyramidChart(match){
+    const hs=match.home.stats,as=match.away.stats;
+    const rows=[
+      ['xG',metricNumber(hs.xg),metricNumber(as.xg),v=>v.toFixed(2)],['Finalizações',hs.shots,as.shots],['No alvo',hs.onTarget,as.onTarget],
+      ['Ataques perigosos',hs.dangerousAttacks,as.dangerousAttacks],['Escanteios',hs.corners,as.corners],['Dribles',hs.dribbles,as.dribbles],
+      ['Tabelas',hs.oneTwos,as.oneTwos],['Ultrapassagens',hs.overlaps,as.overlaps],['Contra-ataques',hs.counters,as.counters],
+      ['Faltas',hs.fouls,as.fouls],['Impedimentos',hs.offsides,as.offsides],['Substituições',hs.substitutions,as.substitutions]
+    ];
+    return `<div class="pyramidChart"><div class="pyramidTeams"><b>${match.home.name}</b><span>COMPARATIVO</span><b>${match.away.name}</b></div>${rows.map(([label,left,right,fmt])=>{
+      left=metricNumber(left);right=metricNumber(right);const max=Math.max(left,right,1);const f=fmt||((v)=>String(v));
+      return `<div class="pyramidStat"><span class="statNumber left">${f(left)}</span><div class="wedge left"><i style="width:${Math.max(5,left/max*100)}%"></i></div><span class="statLabel">${label}</span><div class="wedge right"><i style="width:${Math.max(5,right/max*100)}%"></i></div><span class="statNumber right">${f(right)}</span></div>`;
+    }).join('')}</div>`;
+  }
+  function ratingsTable(team){
+    const players=[...(team.squad||team.lineup||[])].filter(p=>(p.match?.minutesPlayed||0)>0||p.match?.subbedIn||p.match?.sentOff||p.match?.forcedOut).sort((a,b)=>b.match.rating-a.match.rating);
+    return `<section class="teamRatings"><h3>${team.name}</h3><table><thead><tr><th>Jogador</th><th>Pos.</th><th>Condição</th><th class="num">Nota</th><th class="num">Vigor</th><th class="num">Gols</th><th class="num">Ações</th></tr></thead><tbody>${players.map((p,i)=>{
+      const condition=p.match.sentOff?'Expulso':p.match.forcedOut?'Saiu lesionado':p.match.subbedOut?'Substituído':p.match.subbedIn?'Entrou':'Titular';
+      return `<tr class="${i===0?'best':''}"><td>${p.flag||''} ${displayName(p.name)}</td><td>${p.slot||p.positions?.[0]||'—'}</td><td>${condition}</td><td class="num"><b>${Number(p.match.rating||5.5).toFixed(1)}</b></td><td class="num">${Number(p.match.fitness||100).toFixed(0)}%</td><td class="num">${p.match.goals||0}</td><td class="num">${p.match.participations||0}</td></tr>`;
+    }).join('')}</tbody></table></section>`;
+  }
   function renderTournament(cup,currentFixture){
     const section=$('tournamentSection');section.classList.remove('hide');
     if(!cup){$('tournamentPanel').innerHTML='<div class="reportBox">Aguardando sorteio.</div>';return;}
@@ -470,31 +461,20 @@ function playerTable(team,title){
       });
       html+='</div>';
     }
-    if(currentFixture) html+=`<div class="nextFixture"><b>Próximo jogo:</b> ${currentFixture.home.flag||''} ${currentFixture.home.name} × ${currentFixture.away.flag||''} ${currentFixture.away.name}</div>`;
-    if(cup.status==='eliminated') html+='<div class="notice error">Sua seleção foi eliminada. Reinicie para disputar uma nova Copa.</div>';
-    if(cup.status==='finished') html+=`<div class="championBox">🏆 Campeão: ${cup.champion?.flag||''} ${cup.champion?.name||''}</div>`;
+    if(currentFixture)html+=`<div class="nextFixture"><b>Próximo jogo:</b> ${currentFixture.home.flag||''} ${currentFixture.home.name} × ${currentFixture.away.flag||''} ${currentFixture.away.name}</div>`;
+    if(cup.status==='eliminated')html+='<div class="notice error">Sua seleção foi eliminada. Reinicie para disputar uma nova Copa.</div>';
+    if(cup.status==='finished')html+=`<div class="championBox">🏆 Campeão: ${cup.champion?.flag||''} ${cup.champion?.name||''}</div>`;
     $('tournamentPanel').innerHTML=html;
   }
+  function report(match){
+    if(!match){$('report').innerHTML='<div class="reportBox">Aguardando partida.</div>';$('ratings').innerHTML='';return;}
+    const h=match.home.stats,a=match.away.stats;
+    $('report').innerHTML=`<div class="transparentReport"><h3>RELATÓRIO TRANSPARENTE</h3>${transparentAnalysis(match)}</div>
+      <div class="statsPyramidPanel"><h3>PIRÂMIDE ESTATÍSTICA DA PARTIDA</h3>${pyramidChart(match)}</div>
+      <div class="reportGrid topGapSmall"><div class="reportBox"><b>Expulsões</b><br>${h.redCards} x ${a.redCards}</div><div class="reportBox"><b>Saídas sem reposição</b><br>${h.forcedExits} x ${a.forcedExits}</div><div class="reportBox"><b>Jogadores ao final</b><br>${match.home.lineup.length} x ${match.away.lineup.length}</div><div class="reportBox"><b>Árbitro</b><br>${match.referee?.name||'—'}</div></div>`;
+    $('ratings').innerHTML=`<h3>NOTAS DE DESEMPENHO POR JOGADOR</h3><div class="ratingsByTeam">${ratingsTable(match.home)}${ratingsTable(match.away)}</div>`;
+  }
 
-function report(match){
-  if(!match){$('report').innerHTML='<div class="reportBox">Aguardando partida.</div>'; $('ratings').innerHTML=''; return;}
-  const h=match.home.stats,a=match.away.stats;
-  const all=[...(match.home.squad||match.home.lineup),...(match.away.squad||match.away.lineup)]
-    .filter(p=>(p.match?.minutesPlayed||0)>0||p.match?.subbedIn)
-    .sort((x,y)=>y.match.rating-x.match.rating);
-  const best=all[0];
-  $('report').innerHTML=`<div class="analysisBox"><h3>Relatório transparente</h3>${reportHeadline(match)}</div>
-    ${statsPyramid(match)}
-    <div class="reportGrid topGapSmall">
-      <div class="reportBox"><b>Árbitro</b><br>${match.referee?.name||'—'}</div>
-      <div class="reportBox"><b>Melhor nota</b><br>${best?`${displayName(best.name)}: ${best.match.rating.toFixed(1)}`:'—'}</div>
-      <div class="reportBox"><b>Defensores no ataque</b><br>${h.defendersInAttack} x ${a.defendersInAttack}</div>
-      <div class="reportBox"><b>Gestão de vantagem</b><br>${h.timeManagement} x ${a.timeManagement}</div>
-      <div class="reportBox"><b>Mudanças de desenho</b><br>${h.formationChanges} x ${a.formationChanges}</div>
-      <div class="reportBox"><b>Atendimentos físicos</b><br>${h.injuries} x ${a.injuries}</div>
-    </div>`;
-  $('ratings').innerHTML=`<h3>Notas individuais por equipe</h3><div class="ratingsTables">${playerTable(match.home,match.home.name)}${playerTable(match.away,match.away.name)}</div>`;
-}
 function renderAll(state){
     if(window.FWCL_DATA_QUALITY)window.FWCL_DATA_QUALITY.render();
     renderConfig(state);renderCountries(state);renderBudget(state);renderField(state);renderLineupStatus(state);showDraft(state);

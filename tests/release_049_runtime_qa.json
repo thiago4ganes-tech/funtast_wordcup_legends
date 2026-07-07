@@ -1,0 +1,56 @@
+{
+  "release": "0.4.9",
+  "generated_at": "2026-07-07",
+  "direct_tests": {
+    "version": "0.4.9",
+    "substitutionRules": {
+      "noSubAbove70": true,
+      "subAt70": true,
+      "fourthBlocked": true
+    },
+    "injuryNoReplacement": true,
+    "redNoReplacement": true,
+    "recovery": {
+      "normal": 92,
+      "physical": 100
+    },
+    "report": {
+      "dominant": true,
+      "comebackWin": true,
+      "comebackLoss": true,
+      "heavyLoss": true,
+      "ratingsTable": true
+    }
+  },
+  "batch_tests": {
+    "matches": 500,
+    "maxSubs": 3,
+    "avgSubs": 1.006,
+    "avgGoals": 2.764,
+    "avgShots": 18.336,
+    "effortFatigueCorrelation": 0.9227505675457797,
+    "injuryRates": {
+      "normal": 0.013333333333333334,
+      "physical": 0.0064,
+      "ratio": 0.48
+    }
+  },
+  "quality_gate": {
+    "version_correct": true,
+    "no_sub_above_70": true,
+    "sub_allowed_at_70": true,
+    "fourth_sub_blocked": true,
+    "injury_after_third_removes_player": true,
+    "red_removes_without_replacement": true,
+    "normal_recovery_80_percent": true,
+    "physical_recovery_full": true,
+    "max_three_subs_batch": true,
+    "fatigue_tracks_effort": true,
+    "physical_injury_rate_lower": true,
+    "transparent_contexts_all_render": true,
+    "ratings_table_rendered": true,
+    "simulation_stable": true
+  },
+  "overall_passed": true,
+  "manual_browser_test_required": true
+}

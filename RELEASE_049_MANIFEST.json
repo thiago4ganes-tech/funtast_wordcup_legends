@@ -1,0 +1,23 @@
+{
+  "version": "0.4.9",
+  "name": "Fitness Discipline & Transparent Report",
+  "generated_at": "2026-07-07",
+  "base_release": "0.4.8",
+  "cache_key": "fwcl-0-4-9-20260707",
+  "rules": {
+    "max_substitutions": 3,
+    "substitution_fitness_threshold": 70,
+    "normal_recovery_rate": 0.8,
+    "physical_profile_recovery_rate": 1.0,
+    "red_card_replacement": false,
+    "post_third_sub_injury_replacement": false
+  },
+  "changes": [
+    "Action-proportional fitness cost",
+    "Persistent tournament fitness recovery",
+    "Physical-profile injury protection",
+    "Manpower disadvantage after red cards/injuries",
+    "Visible mirrored pyramid statistics",
+    "Five contextual phrases for each requested report context"
+  ]
+}
