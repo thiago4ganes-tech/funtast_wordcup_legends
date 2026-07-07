@@ -1,0 +1,12 @@
+{
+  "version": "0.4.8",
+  "name": "Report Refinement",
+  "generated_at": "2026-07-07",
+  "base_release": "0.4.7",
+  "cache_key": "fwcl-0-4-8-20260707",
+  "changes": [
+    "Expanded contextual transparent report phrases",
+    "Mirrored pyramid team statistics chart",
+    "Player ratings split into team tables"
+  ]
+}
